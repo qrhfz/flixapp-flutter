@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tv_list_item_model.dart';
+part of 'tv_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TvListItemModel _$TvListItemModelFromJson(Map<String, dynamic> json) =>
-    TvListItemModel(
+TvModel _$TvModelFromJson(Map<String, dynamic> json) => TvModel(
       id: json['id'] as int,
       backdropPath: json['backdrop_path'] as String?,
       firstAirDate: DateTime.parse(json['first_air_date'] as String),
@@ -21,8 +20,7 @@ TvListItemModel _$TvListItemModelFromJson(Map<String, dynamic> json) =>
       voteCount: json['vote_count'] as int,
     );
 
-Map<String, dynamic> _$TvListItemModelToJson(TvListItemModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$TvModelToJson(TvModel instance) => <String, dynamic>{
       'backdrop_path': instance.backdropPath,
       'first_air_date': instance.firstAirDate.toIso8601String(),
       'genre_ids': instance.genreIds,

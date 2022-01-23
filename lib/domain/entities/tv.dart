@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class TvListItem extends Equatable {
+class Tv extends Equatable {
   final String? backdropPath;
   final DateTime firstAirDate;
   final List<int> genreIds;
@@ -12,7 +12,7 @@ class TvListItem extends Equatable {
   final double voteAverage;
   final int voteCount;
 
-  TvListItem({
+  Tv({
     required this.id,
     required this.backdropPath,
     required this.firstAirDate,
