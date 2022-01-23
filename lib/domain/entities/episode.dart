@@ -11,6 +11,7 @@ class Episode extends Equatable {
   final DateTime airDate;
   final Double voteAverage;
   final int voteCount;
+  final int episodeNumber;
 
   Episode({
     required this.id,
@@ -21,6 +22,7 @@ class Episode extends Equatable {
     required this.airDate,
     required this.voteAverage,
     required this.voteCount,
+    required this.episodeNumber,
   });
 
   @override
@@ -33,5 +35,6 @@ class Episode extends Equatable {
         airDate,
         voteAverage,
         voteCount,
+        episodeNumber,
       ];
 }
