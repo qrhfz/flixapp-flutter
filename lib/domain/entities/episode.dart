@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
-class Episode {
+import 'package:equatable/equatable.dart';
+
+class Episode extends Equatable {
   final int id;
   final String title;
   final String overview;
@@ -20,4 +22,16 @@ class Episode {
     required this.voteAverage,
     required this.voteCount,
   });
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        overview,
+        stillPath,
+        seasonNumber,
+        airDate,
+        voteAverage,
+        voteCount,
+      ];
 }
