@@ -1,3 +1,4 @@
+import 'package:ditonton/domain/entities/tv.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tv_model.g.dart';
@@ -43,4 +44,24 @@ class TvModel {
       _$TvModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvModelToJson(this);
+
+  Tv toEntity() {
+    return Tv(
+      adult: adult,
+      id: id,
+      overview: overview,
+      originalTitle: originalTitle,
+      numberOfSeasons: numberOfSeasons,
+      numberOfEpisodes: numberOfEpisodes,
+      lastAirDate: lastAirDate,
+      title: title,
+      posterPath: posterPath,
+      firstAirDate: firstAirDate,
+      backdropPath: backdropPath,
+      popularity: popularity,
+      voteAverage: voteAverage,
+      genreIds: genreIds,
+      voteCount: voteCount,
+    );
+  }
 }
