@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:ditonton/data/models/tv_model.dart';
-import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/data/models/tv_show_model.dart';
+import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -27,7 +27,7 @@ void main() {
     }
       ''';
 
-  final dummyTvModel = TvModel(
+  final dummyTvModel = TvShowModel(
     backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
     firstAirDate: DateTime(2019, 6, 16),
     genreIds: [18],
@@ -41,7 +41,7 @@ void main() {
     voteCount: 5654,
   );
 
-  final dummyTv = Tv(
+  final dummyTv = TvShow(
     backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
     firstAirDate: DateTime(2019, 6, 16),
     genreIds: [18],
@@ -57,7 +57,7 @@ void main() {
 
   group('tv model test', () {
     test('given json string return Tv object', () {
-      final tvModel = TvModel.fromJson(jsonDecode(dummyTvJson));
+      final tvModel = TvShowModel.fromJson(jsonDecode(dummyTvJson));
       assert(dummyTvModel == tvModel);
     });
 

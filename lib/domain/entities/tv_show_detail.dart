@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'episode.dart';
 import 'season.dart';
 
-class TvDetail extends Equatable {
+class TvShowDetail extends Equatable {
   final bool? adult;
   final String? backdropPath;
   final DateTime? firstAirDate;
@@ -25,7 +25,7 @@ class TvDetail extends Equatable {
   final List<Season> seasons;
   final Episode lastEpisodeToAir;
 
-  TvDetail({
+  TvShowDetail({
     required this.id,
     required this.adult,
     required this.backdropPath,

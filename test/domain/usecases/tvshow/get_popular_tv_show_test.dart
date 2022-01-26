@@ -1,22 +1,21 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/repositories/tv_repository.dart';
-import 'package:ditonton/domain/usecases/tvshow/get_popular_tv_series.dart';
+import 'package:ditonton/domain/repositories/tv_show_repository.dart';
+import 'package:ditonton/domain/usecases/tvshow/get_popular_tv_shows.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late final TvRepository tvRepository;
-  late final GetPopularTvSeries usecase;
+  late final TvShowRepository tvRepository;
+  late final GetPopularTvShows usecase;
 
   setUp(() {
-    tvRepository = MockTvRepository();
-    usecase = GetPopularTvSeries(tvRepository);
+    tvRepository = MockTvShowRepository();
+    usecase = GetPopularTvShows(tvRepository);
   });
 
-  group('Get popular tv series', () {
+  group('Get popular tv shows', () {
     test('execute', () async {
       when(tvRepository.getPopularTvSeries())
           .thenAnswer((_) async => Right([]));

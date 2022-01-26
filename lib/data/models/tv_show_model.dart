@@ -1,12 +1,12 @@
-import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'tv_model.g.dart';
+part 'tv_show_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TvModel extends Equatable {
-  TvModel({
+class TvShowModel extends Equatable {
+  TvShowModel({
     required this.id,
     required this.backdropPath,
     required this.firstAirDate,
@@ -31,13 +31,13 @@ class TvModel extends Equatable {
   final double voteAverage;
   final int voteCount;
 
-  factory TvModel.fromJson(Map<String, dynamic> json) =>
-      _$TvModelFromJson(json);
+  factory TvShowModel.fromJson(Map<String, dynamic> json) =>
+      _$TvShowModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TvModelToJson(this);
+  Map<String, dynamic> toJson() => _$TvShowModelToJson(this);
 
-  Tv toEntity() {
-    return Tv(
+  TvShow toEntity() {
+    return TvShow(
       id: id,
       overview: overview,
       title: title,
