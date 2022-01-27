@@ -1,7 +1,3 @@
-abstract class UseCase<T, Y extends Params> {
+abstract class UseCase<T, Y> {
   T execute(Y params);
 }
-
-abstract class Params {}
-
-class NoParams extends Params {}

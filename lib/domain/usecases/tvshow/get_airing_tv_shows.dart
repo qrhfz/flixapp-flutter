@@ -2,7 +2,7 @@ import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/common/usecase.dart';
 
-class GetAiringTvShows implements UseCase<FutureTvShowList, NoParams> {
+class GetAiringTvShows implements UseCase<FutureTvShowList, void> {
   final TvShowRepository repository;
 
   GetAiringTvShows(this.repository);

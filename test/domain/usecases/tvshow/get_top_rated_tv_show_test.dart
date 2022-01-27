@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/usecase.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_top_rated_tv_shows.dart';
@@ -21,7 +20,7 @@ void main() {
     test('execute', () async {
       when(tvRepository.getTopRatedTvShows())
           .thenAnswer((_) async => Right(dummyTv));
-      final tvSeries = await usecase.execute(NoParams());
+      final tvSeries = await usecase.execute(null);
       assert(tvSeries is Right<Failure, List<TvShow>>);
     });
   });

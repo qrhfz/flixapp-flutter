@@ -1,6 +1,7 @@
 import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/common/usecase.dart';
+import 'package:equatable/equatable.dart';
 
 class GetTvShowDetail
     implements UseCase<FutureTvShowDetail, GetTvShowDetailParams> {
@@ -14,8 +15,11 @@ class GetTvShowDetail
   }
 }
 
-class GetTvShowDetailParams extends Params {
+class GetTvShowDetailParams extends Equatable {
   final int id;
 
   GetTvShowDetailParams(this.id);
+
+  @override
+  List<Object?> get props => [id];
 }
