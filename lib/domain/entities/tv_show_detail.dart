@@ -5,12 +5,11 @@ import 'episode.dart';
 import 'season.dart';
 
 class TvShowDetail extends Equatable {
-  final bool? adult;
+  final int id;
   final String? backdropPath;
   final DateTime? firstAirDate;
   final DateTime? lastAirDate;
   final List<Genre>? genres;
-  final int id;
   final int? numberOfEpisodes;
   final int? numberOfSeasons;
   final String? originalTitle;
@@ -22,35 +21,33 @@ class TvShowDetail extends Equatable {
   final bool? video;
   final double? voteAverage;
   final int? voteCount;
-  final List<Season> seasons;
-  final Episode lastEpisodeToAir;
+  final List<Season>? seasons;
+  final Episode? lastEpisodeToAir;
 
   TvShowDetail({
     required this.id,
-    required this.adult,
-    required this.backdropPath,
-    required this.firstAirDate,
-    required this.genres,
-    required this.lastAirDate,
-    required this.numberOfEpisodes,
-    required this.numberOfSeasons,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.releaseDate,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
-    required this.seasons,
-    required this.lastEpisodeToAir,
+    this.backdropPath,
+    this.firstAirDate,
+    this.genres,
+    this.lastAirDate,
+    this.numberOfEpisodes,
+    this.numberOfSeasons,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
+    this.seasons,
+    this.lastEpisodeToAir,
   });
 
   @override
   List<Object?> get props => [
         id,
-        adult,
         backdropPath,
         firstAirDate,
         genres,
