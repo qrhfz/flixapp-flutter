@@ -1,3 +1,3 @@
-abstract class UseCase<In, Out> {
-  In execute(Out arg);
+abstract class UseCase<Out, In> {
+  Out execute(In arg);
 }
