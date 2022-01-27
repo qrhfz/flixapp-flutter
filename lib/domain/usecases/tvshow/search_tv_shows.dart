@@ -3,7 +3,6 @@ import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/common/usecase.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
-import 'package:ditonton/domain/usecases/tvshow/get_tv_show_detail.dart';
 
 class SearchTvShows extends UseCase<FutureTvShowList, SearchTvShowsParams> {
   final TvShowRepository repository;

@@ -9,8 +9,8 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late final TvShowRepository repository = MockTvShowRepository();
-  late final SearchTvShows usecase = SearchTvShows(repository);
+  final TvShowRepository repository = MockTvShowRepository();
+  final SearchTvShows usecase = SearchTvShows(repository);
 
   group('Searching tv shows', () {
     test('Seaching tv shows should result in a list of tv shows', () async {
