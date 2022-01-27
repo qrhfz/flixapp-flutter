@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/common/usecase.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_airing_tv_shows.dart';
@@ -20,7 +21,7 @@ void main() {
     final List<TvShow> data = [];
     test('execute', () async {
       when(repository.getAiringTvShows()).thenAnswer((_) async => Right(data));
-      final res = await usecase.execute();
+      final res = await usecase.execute(NoParams());
       assert(res is Right<Failure, List<TvShow>>);
     });
   });

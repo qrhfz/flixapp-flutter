@@ -15,7 +15,7 @@ void main() {
 
     setUp(() {
       repository = MockTvShowRepository();
-      usecase = GetTvShowDetail(0, repository);
+      usecase = GetTvShowDetail(repository);
     });
     test('execute', () async {
       final dummy = TvShowDetail(
@@ -33,7 +33,7 @@ void main() {
       when(repository.getTvShowDetail(0)).thenAnswer(
         (realInvocation) async => Right(dummy),
       );
-      final res = await usecase.execute();
+      final res = await usecase.execute(GetTvShowDetailParams(0));
       assert(res is Right<Failure, TvShowDetail>);
     });
   });
