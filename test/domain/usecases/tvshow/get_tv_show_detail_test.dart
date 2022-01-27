@@ -23,7 +23,7 @@ void main() {
         (realInvocation) async => Right(testTvShowDetail),
       );
 
-      final res = await usecase.execute(GetTvShowDetailParams(0));
+      final res = await usecase.execute(0);
       assert(res == Right<Failure, TvShowDetail>(testTvShowDetail));
     });
   });

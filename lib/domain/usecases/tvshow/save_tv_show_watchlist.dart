@@ -6,23 +6,13 @@ import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:equatable/equatable.dart';
 
 class SaveTvShowWatchlist
-    implements
-        UseCase<Future<Either<Failure, String>>, SaveTvShowWatchlistParams> {
+    implements UseCase<Future<Either<Failure, String>>, TvShowDetail> {
   final TvShowRepository repository;
 
   SaveTvShowWatchlist(this.repository);
 
   @override
-  Future<Either<Failure, String>> execute(SaveTvShowWatchlistParams params) {
-    return repository.saveWatchlist(params.tvShowDetail);
+  Future<Either<Failure, String>> execute(TvShowDetail tvShowDetail) {
+    return repository.saveWatchlist(tvShowDetail);
   }
-}
-
-class SaveTvShowWatchlistParams extends Equatable {
-  final TvShowDetail tvShowDetail;
-
-  SaveTvShowWatchlistParams(this.tvShowDetail);
-
-  @override
-  List<Object?> get props => [tvShowDetail];
 }

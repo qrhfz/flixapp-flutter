@@ -17,12 +17,12 @@ void main() {
       final List<TvShow> dummy = [];
       when(repository.searchTvShows("test"))
           .thenAnswer((_) async => Right(dummy));
-      final res = await usecase.execute(SearchTvShowsParams("test"));
+      final res = await usecase.execute("test");
       assert(res == Right<Failure, List<TvShow>>(dummy));
     });
 
     test('Searching whith empty string should return a Failure', () async {
-      final res = await usecase.execute(SearchTvShowsParams(""));
+      final res = await usecase.execute("");
       assert(res.isLeft());
 
       res.fold((l) {
