@@ -1,5 +1,5 @@
-abstract class UseCase<T, Y> {
-  T execute(covariant Y params);
+abstract class UseCase<T, Y extends Params> {
+  T execute(Y params);
 }
 
 abstract class Params {}

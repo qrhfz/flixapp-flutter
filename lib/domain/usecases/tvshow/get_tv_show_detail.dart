@@ -14,7 +14,7 @@ class GetTvShowDetail
   }
 }
 
-class GetTvShowDetailParams {
+class GetTvShowDetailParams extends Params {
   final int id;
 
   GetTvShowDetailParams(this.id);
