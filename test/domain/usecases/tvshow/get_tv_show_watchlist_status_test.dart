@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/usecase.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist_status.dart';
