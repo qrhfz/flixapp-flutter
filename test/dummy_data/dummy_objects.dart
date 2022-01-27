@@ -1,7 +1,10 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/domain/entities/tv_show_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -57,3 +60,47 @@ final testMovieMap = {
   'posterPath': 'posterPath',
   'title': 'title',
 };
+
+final testTvShow = TvShow(
+    id: 0,
+    backdropPath: 'backdropPath',
+    firstAirDate: DateTime(2022, 1, 1),
+    genreIds: [],
+    overview: 'overview',
+    popularity: 0,
+    posterPath: 'posterPath',
+    title: 'title',
+    voteAverage: 0,
+    voteCount: 0);
+
+final testEpisode = Episode(
+  id: 1,
+  title: 'title',
+  overview: 'overview',
+  stillPath: 'stillPath',
+  seasonNumber: 1,
+  airDate: DateTime(2022, 1, 1),
+  voteAverage: 0,
+  voteCount: 0,
+  episodeNumber: 1,
+);
+
+final testTvShowDetail = TvShowDetail(
+  id: 0,
+  backdropPath: 'backdropPath',
+  firstAirDate: DateTime(2022, 1, 1),
+  genres: [],
+  overview: 'overview',
+  popularity: 0,
+  posterPath: 'posterPath',
+  title: 'title',
+  voteAverage: 0,
+  voteCount: 0,
+  lastAirDate: DateTime(2022, 1, 1),
+  lastEpisodeToAir: testEpisode,
+  numberOfEpisodes: 1,
+  numberOfSeasons: 1,
+  originalTitle: '',
+  releaseDate: '',
+  seasons: [],
+);

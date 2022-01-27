@@ -9,7 +9,7 @@ class Episode extends Equatable {
   final String? stillPath;
   final int seasonNumber;
   final DateTime airDate;
-  final Double voteAverage;
+  final double voteAverage;
   final int voteCount;
   final int episodeNumber;
 

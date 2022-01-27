@@ -7,18 +7,17 @@ import 'season.dart';
 class TvShowDetail extends Equatable {
   final int id;
   final String? backdropPath;
-  final DateTime? firstAirDate;
-  final DateTime? lastAirDate;
-  final List<Genre>? genres;
-  final int? numberOfEpisodes;
-  final int? numberOfSeasons;
-  final String? originalTitle;
-  final String? overview;
-  final double? popularity;
+  final DateTime firstAirDate;
+  final DateTime lastAirDate;
+  final List<Genre> genres;
+  final int numberOfEpisodes;
+  final int numberOfSeasons;
+  final String originalTitle;
+  final String overview;
+  final double popularity;
   final String? posterPath;
-  final String? releaseDate;
-  final String? title;
-  final bool? video;
+  final String releaseDate;
+  final String title;
   final double? voteAverage;
   final int? voteCount;
   final List<Season>? seasons;
@@ -27,22 +26,21 @@ class TvShowDetail extends Equatable {
   TvShowDetail({
     required this.id,
     this.backdropPath,
-    this.firstAirDate,
-    this.genres,
-    this.lastAirDate,
-    this.numberOfEpisodes,
-    this.numberOfSeasons,
-    this.originalTitle,
-    this.overview,
-    this.popularity,
-    this.posterPath,
-    this.releaseDate,
-    this.title,
-    this.video,
-    this.voteAverage,
-    this.voteCount,
-    this.seasons,
-    this.lastEpisodeToAir,
+    required this.firstAirDate,
+    required this.genres,
+    required this.lastAirDate,
+    required this.numberOfEpisodes,
+    required this.numberOfSeasons,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.title,
+    required this.voteAverage,
+    required this.voteCount,
+    required this.seasons,
+    required this.lastEpisodeToAir,
   });
 
   @override
@@ -60,7 +58,6 @@ class TvShowDetail extends Equatable {
         posterPath,
         releaseDate,
         title,
-        video,
         voteAverage,
         voteCount,
         seasons,

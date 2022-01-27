@@ -266,15 +266,21 @@ class MockTvShowRepository extends _i1.Mock implements _i16.TvShowRepository {
               _FakeEither_0<_i7.Failure, List<_i17.TvShow>>())) as _i6
           .Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, String>> saveWatchlist(_i17.TvShow? tv) =>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>> getTvShowWatchlist() =>
+      (super.noSuchMethod(Invocation.method(#getTvShowWatchlist, []),
+          returnValue: Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>.value(
+              _FakeEither_0<_i7.Failure, List<_i17.TvShow>>())) as _i6
+          .Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>);
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, String>> saveWatchlist(
+          _i18.TvShowDetail? tv) =>
       (super.noSuchMethod(Invocation.method(#saveWatchlist, [tv]),
               returnValue: Future<_i2.Either<_i7.Failure, String>>.value(
                   _FakeEither_0<_i7.Failure, String>()))
           as _i6.Future<_i2.Either<_i7.Failure, String>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, String>> deleteWatchlist(
-          _i17.TvShow? tv) =>
-      (super.noSuchMethod(Invocation.method(#deleteWatchlist, [tv]),
+  _i6.Future<_i2.Either<_i7.Failure, String>> deleteWatchlist(int? id) =>
+      (super.noSuchMethod(Invocation.method(#deleteWatchlist, [id]),
               returnValue: Future<_i2.Either<_i7.Failure, String>>.value(
                   _FakeEither_0<_i7.Failure, String>()))
           as _i6.Future<_i2.Either<_i7.Failure, String>>);
