@@ -18,7 +18,7 @@ void main() {
   });
   group('Get top rated tv shows', () {
     test('execute', () async {
-      when(tvRepository.getTopRatedTvSeries())
+      when(tvRepository.getTopRatedTvShows())
           .thenAnswer((_) async => Right(dummyTv));
       final tvSeries = await usecase.execute();
       assert(tvSeries is Right<Failure, List<TvShow>>);

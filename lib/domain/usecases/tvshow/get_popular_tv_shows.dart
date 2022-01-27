@@ -9,6 +9,6 @@ class GetPopularTvShows {
   GetPopularTvShows(this.tvRepository);
 
   Future<Either<Failure, List<TvShow>>> execute() {
-    return tvRepository.getPopularTvSeries();
+    return tvRepository.getPopularTvShows();
   }
 }

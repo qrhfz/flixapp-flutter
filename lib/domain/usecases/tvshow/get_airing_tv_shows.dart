@@ -4,13 +4,13 @@ import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/domain/usecases/usecase.dart';
 
-class GetTopRatedTvShows implements UseCase {
+class GetAiringTvShows implements UseCase {
   final TvShowRepository repository;
 
-  GetTopRatedTvShows(this.repository);
+  GetAiringTvShows(this.repository);
 
   @override
   Future<Either<Failure, List<TvShow>>> execute() async {
-    return await repository.getTopRatedTvShows();
+    return repository.getAiringTvShows();
   }
 }

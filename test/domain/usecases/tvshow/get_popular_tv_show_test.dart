@@ -17,8 +17,7 @@ void main() {
 
   group('Get popular tv shows', () {
     test('execute', () async {
-      when(tvRepository.getPopularTvSeries())
-          .thenAnswer((_) async => Right([]));
+      when(tvRepository.getPopularTvShows()).thenAnswer((_) async => Right([]));
       final popularTvSeries = await usecase.execute();
       assert(popularTvSeries is Right);
     });
