@@ -11,6 +11,6 @@ abstract class TvShowRepository {
   FutureTvShowList searchTvShows(String query);
   FutureTvShowList getTvShowWatchlist();
   Future<Either<Failure, String>> saveWatchlist(TvShowDetail tv);
-  Future<Either<Failure, String>> deleteWatchlist(int id);
-  Future<bool> isInWatchlist(int id);
+  Future<Either<Failure, String>> removeWatchlist(int id);
+  Future<bool> getWatchlistStatus(int id);
 }

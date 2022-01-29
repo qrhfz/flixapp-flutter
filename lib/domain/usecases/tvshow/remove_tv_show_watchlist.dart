@@ -11,6 +11,6 @@ class RemoveTvShowWatchlist
 
   @override
   Future<Either<Failure, String>> execute(int arg) {
-    return repository.deleteWatchlist(arg);
+    return repository.removeWatchlist(arg);
   }
 }

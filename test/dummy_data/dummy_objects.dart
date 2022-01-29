@@ -1,4 +1,5 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
@@ -62,7 +63,7 @@ final testMovieMap = {
 };
 
 final testTvShow = TvShow(
-    id: 0,
+    id: 1,
     backdropPath: 'backdropPath',
     firstAirDate: DateTime(2022, 1, 1),
     genreIds: [],
@@ -86,7 +87,7 @@ final testEpisode = Episode(
 );
 
 final testTvShowDetail = TvShowDetail(
-  id: 0,
+  id: 1,
   backdropPath: 'backdropPath',
   firstAirDate: DateTime(2022, 1, 1),
   genres: [],
@@ -103,4 +104,11 @@ final testTvShowDetail = TvShowDetail(
   originalTitle: '',
   releaseDate: '',
   seasons: [],
+);
+
+final testTvShowTable = TvShowTable(
+  id: 1,
+  title: 'title',
+  overview: 'overview',
+  posterPath: 'posterPath',
 );

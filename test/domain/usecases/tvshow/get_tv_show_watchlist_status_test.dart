@@ -11,7 +11,7 @@ void main(List<String> args) {
   final UseCase usecase = GetTvShowWatchlistStatus(repository);
 
   test('Given id GetTvShowWatchlistStatus should return a boolean', () async {
-    when(repository.isInWatchlist(1)).thenAnswer((_) async => true);
+    when(repository.getWatchlistStatus(1)).thenAnswer((_) async => true);
     final res = await usecase.execute(1);
     assert(res is bool);
   });

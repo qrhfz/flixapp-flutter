@@ -12,7 +12,7 @@ void main() {
 
   test('Removing watchlist should responds with string message', () async {
     final message = "Success removing item from watchlist";
-    when(repository.deleteWatchlist(1)).thenAnswer((_) async => Right(message));
+    when(repository.removeWatchlist(1)).thenAnswer((_) async => Right(message));
     final res = await usecase.execute(1);
     assert(res == Right<Failure, String>(message));
   });

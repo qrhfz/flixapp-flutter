@@ -8,6 +8,6 @@ class GetTvShowWatchlistStatus implements UseCase<Future<bool>, int> {
 
   @override
   Future<bool> execute(int arg) {
-    return repository.isInWatchlist(arg);
+    return repository.getWatchlistStatus(arg);
   }
 }
