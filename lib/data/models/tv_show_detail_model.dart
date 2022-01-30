@@ -16,12 +16,12 @@ class TvShowDetailModel extends Equatable {
   final List<GenreModel> genres;
   final int numberOfEpisodes;
   final int numberOfSeasons;
+  @JsonKey(name: 'original_name')
   final String originalTitle;
   final String overview;
   final double popularity;
   final String? posterPath;
-  final String releaseDate;
-  @JsonKey(name: 'title')
+  @JsonKey(name: 'name')
   final String title;
   final double? voteAverage;
   final int? voteCount;
@@ -39,7 +39,6 @@ class TvShowDetailModel extends Equatable {
     required this.overview,
     required this.popularity,
     this.posterPath,
-    required this.releaseDate,
     required this.title,
     this.voteAverage,
     this.voteCount,
@@ -61,12 +60,16 @@ class TvShowDetailModel extends Equatable {
         overview: overview,
         popularity: popularity,
         posterPath: posterPath,
-        releaseDate: releaseDate,
         seasons: seasons?.map((e) => e.toEntity()).toList(),
         title: title,
         voteAverage: voteAverage,
         voteCount: voteCount,
       );
+
+  factory TvShowDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$TvShowDetailModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TvShowDetailModelToJson(this);
 
   @override
   List<Object?> get props => [
@@ -81,7 +84,6 @@ class TvShowDetailModel extends Equatable {
         overview,
         popularity,
         posterPath,
-        releaseDate,
         voteAverage,
         voteCount,
       ];

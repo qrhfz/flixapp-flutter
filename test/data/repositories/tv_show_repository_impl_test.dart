@@ -62,7 +62,6 @@ void main() {
         originalTitle: '',
         overview: '',
         popularity: 1,
-        releaseDate: '',
         title: '',
       );
 

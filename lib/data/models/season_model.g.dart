@@ -8,7 +8,7 @@ part of 'season_model.dart';
 
 SeasonModel _$SeasonModelFromJson(Map<String, dynamic> json) => SeasonModel(
       id: json['id'] as int,
-      title: json['title'] as String,
+      title: json['name'] as String,
       overview: json['overview'] as String,
       posterPath: json['poster_path'] as String,
       seasonNumber: json['season_number'] as int,
@@ -19,7 +19,7 @@ SeasonModel _$SeasonModelFromJson(Map<String, dynamic> json) => SeasonModel(
 Map<String, dynamic> _$SeasonModelToJson(SeasonModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
+      'name': instance.title,
       'overview': instance.overview,
       'poster_path': instance.posterPath,
       'season_number': instance.seasonNumber,

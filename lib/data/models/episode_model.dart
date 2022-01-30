@@ -7,6 +7,7 @@ part 'episode_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class EpisodeModel extends Equatable {
   final int id;
+  @JsonKey(name: 'name')
   final String title;
   final String overview;
   final String? stillPath;

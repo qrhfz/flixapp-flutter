@@ -1,4 +1,5 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_show_detail_model.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/genre.dart';
@@ -102,7 +103,6 @@ final testTvShowDetail = TvShowDetail(
   numberOfEpisodes: 1,
   numberOfSeasons: 1,
   originalTitle: '',
-  releaseDate: '',
   seasons: [],
 );
 
@@ -111,4 +111,18 @@ final testTvShowTable = TvShowTable(
   title: 'title',
   overview: 'overview',
   posterPath: 'posterPath',
+);
+
+final testTvShowDetailModel = TvShowDetailModel(
+  firstAirDate: DateTime(2011, 4, 17),
+  genres: [],
+  id: 1399,
+  lastAirDate: DateTime.parse("2019-05-19"),
+  numberOfEpisodes: 73,
+  numberOfSeasons: 8,
+  originalTitle: "Game of Thrones",
+  overview:
+      "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+  popularity: 369.594,
+  title: "Game of Thrones",
 );
