@@ -6,22 +6,14 @@ import 'package:ditonton/common/api_key.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
-import 'package:ditonton/data/models/tv_show_list_response.dart';
 import 'package:ditonton/data/models/tv_show_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
-import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
-/// https://api.themoviedb.org/3/tv/popular
-/// https://api.themoviedb.org/3/tv/{id}
-/// https://api.themoviedb.org/3/tv/on_the_air
-/// https://api.themoviedb.org/3/tv/top_rated
-/// https://api.themoviedb.org/3/search/tv{query}
-///
 void main() {
   final http.Client client = MockHttpClient();
   final dataSource = TvRemoteDataSourceImpl(client);

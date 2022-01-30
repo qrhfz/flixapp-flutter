@@ -6,8 +6,6 @@ import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
 import 'package:ditonton/data/models/tv_show_list_response.dart';
-import 'package:ditonton/data/models/tv_show_model.dart';
-import 'package:ditonton/domain/entities/tv_show_detail.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
@@ -39,7 +37,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
+    } on Exception {
       return Future.value(Left(ServerFailure("Gagal menghubungi server")));
     }
   }
@@ -52,7 +50,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
+    } on Exception {
       return Future.value(Left(ServerFailure("Gagal menghubungi server")));
     }
   }
@@ -65,7 +63,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
+    } on Exception {
       return Future.value(Left(ServerFailure("Gagal menghubungi server")));
     }
   }
@@ -83,7 +81,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowDetail = TvShowDetailModel.fromJson(json);
       return Right(tvShowDetail);
-    } on Exception catch (e) {
+    } on Exception {
       return Future.value(Left(ServerFailure("Gagal menghubungi server")));
     }
   }
@@ -104,7 +102,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
+    } on Exception {
       return Future.value(Left(ServerFailure("Gagal menghubungi server")));
     }
   }
