@@ -5,7 +5,7 @@ import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 import 'package:ditonton/common/usecase.dart';
 
-class GetTopRatedTvShows implements UseCase<FutureTvShowList, void> {
+class GetTopRatedTvShows implements UseCase<TvShowsOrFailureFuture, void> {
   final TvShowRepository repository;
 
   GetTopRatedTvShows(this.repository);

@@ -3,8 +3,8 @@
 // Do not manually edit this file.
 
 import 'dart:async' as _i6;
-import 'dart:convert' as _i22;
-import 'dart:typed_data' as _i23;
+import 'dart:convert' as _i24;
+import 'dart:typed_data' as _i25;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i7;
@@ -12,12 +12,14 @@ import 'package:ditonton/data/datasources/db/database_helper.dart' as _i14;
 import 'package:ditonton/data/datasources/movie_local_data_source.dart' as _i12;
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart'
     as _i10;
-import 'package:ditonton/data/datasources/tv_local_data_source.dart' as _i20;
+import 'package:ditonton/data/datasources/tv_local_data_source.dart' as _i22;
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart' as _i19;
 import 'package:ditonton/data/models/movie_detail_model.dart' as _i3;
 import 'package:ditonton/data/models/movie_model.dart' as _i11;
 import 'package:ditonton/data/models/movie_table.dart' as _i13;
-import 'package:ditonton/data/models/tv_show_table.dart' as _i21;
+import 'package:ditonton/data/models/tv_show_detail_model.dart' as _i21;
+import 'package:ditonton/data/models/tv_show_model.dart' as _i20;
+import 'package:ditonton/data/models/tv_show_table.dart' as _i23;
 import 'package:ditonton/domain/entities/movie.dart' as _i8;
 import 'package:ditonton/domain/entities/movie_detail.dart' as _i9;
 import 'package:ditonton/domain/entities/tv_show.dart' as _i17;
@@ -303,56 +305,64 @@ class MockTvRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>> getPopularTvShows() =>
-      (super.noSuchMethod(Invocation.method(#getPopularTvShows, []),
-          returnValue: Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>.value(
-              _FakeEither_0<_i7.Failure, List<_i17.TvShow>>())) as _i6
-          .Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>);
+  _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>
+      getPopularTvShows() => (super.noSuchMethod(
+              Invocation.method(#getPopularTvShows, []),
+              returnValue:
+                  Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i20.TvShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>> getTopRatedTvShows() =>
-      (super.noSuchMethod(Invocation.method(#getTopRatedTvShows, []),
-          returnValue: Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>.value(
-              _FakeEither_0<_i7.Failure, List<_i17.TvShow>>())) as _i6
-          .Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>);
+  _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>
+      getTopRatedTvShows() => (super.noSuchMethod(
+              Invocation.method(#getTopRatedTvShows, []),
+              returnValue:
+                  Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i20.TvShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>> getAiringTvShows() =>
-      (super.noSuchMethod(Invocation.method(#getAiringTvShows, []),
-          returnValue: Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>.value(
-              _FakeEither_0<_i7.Failure, List<_i17.TvShow>>())) as _i6
-          .Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>);
+  _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>
+      getAiringTvShows() => (super.noSuchMethod(
+              Invocation.method(#getAiringTvShows, []),
+              returnValue:
+                  Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i20.TvShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, _i18.TvShowDetail>> getTvShowDetail(
+  _i6.Future<_i2.Either<_i7.Failure, _i21.TvShowDetailModel>> getTvShowDetail(
           int? id) =>
       (super.noSuchMethod(Invocation.method(#getTvShowDetail, [id]),
-          returnValue: Future<_i2.Either<_i7.Failure, _i18.TvShowDetail>>.value(
-              _FakeEither_0<_i7.Failure, _i18.TvShowDetail>())) as _i6
-          .Future<_i2.Either<_i7.Failure, _i18.TvShowDetail>>);
+              returnValue:
+                  Future<_i2.Either<_i7.Failure, _i21.TvShowDetailModel>>.value(
+                      _FakeEither_0<_i7.Failure, _i21.TvShowDetailModel>()))
+          as _i6.Future<_i2.Either<_i7.Failure, _i21.TvShowDetailModel>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>> searchTvShow(
+  _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>> searchTvShow(
           String? query) =>
       (super.noSuchMethod(Invocation.method(#searchTvShow, [query]),
-          returnValue: Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>.value(
-              _FakeEither_0<_i7.Failure, List<_i17.TvShow>>())) as _i6
-          .Future<_i2.Either<_i7.Failure, List<_i17.TvShow>>>);
+              returnValue:
+                  Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i20.TvShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i20.TvShowModel>>>);
 }
 
 /// A class which mocks [TvLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTvLocalDataSource extends _i1.Mock implements _i20.TvLocalDataSource {
+class MockTvLocalDataSource extends _i1.Mock implements _i22.TvLocalDataSource {
   MockTvLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowTable>>> findAll() =>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i23.TvShowTable>>> findAll() =>
       (super.noSuchMethod(Invocation.method(#findAll, []),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, List<_i21.TvShowTable>>>.value(
-                      _FakeEither_0<_i7.Failure, List<_i21.TvShowTable>>()))
-          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowTable>>>);
+                  Future<_i2.Either<_i7.Failure, List<_i23.TvShowTable>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i23.TvShowTable>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i23.TvShowTable>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, String>> save(_i21.TvShowTable? tvShow) =>
+  _i6.Future<_i2.Either<_i7.Failure, String>> save(_i23.TvShowTable? tvShow) =>
       (super.noSuchMethod(Invocation.method(#save, [tvShow]),
               returnValue: Future<_i2.Either<_i7.Failure, String>>.value(
                   _FakeEither_0<_i7.Failure, String>()))
@@ -364,12 +374,12 @@ class MockTvLocalDataSource extends _i1.Mock implements _i20.TvLocalDataSource {
                   _FakeEither_0<_i7.Failure, String>()))
           as _i6.Future<_i2.Either<_i7.Failure, String>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, _i21.TvShowTable?>> findOneOrNull(
+  _i6.Future<_i2.Either<_i7.Failure, _i23.TvShowTable?>> findOneOrNull(
           int? id) =>
       (super.noSuchMethod(Invocation.method(#findOneOrNull, [id]),
-          returnValue: Future<_i2.Either<_i7.Failure, _i21.TvShowTable?>>.value(
-              _FakeEither_0<_i7.Failure, _i21.TvShowTable?>())) as _i6
-          .Future<_i2.Either<_i7.Failure, _i21.TvShowTable?>>);
+          returnValue: Future<_i2.Either<_i7.Failure, _i23.TvShowTable?>>.value(
+              _FakeEither_0<_i7.Failure, _i23.TvShowTable?>())) as _i6
+          .Future<_i2.Either<_i7.Failure, _i23.TvShowTable?>>);
 }
 
 /// A class which mocks [Client].
@@ -394,7 +404,7 @@ class MockHttpClient extends _i1.Mock implements _i4.Client {
   _i6.Future<_i4.Response> post(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i22.Encoding? encoding}) =>
+          _i24.Encoding? encoding}) =>
       (super.noSuchMethod(
               Invocation.method(#post, [url],
                   {#headers: headers, #body: body, #encoding: encoding}),
@@ -404,7 +414,7 @@ class MockHttpClient extends _i1.Mock implements _i4.Client {
   _i6.Future<_i4.Response> put(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i22.Encoding? encoding}) =>
+          _i24.Encoding? encoding}) =>
       (super.noSuchMethod(
               Invocation.method(#put, [url],
                   {#headers: headers, #body: body, #encoding: encoding}),
@@ -414,7 +424,7 @@ class MockHttpClient extends _i1.Mock implements _i4.Client {
   _i6.Future<_i4.Response> patch(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i22.Encoding? encoding}) =>
+          _i24.Encoding? encoding}) =>
       (super.noSuchMethod(
               Invocation.method(#patch, [url],
                   {#headers: headers, #body: body, #encoding: encoding}),
@@ -424,7 +434,7 @@ class MockHttpClient extends _i1.Mock implements _i4.Client {
   _i6.Future<_i4.Response> delete(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i22.Encoding? encoding}) =>
+          _i24.Encoding? encoding}) =>
       (super.noSuchMethod(
               Invocation.method(#delete, [url],
                   {#headers: headers, #body: body, #encoding: encoding}),
@@ -435,12 +445,12 @@ class MockHttpClient extends _i1.Mock implements _i4.Client {
       (super.noSuchMethod(Invocation.method(#read, [url], {#headers: headers}),
           returnValue: Future<String>.value('')) as _i6.Future<String>);
   @override
-  _i6.Future<_i23.Uint8List> readBytes(Uri? url,
+  _i6.Future<_i25.Uint8List> readBytes(Uri? url,
           {Map<String, String>? headers}) =>
       (super.noSuchMethod(
               Invocation.method(#readBytes, [url], {#headers: headers}),
-              returnValue: Future<_i23.Uint8List>.value(_i23.Uint8List(0)))
-          as _i6.Future<_i23.Uint8List>);
+              returnValue: Future<_i25.Uint8List>.value(_i25.Uint8List(0)))
+          as _i6.Future<_i25.Uint8List>);
   @override
   _i6.Future<_i4.StreamedResponse> send(_i4.BaseRequest? request) =>
       (super.noSuchMethod(Invocation.method(#send, [request]),

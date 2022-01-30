@@ -14,21 +14,57 @@ class TvShowRepositoryImpl implements TvShowRepository {
 
   TvShowRepositoryImpl(this._remoteDataSource, this._localDataSource);
   @override
-  FutureTvShowList getAiringTvShows() => _remoteDataSource.getAiringTvShows();
+  TvShowsOrFailureFuture getAiringTvShows() async {
+    final res = await _remoteDataSource.getAiringTvShows();
+    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
+      (l) => Left(l),
+      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    );
+    return tvShowEntities;
+  }
 
   @override
-  FutureTvShowList getPopularTvShows() => _remoteDataSource.getPopularTvShows();
+  TvShowsOrFailureFuture getPopularTvShows() async {
+    final res = await _remoteDataSource.getPopularTvShows();
+    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
+      (l) => Left(l),
+      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    );
+    return tvShowEntities;
+  }
 
   @override
-  FutureTvShowList getTopRatedTvShows() =>
-      _remoteDataSource.getTopRatedTvShows();
+  TvShowsOrFailureFuture getTopRatedTvShows() async {
+    final res = await _remoteDataSource.getTopRatedTvShows();
+    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
+      (l) => Left(l),
+      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    );
+    return tvShowEntities;
+  }
 
   @override
-  FutureTvShowDetail getTvShowDetail(int id) =>
-      _remoteDataSource.getTvShowDetail(id);
+  TvShowDetailOrFailureFuture getTvShowDetail(int id) async {
+    final res = await _remoteDataSource.getTvShowDetail(id);
+    final Either<Failure, TvShowDetail> tvShowEntity = res.fold(
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
+    );
+    return tvShowEntity;
+  }
 
   @override
-  FutureTvShowList getTvShowWatchlist() async {
+  TvShowsOrFailureFuture searchTvShows(String query) async {
+    final res = await _remoteDataSource.searchTvShow(query);
+    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
+      (l) => Left(l),
+      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    );
+    return tvShowEntities;
+  }
+
+  @override
+  TvShowsOrFailureFuture getTvShowWatchlist() async {
     final tvShowTableEntities = await _localDataSource.findAll();
     final Either<Failure, List<TvShow>> res = tvShowTableEntities.fold(
       (fail) => Left(fail),
@@ -69,8 +105,4 @@ class TvShowRepositoryImpl implements TvShowRepository {
     );
     return _localDataSource.save(record);
   }
-
-  @override
-  FutureTvShowList searchTvShows(String query) =>
-      _remoteDataSource.searchTvShow(query);
 }

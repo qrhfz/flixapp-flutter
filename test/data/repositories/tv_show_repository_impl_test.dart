@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
+import 'package:ditonton/data/models/tv_show_detail_model.dart';
+import 'package:ditonton/data/models/tv_show_model.dart';
 import 'package:ditonton/data/repositories/tv_show_repository_impl.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
@@ -18,7 +20,7 @@ void main() {
   final TvShowRepository repository =
       TvShowRepositoryImpl(remoteDataSource, localDataSource);
 
-  final List<TvShow> testTvShowList = [];
+  final List<TvShowModel> testTvShowList = [];
 
   group('Tv show repository', () {
     test('getPopularTvShows should return list of tv show', () async {
@@ -50,10 +52,25 @@ void main() {
       assert(res is Right<Failure, List<TvShow>>);
     });
     test('getTvShowDetail should return tv show detail object', () async {
+      final testData = TvShowDetailModel(
+        firstAirDate: DateTime(2022, 2, 2),
+        genres: [],
+        id: 1,
+        lastAirDate: DateTime(2022, 2, 2),
+        numberOfEpisodes: 1,
+        numberOfSeasons: 1,
+        originalTitle: '',
+        overview: '',
+        popularity: 1,
+        releaseDate: '',
+        title: '',
+      );
+
       when(remoteDataSource.getTvShowDetail(1))
-          .thenAnswer((_) async => Right(testTvShowDetail));
-      final res = await repository.getTvShowDetail(1);
-      assert(res == Right<Failure, TvShowDetail>(testTvShowDetail));
+          .thenAnswer((_) async => Right(testData));
+      final Either<Failure, TvShowDetail> res =
+          await repository.getTvShowDetail(1);
+      assert(res == Right<Failure, TvShowDetail>(testData.toEntity()));
     });
     test('getTvShowWatchlist should return list of tv show', () async {
       when(localDataSource.findAll()).thenAnswer((_) async => Right([]));
