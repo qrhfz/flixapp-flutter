@@ -65,7 +65,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
 
   @override
   TvShowsOrFailureFuture getTvShowWatchlist() async {
-    final tvShowTableEntities = await _localDataSource.findAll();
+    final tvShowTableEntities = await _localDataSource.getTvWatchlist();
     final Either<Failure, List<TvShow>> res = tvShowTableEntities.fold(
       (fail) => Left(fail),
       (tvShowTableRecords) {
@@ -86,14 +86,14 @@ class TvShowRepositoryImpl implements TvShowRepository {
 
   @override
   Future<bool> getWatchlistStatus(int id) async {
-    final res = await _localDataSource.findOneOrNull(id);
+    final res = await _localDataSource.getTvById(id);
     final tvShow = res.getOrElse(() => null);
     return tvShow != null;
   }
 
   @override
   Future<Either<Failure, String>> removeWatchlist(int id) =>
-      _localDataSource.delete(id);
+      _localDataSource.removeWatchlist(id);
 
   @override
   Future<Either<Failure, String>> saveWatchlist(TvShowDetail tv) {
@@ -103,6 +103,6 @@ class TvShowRepositoryImpl implements TvShowRepository {
       overview: tv.overview,
       posterPath: tv.posterPath,
     );
-    return _localDataSource.save(record);
+    return _localDataSource.insertWatchlist(record);
   }
 }

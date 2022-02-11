@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 
 import '../../../helpers/test_helper.mocks.dart';
 
-void main(List<String> args) {
+void main() {
   final TvShowRepository repository = MockTvShowRepository();
   final UseCase usecase = GetTvShowWatchlistStatus(repository);
 

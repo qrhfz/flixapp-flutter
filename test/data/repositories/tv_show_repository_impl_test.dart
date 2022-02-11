@@ -72,24 +72,25 @@ void main() {
       assert(res == Right<Failure, TvShowDetail>(testData.toEntity()));
     });
     test('getTvShowWatchlist should return list of tv show', () async {
-      when(localDataSource.findAll()).thenAnswer((_) async => Right([]));
+      when(localDataSource.getTvWatchlist()).thenAnswer((_) async => Right([]));
       final res = await repository.getTvShowWatchlist();
       assert(res is Right<Failure, List<TvShow>>);
     });
     test('saveWatchlist should return string message', () async {
-      when(localDataSource.save(testTvShowTable))
+      when(localDataSource.insertWatchlist(testTvShowTable))
           .thenAnswer((_) async => Right('success'));
       final res = await repository.saveWatchlist(testTvShowDetail);
       assert(res == Right<Failure, String>('success'));
     });
     test('isInWatchlist should return boolean', () async {
-      when(localDataSource.findOneOrNull(1))
+      when(localDataSource.getTvById(1))
           .thenAnswer((_) async => Right(testTvShowTable));
       final res = await repository.getWatchlistStatus(1);
       assert(res == true);
     });
     test('deleteWatchlist return string message', () async {
-      when(localDataSource.delete(1)).thenAnswer((_) async => Right('success'));
+      when(localDataSource.removeWatchlist(1))
+          .thenAnswer((_) async => Right('success'));
       final res = await repository.removeWatchlist(1);
       assert(res == Right<Failure, String>('success'));
     });

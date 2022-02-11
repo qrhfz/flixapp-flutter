@@ -8,7 +8,7 @@ import 'package:ditonton/domain/entities/tv_show_detail.dart';
 typedef TvShowsOrFailureFuture = Future<Either<Failure, List<TvShow>>>;
 typedef TvShowDetailOrFailureFuture = Future<Either<Failure, TvShowDetail>>;
 
-typedef TvShowModelssOrFailureFuture
+typedef TvShowModelsOrFailureFuture
     = Future<Either<Failure, List<TvShowModel>>>;
 
 typedef TvShowDetailModelOrFailureFuture

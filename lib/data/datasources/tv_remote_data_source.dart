@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/api_key.dart';
@@ -10,11 +11,11 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
 abstract class TvRemoteDataSource {
-  TvShowModelssOrFailureFuture getPopularTvShows();
-  TvShowModelssOrFailureFuture getTopRatedTvShows();
-  TvShowModelssOrFailureFuture getAiringTvShows();
+  TvShowModelsOrFailureFuture getPopularTvShows();
+  TvShowModelsOrFailureFuture getTopRatedTvShows();
+  TvShowModelsOrFailureFuture getAiringTvShows();
   TvShowDetailModelOrFailureFuture getTvShowDetail(int id);
-  TvShowModelssOrFailureFuture searchTvShow(String query);
+  TvShowModelsOrFailureFuture searchTvShow(String query);
 }
 
 class TvRemoteDataSourceImpl implements TvRemoteDataSource {
@@ -30,41 +31,44 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
   TvRemoteDataSourceImpl(this.client);
 
   @override
-  TvShowModelssOrFailureFuture getAiringTvShows() async {
+  TvShowModelsOrFailureFuture getAiringTvShows() async {
     try {
       final res = await client
           .get(Uri.https(authority, airingPath, {'api_key': apiKey}));
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception {
-      return Future.value(Left(ServerFailure("Gagal menghubungi server")));
+    } on Exception catch (e) {
+      if (e is SocketException) return Left(ConnectionFailure());
+      return Left(ServerFailure());
     }
   }
 
   @override
-  TvShowModelssOrFailureFuture getPopularTvShows() async {
+  TvShowModelsOrFailureFuture getPopularTvShows() async {
     try {
       final res = await client
           .get(Uri.https(authority, popularPath, {'api_key': apiKey}));
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception {
-      return Future.value(Left(ServerFailure("Gagal menghubungi server")));
+    } on Exception catch (e) {
+      if (e is SocketException) return Left(ConnectionFailure());
+      return Left(ServerFailure());
     }
   }
 
   @override
-  TvShowModelssOrFailureFuture getTopRatedTvShows() async {
+  TvShowModelsOrFailureFuture getTopRatedTvShows() async {
     try {
       final res = await client
           .get(Uri.https(authority, topRatedPath, {'api_key': apiKey}));
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception {
-      return Future.value(Left(ServerFailure("Gagal menghubungi server")));
+    } on Exception catch (e) {
+      if (e is SocketException) return Left(ConnectionFailure());
+      return Left(ServerFailure());
     }
   }
 
@@ -81,13 +85,14 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowDetail = TvShowDetailModel.fromJson(json);
       return Right(tvShowDetail);
-    } on Exception {
-      return Future.value(Left(ServerFailure("Gagal menghubungi server")));
+    } on Exception catch (e) {
+      if (e is SocketException) return Left(ConnectionFailure());
+      return Left(ServerFailure());
     }
   }
 
   @override
-  TvShowModelssOrFailureFuture searchTvShow(String query) async {
+  TvShowModelsOrFailureFuture searchTvShow(String query) async {
     try {
       final res = await client.get(
         Uri.https(
@@ -102,8 +107,9 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception {
-      return Future.value(Left(ServerFailure("Gagal menghubungi server")));
+    } on Exception catch (e) {
+      if (e is SocketException) return Left(ConnectionFailure());
+      return Left(ServerFailure(""));
     }
   }
 }
