@@ -17,8 +17,10 @@ import '../../helpers/test_helper.mocks.dart';
 void main() {
   final TvRemoteDataSource remoteDataSource = MockTvRemoteDataSource();
   final TvLocalDataSource localDataSource = MockTvLocalDataSource();
-  final TvShowRepository repository =
-      TvShowRepositoryImpl(remoteDataSource, localDataSource);
+  final TvShowRepository repository = TvShowRepositoryImpl(
+    remoteDataSource: remoteDataSource,
+    localDataSource: localDataSource,
+  );
 
   final List<TvShowModel> testTvShowList = [];
 

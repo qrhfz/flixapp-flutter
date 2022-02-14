@@ -9,10 +9,13 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 
 class TvShowRepositoryImpl implements TvShowRepository {
-  final TvRemoteDataSource _remoteDataSource;
-  final TvLocalDataSource _localDataSource;
+  late final TvRemoteDataSource _remoteDataSource;
+  late final TvLocalDataSource _localDataSource;
 
-  TvShowRepositoryImpl(this._remoteDataSource, this._localDataSource);
+  TvShowRepositoryImpl({required remoteDataSource, required localDataSource}) {
+    this._remoteDataSource = remoteDataSource;
+    this._localDataSource = _localDataSource;
+  }
   @override
   TvShowsOrFailureFuture getAiringTvShows() async {
     final res = await _remoteDataSource.getAiringTvShows();
