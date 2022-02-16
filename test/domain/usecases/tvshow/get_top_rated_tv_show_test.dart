@@ -20,7 +20,7 @@ void main() {
     test('execute', () async {
       when(tvRepository.getTopRatedTvShows())
           .thenAnswer((_) async => Right(dummyTv));
-      final tvSeries = await usecase.execute(null);
+      final tvSeries = await usecase.call();
       assert(tvSeries is Right<Failure, List<TvShow>>);
     });
   });

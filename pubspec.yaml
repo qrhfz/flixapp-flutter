@@ -42,7 +42,7 @@ dependencies:
 
 dev_dependencies:
   mockito: ^5.0.8
-  build_runner: ^2.0.4
+  build_runner: ^2.1.7
   flutter_test:
     sdk: flutter
   json_serializable: ^6.1.4

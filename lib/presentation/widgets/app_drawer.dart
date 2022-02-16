@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/tv_front_page.dart';
+import 'package:ditonton/presentation/pages/tv_list_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +34,7 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.tv),
             title: Text('Tv Series'),
             onTap: () {
-              _go(context, TvFrontPage.ROUTE_NAME);
+              _go(context, TvListPage.ROUTE_NAME);
             },
           ),
           ListTile(

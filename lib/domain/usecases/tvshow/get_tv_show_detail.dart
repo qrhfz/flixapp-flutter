@@ -1,14 +1,12 @@
 import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
-import 'package:ditonton/common/usecase.dart';
 
-class GetTvShowDetail implements UseCase<TvShowDetailOrFailureFuture, int> {
+class GetTvShowDetail {
   final TvShowRepository repository;
 
   GetTvShowDetail(this.repository);
 
-  @override
-  TvShowDetailOrFailureFuture execute(arg) {
-    return repository.getTvShowDetail(arg);
+  TvShowDetailOrFailureFuture call(int id) {
+    return repository.getTvShowDetail(id);
   }
 }

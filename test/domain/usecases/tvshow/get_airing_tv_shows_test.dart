@@ -20,7 +20,7 @@ void main() {
     final List<TvShow> data = [];
     test('execute', () async {
       when(repository.getAiringTvShows()).thenAnswer((_) async => Right(data));
-      final res = await usecase.execute(null);
+      final res = await usecase.call();
       assert(res is Right<Failure, List<TvShow>>);
     });
   });

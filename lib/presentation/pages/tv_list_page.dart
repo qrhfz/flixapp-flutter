@@ -3,8 +3,8 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:flutter/material.dart';
 
-class TvFrontPage extends StatelessWidget {
-  const TvFrontPage({Key? key}) : super(key: key);
+class TvListPage extends StatelessWidget {
+  const TvListPage({Key? key}) : super(key: key);
 
   static const ROUTE_NAME = '/tv';
 
@@ -14,7 +14,12 @@ class TvFrontPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('TV SERIES'),
       ),
-      body: Container(),
+      body: Padding(
+        padding: EdgeInsets.all(8),
+        child: SingleChildScrollView(
+          child: Column(children: []),
+        ),
+      ),
     );
   }
 }

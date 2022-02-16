@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/typealias.dart';
-import 'package:ditonton/common/usecase.dart';
+
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 
-class SearchTvShows extends UseCase<TvShowsOrFailureFuture, String> {
+class SearchTvShows {
   final TvShowRepository repository;
 
   SearchTvShows(this.repository);
-  @override
-  execute(String query) {
+
+  TvShowsOrFailureFuture call(String query) {
     if (query.isEmpty) {
       return Future.value(Left(ArgumentFailure("Empty Query")));
     }

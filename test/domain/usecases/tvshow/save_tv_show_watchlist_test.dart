@@ -15,7 +15,7 @@ void main() {
     when(repository.saveWatchlist(testTvShowDetail))
         .thenAnswer((_) async => Right("Save watchlist success"));
 
-    final Either<Failure, String> res = await usecase.execute(testTvShowDetail);
+    final Either<Failure, String> res = await usecase.call(testTvShowDetail);
     assert(res == Right<Failure, String>("Save watchlist success"));
   });
 }

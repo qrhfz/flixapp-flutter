@@ -1,13 +1,11 @@
-import 'package:ditonton/common/usecase.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 
-class GetTvShowWatchlistStatus implements UseCase<Future<bool>, int> {
+class GetTvShowWatchlistStatus {
   final TvShowRepository repository;
 
   GetTvShowWatchlistStatus(this.repository);
 
-  @override
-  Future<bool> execute(int arg) {
-    return repository.getWatchlistStatus(arg);
+  Future<bool> call(int id) {
+    return repository.getWatchlistStatus(id);
   }
 }
