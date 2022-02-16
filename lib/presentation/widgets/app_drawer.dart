@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/tv_list_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
@@ -24,7 +26,7 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.movie),
             title: Text('Movies'),
             onTap: () {
-              _go(context, '/home');
+              _go(context, '/');
             },
           ),
           ListTile(
@@ -54,6 +56,7 @@ class AppDrawer extends StatelessWidget {
   }
 
   void _go(BuildContext context, String routeName) {
+    log('${ModalRoute.of(context)?.settings.name}');
     if (ModalRoute.of(context)?.settings.name == routeName) {
       Navigator.pop(context);
     } else {

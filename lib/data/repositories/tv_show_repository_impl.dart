@@ -12,7 +12,9 @@ class TvShowRepositoryImpl implements TvShowRepository {
   late final TvRemoteDataSource _remoteDataSource;
   late final TvLocalDataSource _localDataSource;
 
-  TvShowRepositoryImpl({required remoteDataSource, required localDataSource}) {
+  TvShowRepositoryImpl(
+      {required TvRemoteDataSource remoteDataSource,
+      required TvLocalDataSource localDataSource}) {
     this._remoteDataSource = remoteDataSource;
     this._localDataSource = localDataSource;
   }
