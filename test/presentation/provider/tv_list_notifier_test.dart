@@ -5,7 +5,6 @@ import 'package:ditonton/domain/usecases/tvshow/get_airing_tv_shows.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_popular_tv_shows.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_top_rated_tv_shows.dart';
 import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

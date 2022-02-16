@@ -7,7 +7,6 @@ class RemoveTvShowWatchlist {
 
   RemoveTvShowWatchlist(this.repository);
 
-  @override
   Future<Either<Failure, String>> call(int id) {
     return repository.removeWatchlist(id);
   }

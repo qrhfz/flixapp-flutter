@@ -14,8 +14,9 @@ class TvShowRepositoryImpl implements TvShowRepository {
 
   TvShowRepositoryImpl({required remoteDataSource, required localDataSource}) {
     this._remoteDataSource = remoteDataSource;
-    this._localDataSource = _localDataSource;
+    this._localDataSource = localDataSource;
   }
+
   @override
   TvShowsOrFailureFuture getAiringTvShows() async {
     final res = await _remoteDataSource.getAiringTvShows();
