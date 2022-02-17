@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/presentation/pages/airing_tv_page.dart';
 import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/app_drawer.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
@@ -37,6 +38,11 @@ class _TvListPageState extends State<TvListPage> {
         padding: EdgeInsets.all(8),
         child: SingleChildScrollView(
           child: Column(children: [
+            SubHeading(
+                title: 'Now Airing',
+                onTap: () {
+                  Navigator.of(context).pushNamed(AiringTvPage.route);
+                }),
             _HorizontalTvListView(
                 Provider.of<TvListNotifier>(context).airingList),
             SubHeading(title: 'Popular', onTap: () {}),
