@@ -4,10 +4,10 @@ import '../../common/constants.dart';
 
 class SubHeading extends StatelessWidget {
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   const SubHeading({
     required this.title,
-    required this.onTap,
+    this.onTap,
     Key? key,
   }) : super(key: key);
 
@@ -20,15 +20,17 @@ class SubHeading extends StatelessWidget {
           title,
           style: kHeading6,
         ),
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
-            ),
-          ),
-        ),
+        (onTap != null)
+            ? InkWell(
+                onTap: onTap,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+                  ),
+                ),
+              )
+            : SizedBox.shrink(),
       ],
     );
   }

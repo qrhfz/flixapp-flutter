@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/presentation/pages/airing_tv_page.dart';
+import 'package:ditonton/presentation/pages/popular_tv_page.dart';
 import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/app_drawer.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
@@ -45,10 +46,14 @@ class _TvListPageState extends State<TvListPage> {
                 }),
             _HorizontalTvListView(
                 Provider.of<TvListNotifier>(context).airingList),
-            SubHeading(title: 'Popular', onTap: () {}),
+            SubHeading(
+                title: 'Popular',
+                onTap: () {
+                  Navigator.of(context).pushNamed(PopularTvPage.route);
+                }),
             _HorizontalTvListView(
                 Provider.of<TvListNotifier>(context).popularList),
-            SubHeading(title: 'Top Rated', onTap: () {}),
+            SubHeading(title: 'Top Rated'),
             _HorizontalTvListView(
                 Provider.of<TvListNotifier>(context).topRatedList),
           ]),
