@@ -10,7 +10,7 @@ SeasonModel _$SeasonModelFromJson(Map<String, dynamic> json) => SeasonModel(
       id: json['id'] as int,
       title: json['name'] as String,
       overview: json['overview'] as String,
-      posterPath: json['poster_path'] as String,
+      posterPath: json['poster_path'] as String?,
       seasonNumber: json['season_number'] as int,
       airDate: DateTime.parse(json['air_date'] as String),
       episodeCount: json['episode_count'] as int,

@@ -10,7 +10,7 @@ class SeasonModel extends Equatable {
   @JsonKey(name: 'name')
   final String title;
   final String overview;
-  final String posterPath;
+  final String? posterPath;
   final int seasonNumber;
   final DateTime airDate;
   final int episodeCount;
