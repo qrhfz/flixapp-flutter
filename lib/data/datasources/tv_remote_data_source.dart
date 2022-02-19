@@ -38,9 +38,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
-      if (e is SocketException) return Left(ConnectionFailure());
-      return Left(ServerFailure());
+    } on SocketException {
+      return Left(ConnectionFailure());
     }
   }
 
@@ -52,9 +51,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
-      if (e is SocketException) return Left(ConnectionFailure());
-      return Left(ServerFailure());
+    } on SocketException {
+      return Left(ConnectionFailure());
     }
   }
 
@@ -66,9 +64,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
-      if (e is SocketException) return Left(ConnectionFailure());
-      return Left(ServerFailure());
+    } on SocketException {
+      return Left(ConnectionFailure());
     }
   }
 
@@ -85,9 +82,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowDetail = TvShowDetailModel.fromJson(json);
       return Right(tvShowDetail);
-    } on Exception catch (e) {
-      if (e is SocketException) return Left(ConnectionFailure());
-      return Left(ServerFailure());
+    } on SocketException {
+      return Left(ConnectionFailure());
     }
   }
 
@@ -107,9 +103,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       final json = jsonDecode(res.body);
       final tvShowListResponse = TvShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
-    } on Exception catch (e) {
-      if (e is SocketException) return Left(ConnectionFailure());
-      return Left(ServerFailure(""));
+    } on SocketException {
+      return Left(ConnectionFailure());
     }
   }
 }

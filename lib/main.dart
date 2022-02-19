@@ -6,6 +6,7 @@ import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/routes.dart';
@@ -41,7 +42,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
-        ChangeNotifierProvider(create: (_) => TvListNotifier()),
+        ChangeNotifierProvider(
+          create: (_) => TvListNotifier(),
+          lazy: true,
+        ),
+        ChangeNotifierProvider(create: (_) => TvDetailNotifier(), lazy: true),
       ],
       child: MaterialApp(
           title: 'Flutter Demo',

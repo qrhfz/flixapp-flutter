@@ -1,5 +1,6 @@
 import 'package:ditonton/presentation/pages/airing_tv_page.dart';
 import 'package:ditonton/presentation/pages/popular_tv_page.dart';
+import 'package:ditonton/presentation/pages/tv_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
@@ -42,6 +43,11 @@ final routes = (RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => AiringTvPage());
     case PopularTvPage.route:
       return MaterialPageRoute(builder: (_) => PopularTvPage());
+    case TvDetailPage.route:
+      return MaterialPageRoute(builder: (_) {
+        final id = settings.arguments as int;
+        return TvDetailPage(id);
+      });
     default:
       return MaterialPageRoute(
         builder: (_) {

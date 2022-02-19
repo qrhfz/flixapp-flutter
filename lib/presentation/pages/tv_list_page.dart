@@ -3,6 +3,7 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/presentation/pages/airing_tv_page.dart';
 import 'package:ditonton/presentation/pages/popular_tv_page.dart';
+import 'package:ditonton/presentation/pages/tv_detail_page.dart';
 import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/app_drawer.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
@@ -80,11 +81,11 @@ class _HorizontalTvListView extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   MovieDetailPage.ROUTE_NAME,
-                //   arguments: movie.id,
-                // );
+                Navigator.pushNamed(
+                  context,
+                  TvDetailPage.route,
+                  arguments: tv.id,
+                );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),
