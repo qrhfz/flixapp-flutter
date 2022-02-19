@@ -53,6 +53,14 @@ void main() {
       final res = await repository.searchTvShows('test');
       assert(res is Right<Failure, List<TvShow>>);
     });
+
+    test('getTvShowRecommendations should return list of tv show', () async {
+      when(remoteDataSource.getTvShowRecommendations(1))
+          .thenAnswer((_) async => Right(testTvShowList));
+
+      final res = await repository.getTvRecommendations(1);
+      assert(res is Right<Failure, List<TvShow>>);
+    });
     test('getTvShowDetail should return tv show detail object', () async {
       final testData = TvShowDetailModel(
         firstAirDate: DateTime(2022, 2, 2),

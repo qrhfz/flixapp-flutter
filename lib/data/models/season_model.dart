@@ -12,7 +12,7 @@ class SeasonModel extends Equatable {
   final String overview;
   final String? posterPath;
   final int seasonNumber;
-  final DateTime airDate;
+  final DateTime? airDate;
   final int episodeCount;
 
   SeasonModel({

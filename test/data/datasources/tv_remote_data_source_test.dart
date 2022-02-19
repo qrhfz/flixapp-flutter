@@ -204,5 +204,30 @@ void main() {
       final res = await dataSource.searchTvShow('show');
       assert(res is Right<Failure, List<TvShowModel>>);
     });
+
+    test('tv recommendations show should return list of TvShowModels',
+        () async {
+      final id = 1;
+      when(
+        client.get(
+          Uri.https(
+            authority,
+            path.join(TvRemoteDataSourceImpl.basePath, id.toString(),
+                'recommendations'),
+            {'api_key': apiKey},
+          ),
+        ),
+      ).thenAnswer(
+        (_) async => Response(
+          tvShowListJsonString,
+          200,
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+          },
+        ),
+      );
+      final res = await dataSource.getTvShowRecommendations(id);
+      assert(res is Right<Failure, List<TvShowModel>>);
+    });
   });
 }

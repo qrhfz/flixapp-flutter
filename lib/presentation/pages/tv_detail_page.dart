@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import '../../domain/entities/genre.dart';
+import '../../domain/entities/tv_show.dart';
 import '../provider/tv_detail_notifier.dart';
 
 class TvDetailPage extends StatefulWidget {
@@ -22,8 +23,12 @@ class _TvDetailPageState extends State<TvDetailPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => Provider.of<TvDetailNotifier>(context, listen: false)
-        .fetchDetail(widget.id));
+    Future.microtask(() {
+      Provider.of<TvDetailNotifier>(context, listen: false)
+          .fetchDetail(widget.id);
+      Provider.of<TvDetailNotifier>(context, listen: false)
+          .fetchRecommendations(widget.id);
+    });
   }
 
   @override
@@ -31,16 +36,16 @@ class _TvDetailPageState extends State<TvDetailPage> {
     return Scaffold(
       body: Consumer<TvDetailNotifier>(
         builder: (context, provider, child) {
-          if (provider.state == RequestState.Loading) {
+          if (provider.detailState == RequestState.Loading) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.state == RequestState.Loaded) {
+          } else if (provider.detailState == RequestState.Loaded) {
             final tv = provider.tv;
             return SafeArea(
               child: _DetailContent(
                 tv,
-                // provider.movieRecommendations,
+                provider.recommendations,
                 // provider.isAddedToWatchlist,
               ),
             );
@@ -55,12 +60,12 @@ class _TvDetailPageState extends State<TvDetailPage> {
 
 class _DetailContent extends StatelessWidget {
   final TvShowDetail tv;
-  // final List<TvShow> recommendations;
+  final List<TvShow> recommendations;
   // final bool isAddedWatchlist;
 
   _DetailContent(
     this.tv,
-    // this.recommendations,
+    this.recommendations,
     // this.isAddedWatchlist,
   );
 
@@ -184,62 +189,62 @@ class _DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            // Consumer<TvDetailNotifier>(
-                            //   builder: (context, data, child) {
-                            //     if (data.recommendationState ==
-                            //         RequestState.Loading) {
-                            //       return Center(
-                            //         child: CircularProgressIndicator(),
-                            //       );
-                            //     } else if (data.recommendationState ==
-                            //         RequestState.Error) {
-                            //       return Text(data.message);
-                            //     } else if (data.recommendationState ==
-                            //         RequestState.Loaded) {
-                            //       return Container(
-                            //         height: 150,
-                            //         child: ListView.builder(
-                            //           scrollDirection: Axis.horizontal,
-                            //           itemBuilder: (context, index) {
-                            //             final tv = recommendations[index];
-                            //             return Padding(
-                            //               padding: const EdgeInsets.all(4.0),
-                            //               child: InkWell(
-                            //                 onTap: () {
-                            //                   Navigator.pushReplacementNamed(
-                            //                     context,
-                            //                     MovieDetailPage.ROUTE_NAME,
-                            //                     arguments: tv.id,
-                            //                   );
-                            //                 },
-                            //                 child: ClipRRect(
-                            //                   borderRadius: BorderRadius.all(
-                            //                     Radius.circular(8),
-                            //                   ),
-                            //                   child: CachedNetworkImage(
-                            //                     imageUrl:
-                            //                         'https://image.tmdb.org/t/p/w500${tv.posterPath}',
-                            //                     placeholder: (context, url) =>
-                            //                         Center(
-                            //                       child:
-                            //                           CircularProgressIndicator(),
-                            //                     ),
-                            //                     errorWidget:
-                            //                         (context, url, error) =>
-                            //                             Icon(Icons.error),
-                            //                   ),
-                            //                 ),
-                            //               ),
-                            //             );
-                            //           },
-                            //           itemCount: recommendations.length,
-                            //         ),
-                            //       );
-                            //     } else {
-                            //       return Container();
-                            //     }
-                            //   },
-                            // ),
+                            Consumer<TvDetailNotifier>(
+                              builder: (context, data, child) {
+                                if (data.recommendationsState ==
+                                    RequestState.Loading) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else if (data.recommendationsState ==
+                                    RequestState.Error) {
+                                  return Text(data.message);
+                                } else if (data.recommendationsState ==
+                                    RequestState.Loaded) {
+                                  return Container(
+                                    height: 150,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        final tv = recommendations[index];
+                                        return Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.pushReplacementNamed(
+                                                context,
+                                                TvDetailPage.route,
+                                                arguments: tv.id,
+                                              );
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8),
+                                              ),
+                                              child: CachedNetworkImage(
+                                                imageUrl:
+                                                    'https://image.tmdb.org/t/p/w500${tv.posterPath}',
+                                                placeholder: (context, url) =>
+                                                    Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                ),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        Icon(Icons.error),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      itemCount: recommendations.length,
+                                    ),
+                                  );
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -279,15 +284,7 @@ class _DetailContent extends StatelessWidget {
   }
 
   String _showGenres(List<Genre> genres) {
-    String result = '';
-    for (var genre in genres) {
-      result += genre.name + ', ';
-    }
-
-    if (result.isEmpty) {
-      return result;
-    }
-
-    return result.substring(0, result.length - 2);
+    final genreNameList = genres.map((genre) => genre.name).toList();
+    return genreNameList.join(', ');
   }
 }

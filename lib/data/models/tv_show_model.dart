@@ -20,7 +20,7 @@ class TvShowModel extends Equatable {
   });
 
   final String? backdropPath;
-  final DateTime firstAirDate;
+  final DateTime? firstAirDate;
   final List<int> genreIds;
   final int id;
   final String overview;

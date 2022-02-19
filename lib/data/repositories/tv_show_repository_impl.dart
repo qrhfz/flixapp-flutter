@@ -111,4 +111,14 @@ class TvShowRepositoryImpl implements TvShowRepository {
     );
     return _localDataSource.insertWatchlist(record);
   }
+
+  @override
+  TvShowsOrFailureFuture getTvRecommendations(int id) async {
+    final res = await _remoteDataSource.getTvShowRecommendations(id);
+    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
+      (l) => Left(l),
+      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    );
+    return tvShowEntities;
+  }
 }

@@ -16,6 +16,7 @@ abstract class TvRemoteDataSource {
   TvShowModelsOrFailureFuture getAiringTvShows();
   TvShowDetailModelOrFailureFuture getTvShowDetail(int id);
   TvShowModelsOrFailureFuture searchTvShow(String query);
+  TvShowModelsOrFailureFuture getTvShowRecommendations(int id);
 }
 
 class TvRemoteDataSourceImpl implements TvRemoteDataSource {
@@ -105,6 +106,28 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
+    }
+  }
+
+  @override
+  TvShowModelsOrFailureFuture getTvShowRecommendations(int id) async {
+    try {
+      final res = await client.get(
+        Uri.https(
+          authority,
+          path.join(basePath, id.toString(), 'recommendations'),
+          {
+            'api_key': apiKey,
+          },
+        ),
+      );
+      final json = jsonDecode(res.body);
+      final tvShowListResponse = TvShowListResponse.fromJson(json);
+      return Right(tvShowListResponse.results);
+    } on SocketException {
+      return Left(ConnectionFailure());
+    } on Exception {
+      return Left(ServerFailure());
     }
   }
 }
