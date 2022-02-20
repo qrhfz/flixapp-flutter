@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -157,7 +158,7 @@ class _DetailContent extends StatelessWidget {
                             //   ),
                             // ),
                             Text(
-                              _showGenres(tv.genres),
+                              tv.genres.asString(),
                             ),
                             // Text(
                             //   _showDuration(tv.runtime),
@@ -281,10 +282,5 @@ class _DetailContent extends StatelessWidget {
         )
       ],
     );
-  }
-
-  String _showGenres(List<Genre> genres) {
-    final genreNameList = genres.map((genre) => genre.name).toList();
-    return genreNameList.join(', ');
   }
 }

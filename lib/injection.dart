@@ -31,6 +31,7 @@ import 'data/datasources/tv_local_data_source.dart';
 import 'domain/repositories/tv_show_repository.dart';
 import 'domain/usecases/tvshow/get_popular_tv_shows.dart';
 import 'domain/usecases/tvshow/get_top_rated_tv_shows.dart';
+import 'domain/usecases/tvshow/search_tv_shows.dart';
 
 final locator = GetIt.instance;
 
@@ -90,6 +91,7 @@ void init() {
   locator.registerLazySingleton(() => GetTopRatedTvShows(locator()));
   locator.registerLazySingleton(() => GetTvShowDetail(locator()));
   locator.registerLazySingleton(() => GetTvRecommendations(locator()));
+  locator.registerLazySingleton(() => SearchTvShows(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(
