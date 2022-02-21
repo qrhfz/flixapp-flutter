@@ -41,6 +41,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
+    } on Exception {
+      return Left(ServerFailure());
     }
   }
 
@@ -54,6 +56,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
+    } on Exception {
+      return Left(ServerFailure());
     }
   }
 
@@ -67,6 +71,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
+    } on Exception {
+      return Left(ServerFailure());
     }
   }
 
@@ -85,6 +91,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       return Right(tvShowDetail);
     } on SocketException {
       return Left(ConnectionFailure());
+    } on Exception {
+      return Left(ServerFailure());
     }
   }
 
@@ -106,6 +114,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
+    } on Exception {
+      return Left(ServerFailure());
     }
   }
 
