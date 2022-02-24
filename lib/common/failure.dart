@@ -10,7 +10,7 @@ abstract class Failure extends Equatable {
 }
 
 class ServerFailure extends Failure {
-  ServerFailure([String message = '']) : super(message);
+  ServerFailure([String message = 'Server Failure']) : super(message);
 }
 
 class ConnectionFailure extends Failure {

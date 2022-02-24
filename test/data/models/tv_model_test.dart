@@ -29,7 +29,6 @@ void main() {
 
   final dummyTvModel = TvShowModel(
     backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
-    firstAirDate: DateTime(2019, 6, 16),
     genreIds: [18],
     id: 85552,
     title: 'Euphoria',
@@ -42,17 +41,16 @@ void main() {
   );
 
   final dummyTv = TvShow(
-    backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
-    firstAirDate: DateTime(2019, 6, 16),
-    genreIds: [18],
+    // backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
+    // genreIds: [18],
     id: 85552,
     title: 'Euphoria',
     overview:
         'A group of high school students navigate love and friendships in a world of drugs, sex, trauma, and social media.',
     popularity: 4322.903,
     posterPath: '/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg',
-    voteAverage: 8.4,
-    voteCount: 5654,
+    // voteAverage: 8.4,
+    // voteCount: 5654,
   );
 
   group('tv model test', () {

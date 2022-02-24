@@ -9,13 +9,10 @@ part of 'tv_show_model.dart';
 TvShowModel _$TvShowModelFromJson(Map<String, dynamic> json) => TvShowModel(
       id: json['id'] as int,
       backdropPath: json['backdrop_path'] as String?,
-      firstAirDate: json['first_air_date'] == null
-          ? null
-          : DateTime.parse(json['first_air_date'] as String),
       genreIds:
-          (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
-      overview: json['overview'] as String,
-      popularity: (json['popularity'] as num).toDouble(),
+          (json['genre_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      overview: json['overview'] as String?,
+      popularity: (json['popularity'] as num?)?.toDouble(),
       posterPath: json['poster_path'] as String?,
       title: json['name'] as String,
       voteAverage: (json['vote_average'] as num).toDouble(),
@@ -25,7 +22,6 @@ TvShowModel _$TvShowModelFromJson(Map<String, dynamic> json) => TvShowModel(
 Map<String, dynamic> _$TvShowModelToJson(TvShowModel instance) =>
     <String, dynamic>{
       'backdrop_path': instance.backdropPath,
-      'first_air_date': instance.firstAirDate?.toIso8601String(),
       'genre_ids': instance.genreIds,
       'id': instance.id,
       'overview': instance.overview,

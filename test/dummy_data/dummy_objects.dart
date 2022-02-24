@@ -64,16 +64,12 @@ final testMovieMap = {
 };
 
 final testTvShow = TvShow(
-    id: 1,
-    backdropPath: 'backdropPath',
-    firstAirDate: DateTime(2022, 1, 1),
-    genreIds: [],
-    overview: 'overview',
-    popularity: 0,
-    posterPath: 'posterPath',
-    title: 'title',
-    voteAverage: 0,
-    voteCount: 0);
+  id: 1,
+  overview: 'overview',
+  popularity: 0,
+  posterPath: 'posterPath',
+  title: 'title',
+);
 
 final testEpisode = Episode(
   id: 1,
@@ -89,8 +85,6 @@ final testEpisode = Episode(
 
 final testTvShowDetail = TvShowDetail(
   id: 1,
-  backdropPath: 'backdropPath',
-  firstAirDate: DateTime(2022, 1, 1),
   genres: [],
   overview: 'overview',
   popularity: 0,
@@ -98,12 +92,8 @@ final testTvShowDetail = TvShowDetail(
   title: 'title',
   voteAverage: 0,
   voteCount: 0,
-  lastAirDate: DateTime(2022, 1, 1),
-  lastEpisodeToAir: testEpisode,
   numberOfEpisodes: 1,
   numberOfSeasons: 1,
-  originalTitle: '',
-  seasons: [],
 );
 
 final testTvShowTable = TvShowTable(
@@ -114,13 +104,10 @@ final testTvShowTable = TvShowTable(
 );
 
 final testTvShowDetailModel = TvShowDetailModel(
-  firstAirDate: DateTime(2011, 4, 17),
   genres: [],
   id: 1399,
-  lastAirDate: DateTime.parse("2019-05-19"),
   numberOfEpisodes: 73,
   numberOfSeasons: 8,
-  originalTitle: "Game of Thrones",
   overview:
       "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
   popularity: 369.594,

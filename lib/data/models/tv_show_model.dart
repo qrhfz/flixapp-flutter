@@ -9,7 +9,6 @@ class TvShowModel extends Equatable {
   TvShowModel({
     required this.id,
     required this.backdropPath,
-    required this.firstAirDate,
     required this.genreIds,
     required this.overview,
     required this.popularity,
@@ -20,11 +19,10 @@ class TvShowModel extends Equatable {
   });
 
   final String? backdropPath;
-  final DateTime? firstAirDate;
-  final List<int> genreIds;
+  final List<int>? genreIds;
   final int id;
-  final String overview;
-  final double popularity;
+  final String? overview;
+  final double? popularity;
   final String? posterPath;
   @JsonKey(name: 'name')
   final String title;
@@ -42,12 +40,11 @@ class TvShowModel extends Equatable {
       overview: overview,
       title: title,
       posterPath: posterPath,
-      firstAirDate: firstAirDate,
-      backdropPath: backdropPath,
+      // backdropPath: backdropPath,
       popularity: popularity,
-      voteAverage: voteAverage,
-      genreIds: genreIds,
-      voteCount: voteCount,
+      // voteAverage: voteAverage,
+      // genreIds: genreIds,
+      // voteCount: voteCount,
     );
   }
 
@@ -55,7 +52,6 @@ class TvShowModel extends Equatable {
   List<Object?> get props => [
         id,
         backdropPath,
-        firstAirDate,
         genreIds,
         overview,
         popularity,

@@ -9,7 +9,6 @@ import '../../injection.dart';
 
 class MovieSearchNotifier extends ChangeNotifier {
   final SearchMovies searchMovies;
-  final SearchTvShows searchTvshows = locator.get<SearchTvShows>();
 
   MovieSearchNotifier({required this.searchMovies});
 
@@ -18,9 +17,6 @@ class MovieSearchNotifier extends ChangeNotifier {
 
   List<Movie> _moviesSearchResult = [];
   List<Movie> get moviesSearchResult => _moviesSearchResult;
-
-  List<TvShow> _tvSearchResult = [];
-  List<TvShow> get tvSearchResult => _tvSearchResult;
 
   String _message = '';
   String get message => _message;
@@ -38,25 +34,6 @@ class MovieSearchNotifier extends ChangeNotifier {
       },
       (data) {
         _moviesSearchResult = data;
-        _state = RequestState.Loaded;
-        notifyListeners();
-      },
-    );
-  }
-
-  Future<void> fetchTvSearch(String query) async {
-    _state = RequestState.Loading;
-    notifyListeners();
-
-    final result = await searchTvshows(query);
-    result.fold(
-      (failure) {
-        _message = failure.message;
-        _state = RequestState.Error;
-        notifyListeners();
-      },
-      (data) {
-        _tvSearchResult = data;
         _state = RequestState.Loaded;
         notifyListeners();
       },

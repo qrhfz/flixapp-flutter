@@ -63,13 +63,10 @@ void main() {
     });
     test('getTvShowDetail should return tv show detail object', () async {
       final testData = TvShowDetailModel(
-        firstAirDate: DateTime(2022, 2, 2),
         genres: [],
         id: 1,
-        lastAirDate: DateTime(2022, 2, 2),
         numberOfEpisodes: 1,
         numberOfSeasons: 1,
-        originalTitle: '',
         overview: '',
         popularity: 1,
         title: '',

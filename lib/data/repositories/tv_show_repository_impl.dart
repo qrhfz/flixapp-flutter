@@ -80,7 +80,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
             id: tvShow.id,
             title: tvShow.title,
             overview: tvShow.overview,
-            posterPath: tvShow.posterPath,
+            posterPath: tvShow.posterPath!,
           );
         }).toList();
         return Right(tvShows);
