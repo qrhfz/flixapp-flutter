@@ -21,50 +21,54 @@ class TvShowRepositoryImpl implements TvShowRepository {
 
   @override
   TvShowsOrFailureFuture getAiringTvShows() async {
-    final res = await _remoteDataSource.getAiringTvShows();
-    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
-      (l) => Left(l),
-      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    final result = await _remoteDataSource.getAiringTvShows();
+    final Either<Failure, List<TvShow>> tvShowEntities = result.fold(
+      (fail) => Left(fail),
+      (tvShowModels) =>
+          Right(tvShowModels.map((model) => model.toEntity()).toList()),
     );
     return tvShowEntities;
   }
 
   @override
   TvShowsOrFailureFuture getPopularTvShows() async {
-    final res = await _remoteDataSource.getPopularTvShows();
-    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
-      (l) => Left(l),
-      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    final result = await _remoteDataSource.getPopularTvShows();
+    final Either<Failure, List<TvShow>> tvShowEntities = result.fold(
+      (fail) => Left(fail),
+      (tvShowModels) =>
+          Right(tvShowModels.map((model) => model.toEntity()).toList()),
     );
     return tvShowEntities;
   }
 
   @override
   TvShowsOrFailureFuture getTopRatedTvShows() async {
-    final res = await _remoteDataSource.getTopRatedTvShows();
-    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
-      (l) => Left(l),
-      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    final result = await _remoteDataSource.getTopRatedTvShows();
+    final Either<Failure, List<TvShow>> tvShowEntities = result.fold(
+      (fail) => Left(fail),
+      (tvShowModels) =>
+          Right(tvShowModels.map((model) => model.toEntity()).toList()),
     );
     return tvShowEntities;
   }
 
   @override
   TvShowDetailOrFailureFuture getTvShowDetail(int id) async {
-    final res = await _remoteDataSource.getTvShowDetail(id);
-    final Either<Failure, TvShowDetail> tvShowEntity = res.fold(
-      (l) => Left(l),
-      (r) => Right(r.toEntity()),
+    final result = await _remoteDataSource.getTvShowDetail(id);
+    final Either<Failure, TvShowDetail> tvShowEntity = result.fold(
+      (fail) => Left(fail),
+      (model) => Right(model.toEntity()),
     );
     return tvShowEntity;
   }
 
   @override
   TvShowsOrFailureFuture searchTvShows(String query) async {
-    final res = await _remoteDataSource.searchTvShow(query);
-    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
-      (l) => Left(l),
-      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    final result = await _remoteDataSource.searchTvShow(query);
+    final Either<Failure, List<TvShow>> tvShowEntities = result.fold(
+      (fail) => Left(fail),
+      (tvShowModels) =>
+          Right(tvShowModels.map((model) => model.toEntity()).toList()),
     );
     return tvShowEntities;
   }
@@ -72,7 +76,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
   @override
   TvShowsOrFailureFuture getTvShowWatchlist() async {
     final tvShowTableEntities = await _localDataSource.getTvWatchlist();
-    final Either<Failure, List<TvShow>> res = tvShowTableEntities.fold(
+    final Either<Failure, List<TvShow>> result = tvShowTableEntities.fold(
       (fail) => Left(fail),
       (tvShowTableRecords) {
         final tvShows = tvShowTableRecords.map((tvShow) {
@@ -87,13 +91,13 @@ class TvShowRepositoryImpl implements TvShowRepository {
       },
     );
 
-    return res;
+    return result;
   }
 
   @override
   Future<bool> getWatchlistStatus(int id) async {
-    final res = await _localDataSource.getTvById(id);
-    final tvShow = res.getOrElse(() => null);
+    final result = await _localDataSource.getTvById(id);
+    final tvShow = result.getOrElse(() => null);
     return tvShow != null;
   }
 
@@ -114,10 +118,11 @@ class TvShowRepositoryImpl implements TvShowRepository {
 
   @override
   TvShowsOrFailureFuture getTvRecommendations(int id) async {
-    final res = await _remoteDataSource.getTvShowRecommendations(id);
-    final Either<Failure, List<TvShow>> tvShowEntities = res.fold(
-      (l) => Left(l),
-      (r) => Right(r.map((e) => e.toEntity()).toList()),
+    final result = await _remoteDataSource.getTvShowRecommendations(id);
+    final Either<Failure, List<TvShow>> tvShowEntities = result.fold(
+      (fail) => Left(fail),
+      (tvShowModels) =>
+          Right(tvShowModels.map((model) => model.toEntity()).toList()),
     );
     return tvShowEntities;
   }

@@ -56,7 +56,6 @@ class AppDrawer extends StatelessWidget {
   }
 
   void _go(BuildContext context, String routeName) {
-    log('${ModalRoute.of(context)?.settings.name}');
     if (ModalRoute.of(context)?.settings.name == routeName) {
       Navigator.pop(context);
     } else {

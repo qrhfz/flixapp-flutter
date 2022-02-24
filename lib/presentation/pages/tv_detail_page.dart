@@ -151,7 +151,6 @@ class _DetailContent extends StatelessWidget {
                             ),
                             Consumer<TvDetailNotifier>(
                               builder: (context, data, child) {
-                                log(data.recommendationsState.toString());
                                 return TvRecommendationList(
                                   message: data.message,
                                   recommendations: data.recommendations,

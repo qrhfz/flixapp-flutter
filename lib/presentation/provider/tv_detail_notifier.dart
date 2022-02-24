@@ -52,14 +52,17 @@ class TvDetailNotifier extends ChangeNotifier {
     detailState = RequestState.Loading;
     final result = await _getDetail(id);
 
-    result.fold((l) {
-      detailState = RequestState.Error;
-      message = l.message;
-    }, (r) {
-      detailState = RequestState.Loaded;
+    result.fold(
+      (fail) {
+        detailState = RequestState.Error;
+        message = fail.message;
+      },
+      (tvShow) {
+        detailState = RequestState.Loaded;
 
-      tv = r;
-    });
+        tv = tvShow;
+      },
+    );
 
     notifyListeners();
   }
@@ -68,11 +71,11 @@ class TvDetailNotifier extends ChangeNotifier {
     recommendationsState = RequestState.Loading;
     final res = await _getRecommendations(id);
     res.fold(
-      (l) {
+      (fail) {
         recommendationsState = RequestState.Error;
       },
-      (r) {
-        recommendations = r;
+      (tvShowList) {
+        recommendations = tvShowList;
         recommendationsState = RequestState.Loaded;
       },
     );

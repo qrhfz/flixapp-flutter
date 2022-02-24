@@ -25,9 +25,9 @@ void main() {
       final res = await usecase.call("");
       assert(res.isLeft());
 
-      res.fold((l) {
-        assert(l is ArgumentFailure);
-      }, (r) {
+      res.fold((fail) {
+        assert(fail is ArgumentFailure);
+      }, (result) {
         throw Exception();
       });
     });
