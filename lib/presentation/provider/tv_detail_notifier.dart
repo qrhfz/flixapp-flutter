@@ -13,32 +13,44 @@ import '../../domain/entities/tv_show.dart';
 import '../../domain/usecases/tvshow/get_tv_recommendation.dart';
 
 class TvDetailNotifier extends ChangeNotifier {
-  RequestState detailState = RequestState.Empty;
+  //WATCHLIST
+  late final GetTvShowWatchlistStatus _getWatchlistStatus;
+  late final SaveTvShowWatchlist _saveWatchlist;
+  late final RemoveTvShowWatchlist _removeWatchlist;
+  late final GetTvRecommendations _getRecommendations;
+  late final GetTvShowDetail _getDetail;
+
+  TvDetailNotifier({
+    GetTvShowWatchlistStatus? getWatchlistStatus,
+    SaveTvShowWatchlist? saveWatchlist,
+    RemoveTvShowWatchlist? removeWatchlist,
+    GetTvRecommendations? getRecommendations,
+    GetTvShowDetail? getDetail,
+  }) {
+    _getWatchlistStatus = getWatchlistStatus ?? locator();
+    _saveWatchlist = saveWatchlist ?? locator();
+    _removeWatchlist = removeWatchlist ?? locator();
+    _getRecommendations = getRecommendations ?? locator();
+    _getDetail = getDetail ?? locator();
+  }
 
   late TvShowDetail tv;
-  String message = '';
-  final GetTvShowDetail getDetail = locator.get();
-
   List<TvShow> recommendations = [];
-  RequestState recommendationsState = RequestState.Empty;
-  final _getRecommendations = locator.get<GetTvRecommendations>();
-
-  //WATCHLIST
-  final GetTvShowWatchlistStatus _getWatchlistStatus = locator();
-  final SaveTvShowWatchlist _saveWatchlist = locator();
-  final RemoveTvShowWatchlist _removeWatchlist = locator();
-  String watchlistMessage = '';
 
   static const String watchlistAddSuccessMessage =
       'Tv series added to watchlist successfully';
   static const String watchlistRemoveSuccessMessage =
       'Tv series removed from watchlist successfully';
 
+  RequestState detailState = RequestState.Empty;
+  RequestState recommendationsState = RequestState.Empty;
   bool isAddedToWatchlist = false;
+  String message = '';
+  String watchlistMessage = '';
 
-  void fetchDetail(int id) async {
+  Future<void> fetchDetail(int id) async {
     detailState = RequestState.Loading;
-    final result = await getDetail(id);
+    final result = await _getDetail(id);
 
     result.fold((l) {
       detailState = RequestState.Error;
@@ -47,37 +59,28 @@ class TvDetailNotifier extends ChangeNotifier {
       detailState = RequestState.Loaded;
 
       tv = r;
-      checkWatchlistStatus(tv.id);
     });
 
     notifyListeners();
   }
 
-  void fetchRecommendations(int id) async {
-    log('recommendations' + recommendationsState.toString(),
-        name: 'recommendation');
+  Future<void> fetchRecommendations(int id) async {
     recommendationsState = RequestState.Loading;
     final res = await _getRecommendations(id);
     res.fold(
       (l) {
         recommendationsState = RequestState.Error;
-        log('recommendations fail' + recommendationsState.toString(),
-            name: 'recommendation');
       },
       (r) {
         recommendations = r;
         recommendationsState = RequestState.Loaded;
-        log('recommendations success' + recommendationsState.toString(),
-            name: 'recommendation');
       },
     );
 
     notifyListeners();
-    log('notify recommendations' + recommendationsState.toString(),
-        name: 'recommendation');
   }
 
-  Future<void> addWatchlist(TvShowDetail tv) async {
+  Future<void> addWatchlist() async {
     final result = await _saveWatchlist(tv);
     result.fold(
       (fail) {
@@ -87,11 +90,11 @@ class TvDetailNotifier extends ChangeNotifier {
         watchlistMessage = watchlistAddSuccessMessage;
       },
     );
-    checkWatchlistStatus(tv.id);
+    checkWatchlistStatus();
     notifyListeners();
   }
 
-  Future<void> removeFromWatchlist(TvShowDetail tv) async {
+  Future<void> removeFromWatchlist() async {
     final result = await _removeWatchlist(tv.id);
     result.fold(
       (fail) {
@@ -101,10 +104,10 @@ class TvDetailNotifier extends ChangeNotifier {
         watchlistMessage = watchlistRemoveSuccessMessage;
       },
     );
-    checkWatchlistStatus(tv.id);
+    checkWatchlistStatus();
   }
 
-  Future<void> checkWatchlistStatus(int id) async {
+  Future<void> checkWatchlistStatus() async {
     isAddedToWatchlist = await _getWatchlistStatus(tv.id);
     notifyListeners();
   }

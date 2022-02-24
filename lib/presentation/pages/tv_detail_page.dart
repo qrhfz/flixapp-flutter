@@ -215,10 +215,10 @@ class TvWatchlistButton extends StatelessWidget {
       onPressed: () async {
         if (!isAddedWatchlist) {
           await Provider.of<TvDetailNotifier>(context, listen: false)
-              .addWatchlist(tv);
+              .addWatchlist();
         } else {
           await Provider.of<TvDetailNotifier>(context, listen: false)
-              .removeFromWatchlist(tv);
+              .removeFromWatchlist();
         }
 
         final message = Provider.of<TvDetailNotifier>(context, listen: false)
