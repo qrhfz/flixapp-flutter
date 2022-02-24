@@ -10,6 +10,8 @@ import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'search_page.dart';
+
 class TvListPage extends StatefulWidget {
   const TvListPage({Key? key}) : super(key: key);
 
@@ -34,6 +36,14 @@ class _TvListPageState extends State<TvListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('TV SERIES'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+            },
+            icon: Icon(Icons.search),
+          )
+        ],
       ),
       drawer: AppDrawer(),
       body: Padding(

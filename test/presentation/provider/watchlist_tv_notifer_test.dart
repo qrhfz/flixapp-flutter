@@ -1,61 +1,61 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/usecases/tvshow/search_tv_shows.dart';
-import 'package:ditonton/presentation/provider/tv_search_notifier.dart';
+import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist.dart';
+import 'package:ditonton/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import 'tv_search_notifier_test.mocks.dart';
+import 'watchlist_tv_notifer_test.mocks.dart';
 
-@GenerateMocks([SearchTvShows])
+@GenerateMocks([GetTvShowWatchlist])
 void main() {
-  final usecase = MockSearchTvShows();
-  final provider = TvSearchNotifier(usecase);
+  final usecase = MockGetTvShowWatchlist();
+  final provider = WatchlistTvNotifier(getWatchlistTvShows: usecase);
 
   test('request state should be initialized as empty', () {
-    expect(provider.state, RequestState.Empty);
+    expect(provider.watchlistState, RequestState.Empty);
   });
 
   group('fetching data success', () {
     setUp(() {
-      when(usecase("flash")).thenAnswer((_) async => Right([testTvShow]));
+      when(usecase()).thenAnswer((_) async => Right([testTvShow]));
     });
 
     test('calling usecase should change the state to loading', () async {
-      provider.fetchTvSearch("flash");
+      provider.fetchWatchlistTvShows();
 
-      expect(provider.state, RequestState.Loading);
+      expect(provider.watchlistState, RequestState.Loading);
     });
 
     test('update state to be Loaded after usecase successfully called',
         () async {
-      await provider.fetchTvSearch("flash");
+      await provider.fetchWatchlistTvShows();
 
-      expect(provider.state, RequestState.Loaded);
+      expect(provider.watchlistState, RequestState.Loaded);
     });
     test('update watchlistTvShows after usecase successfully called', () async {
-      await provider.fetchTvSearch("flash");
+      await provider.fetchWatchlistTvShows();
 
-      expect(provider.tvSearchResult, [testTvShow]);
+      expect(provider.watchlistTvShows, [testTvShow]);
     });
   });
 
   group('fetching data fail', () {
     final fail = ConnectionFailure();
     setUp(() {
-      when(usecase("flash")).thenAnswer((_) async => Left(fail));
+      when(usecase()).thenAnswer((_) async => Left(fail));
     });
 
     test('update state to be Error after usecase done being called', () async {
-      await provider.fetchTvSearch("flash");
+      await provider.fetchWatchlistTvShows();
 
-      expect(provider.state, RequestState.Error);
+      expect(provider.watchlistState, RequestState.Error);
     });
     test('update message after usecase successfully called', () async {
-      await provider.fetchTvSearch("flash");
+      await provider.fetchWatchlistTvShows();
 
       expect(provider.message, fail.message);
     });

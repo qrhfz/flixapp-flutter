@@ -90,7 +90,7 @@ class TvDetailNotifier extends ChangeNotifier {
         watchlistMessage = watchlistAddSuccessMessage;
       },
     );
-    checkWatchlistStatus();
+    await checkWatchlistStatus();
     notifyListeners();
   }
 
@@ -104,7 +104,7 @@ class TvDetailNotifier extends ChangeNotifier {
         watchlistMessage = watchlistRemoveSuccessMessage;
       },
     );
-    checkWatchlistStatus();
+    await checkWatchlistStatus();
   }
 
   Future<void> checkWatchlistStatus() async {

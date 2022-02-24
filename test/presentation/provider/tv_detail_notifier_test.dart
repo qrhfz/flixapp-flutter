@@ -64,4 +64,69 @@ void main() {
       expect(notifier.detailState, RequestState.Error);
     });
   });
+
+  group('get tv recommendations', () {
+    test('initial detail state should be Empty', () {
+      expect(notifier.recommendationsState, RequestState.Empty);
+    });
+
+    test('should change tvdetail data after fetching data through usecase',
+        () async {
+      when(getRecommendations(1)).thenAnswer((_) async => Right([testTvShow]));
+      await notifier.fetchRecommendations(1);
+      expect(notifier.recommendations, [testTvShow]);
+    });
+
+    test('should change state to Loaded after data is successfully fetched',
+        () async {
+      when(getRecommendations(1)).thenAnswer((_) async => Right([testTvShow]));
+      await notifier.fetchRecommendations(1);
+      expect(notifier.recommendationsState, RequestState.Loaded);
+    });
+
+    test('should change state to Error if data is failed to be fetched',
+        () async {
+      when(getRecommendations(1))
+          .thenAnswer((_) async => Left(ConnectionFailure()));
+      await notifier.fetchRecommendations(1);
+      expect(notifier.recommendationsState, RequestState.Error);
+    });
+  });
+
+  group('watchlist', () {
+    test('get watchlist status should change isAddedToWatchlist', () async {
+      when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      when(getWatchlistStatus(1)).thenAnswer((_) async => true);
+      await notifier.fetchDetail(1);
+      await notifier.checkWatchlistStatus();
+
+      expect(notifier.isAddedToWatchlist, true);
+    });
+    test('add to watchlist should change message', () async {
+      when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      await notifier.fetchDetail(1);
+
+      when(getWatchlistStatus(1)).thenAnswer((_) async => true);
+      when(saveWatchlist(testTvShowDetail))
+          .thenAnswer((_) async => Right('success'));
+      await notifier.addWatchlist();
+
+      expect(notifier.watchlistMessage,
+          TvDetailNotifier.watchlistAddSuccessMessage);
+      expect(notifier.isAddedToWatchlist, true);
+    });
+
+    test('remove from watchlist should change message', () async {
+      when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      await notifier.fetchDetail(1);
+
+      when(getWatchlistStatus(1)).thenAnswer((_) async => false);
+      when(removeWatchlist(1)).thenAnswer((_) async => Right('success'));
+      await notifier.removeFromWatchlist();
+
+      expect(notifier.watchlistMessage,
+          TvDetailNotifier.watchlistRemoveSuccessMessage);
+      expect(notifier.isAddedToWatchlist, false);
+    });
+  });
 }
