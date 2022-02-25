@@ -1,7 +1,7 @@
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:equatable/equatable.dart';
 
-class TvShowDetail extends Equatable {
+class TVShowDetail extends Equatable {
   final int id;
   final List<Genre> genres;
   final int numberOfEpisodes;
@@ -13,7 +13,7 @@ class TvShowDetail extends Equatable {
   final double? voteAverage;
   final int? voteCount;
 
-  TvShowDetail({
+  TVShowDetail({
     required this.id,
     required this.genres,
     required this.numberOfEpisodes,

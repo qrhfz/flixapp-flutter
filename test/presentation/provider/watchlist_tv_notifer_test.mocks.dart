@@ -22,7 +22,7 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeTvShowRepository_0 extends _i1.Fake implements _i2.TvShowRepository {
+class _FakeTvShowRepository_0 extends _i1.Fake implements _i2.TVShowRepository {
 }
 
 class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
@@ -31,19 +31,19 @@ class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTvShowWatchlist extends _i1.Mock
-    implements _i4.GetTvShowWatchlist {
+    implements _i4.GetTVShowWatchlist {
   MockGetTvShowWatchlist() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.TvShowRepository get repository =>
+  _i2.TVShowRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeTvShowRepository_0()) as _i2.TvShowRepository);
+          returnValue: _FakeTvShowRepository_0()) as _i2.TVShowRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>> call() =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
-              _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
-          .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
+          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>.value(
+              _FakeEither_1<_i6.Failure, List<_i7.TVShow>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>);
 }

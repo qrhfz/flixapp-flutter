@@ -62,7 +62,7 @@ final testMovieMap = {
   'title': 'title',
 };
 
-final testTvShow = TvShow(
+final testTvShow = TVShow(
   id: 1,
   overview: 'overview',
   popularity: 0,
@@ -70,7 +70,7 @@ final testTvShow = TvShow(
   title: 'title',
 );
 
-final testTvShowDetail = TvShowDetail(
+final testTvShowDetail = TVShowDetail(
   id: 1,
   genres: [],
   overview: 'overview',

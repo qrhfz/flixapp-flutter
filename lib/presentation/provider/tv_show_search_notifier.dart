@@ -7,11 +7,11 @@ import '../../domain/entities/tv_show.dart';
 import '../../domain/usecases/tvshow/search_tv_shows.dart';
 import '../../injection.dart';
 
-class TvSearchNotifier extends ChangeNotifier {
-  TvSearchNotifier([SearchTvShows? searchTvShows]) {
+class TVShowSearchNotifier extends ChangeNotifier {
+  TVShowSearchNotifier([SearchTVShows? searchTvShows]) {
     this._searchTvshows = searchTvShows ?? locator();
   }
-  late final SearchTvShows _searchTvshows;
+  late final SearchTVShows _searchTvshows;
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
@@ -19,8 +19,8 @@ class TvSearchNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  List<TvShow> _tvSearchResult = [];
-  List<TvShow> get tvSearchResult => _tvSearchResult;
+  List<TVShow> _tvSearchResult = [];
+  List<TVShow> get tvSearchResult => _tvSearchResult;
 
   Future<void> fetchTvSearch(String query) async {
     _state = RequestState.Loading;

@@ -11,12 +11,12 @@ import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   group('Get Tv Show Detail', () {
-    late final TvShowRepository repository;
-    late final GetTvShowDetail usecase;
+    late final TVShowRepository repository;
+    late final GetTVShowDetail usecase;
 
     setUp(() {
       repository = MockTvShowRepository();
-      usecase = GetTvShowDetail(repository);
+      usecase = GetTVShowDetail(repository);
     });
     test('execute', () async {
       when(repository.getTvShowDetail(0)).thenAnswer(
@@ -24,7 +24,7 @@ void main() {
       );
 
       final res = await usecase.call(0);
-      assert(res == Right<Failure, TvShowDetail>(testTvShowDetail));
+      assert(res == Right<Failure, TVShowDetail>(testTvShowDetail));
     });
   });
 }

@@ -12,20 +12,20 @@ import 'package:flutter/foundation.dart';
 import '../../domain/entities/tv_show.dart';
 import '../../domain/usecases/tvshow/get_tv_recommendation.dart';
 
-class TvDetailNotifier extends ChangeNotifier {
+class TVShowDetailNotifier extends ChangeNotifier {
   //WATCHLIST
-  late final GetTvShowWatchlistStatus _getWatchlistStatus;
-  late final SaveTvShowWatchlist _saveWatchlist;
-  late final RemoveTvShowWatchlist _removeWatchlist;
+  late final GetTVShowWatchlistStatus _getWatchlistStatus;
+  late final SaveTVShowWatchlist _saveWatchlist;
+  late final RemoveTVShowWatchlist _removeWatchlist;
   late final GetTvRecommendations _getRecommendations;
-  late final GetTvShowDetail _getDetail;
+  late final GetTVShowDetail _getDetail;
 
-  TvDetailNotifier({
-    GetTvShowWatchlistStatus? getWatchlistStatus,
-    SaveTvShowWatchlist? saveWatchlist,
-    RemoveTvShowWatchlist? removeWatchlist,
+  TVShowDetailNotifier({
+    GetTVShowWatchlistStatus? getWatchlistStatus,
+    SaveTVShowWatchlist? saveWatchlist,
+    RemoveTVShowWatchlist? removeWatchlist,
     GetTvRecommendations? getRecommendations,
-    GetTvShowDetail? getDetail,
+    GetTVShowDetail? getDetail,
   }) {
     _getWatchlistStatus = getWatchlistStatus ?? locator();
     _saveWatchlist = saveWatchlist ?? locator();
@@ -34,8 +34,8 @@ class TvDetailNotifier extends ChangeNotifier {
     _getDetail = getDetail ?? locator();
   }
 
-  late TvShowDetail tv;
-  List<TvShow> recommendations = [];
+  late TVShowDetail tv;
+  List<TVShow> recommendations = [];
 
   static const String watchlistAddSuccessMessage =
       'Tv series added to watchlist successfully';

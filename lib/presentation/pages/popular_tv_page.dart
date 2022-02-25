@@ -1,4 +1,4 @@
-import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +16,7 @@ class _PopularTvPageState extends State<PopularTvPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Popular Tv Series')),
-      body: Consumer<TvListNotifier>(
+      body: Consumer<TVShowListNotifier>(
         builder: (context, provider, _) {
           final popularList = provider.popularList;
           return ListView.builder(

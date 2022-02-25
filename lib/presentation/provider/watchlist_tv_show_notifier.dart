@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 
 import '../../common/state_enum.dart';
 
-class WatchlistTvNotifier extends ChangeNotifier {
-  var _watchlistTvShows = <TvShow>[];
-  List<TvShow> get watchlistTvShows => _watchlistTvShows;
+class WatchlistTVShowNotifier extends ChangeNotifier {
+  var _watchlistTvShows = <TVShow>[];
+  List<TVShow> get watchlistTvShows => _watchlistTvShows;
 
   var _watchlistState = RequestState.Empty;
   RequestState get watchlistState => _watchlistState;
@@ -15,11 +15,11 @@ class WatchlistTvNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  WatchlistTvNotifier({GetTvShowWatchlist? getWatchlistTvShows}) {
+  WatchlistTVShowNotifier({GetTVShowWatchlist? getWatchlistTvShows}) {
     this._getTvShowWatchlist = getWatchlistTvShows ?? locator();
   }
 
-  late final GetTvShowWatchlist _getTvShowWatchlist;
+  late final GetTVShowWatchlist _getTvShowWatchlist;
 
   Future<void> fetchWatchlistTvShows() async {
     _watchlistState = RequestState.Loading;

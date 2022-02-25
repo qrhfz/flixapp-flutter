@@ -39,8 +39,8 @@ final routes = (RouteSettings settings) {
     case TvListPage.ROUTE_NAME:
       return MaterialPageRoute(
           builder: (_) => TvListPage(), settings: settings);
-    case AiringTvPage.route:
-      return MaterialPageRoute(builder: (_) => AiringTvPage());
+    case AiringTVShowPage.route:
+      return MaterialPageRoute(builder: (_) => AiringTVShowPage());
     case PopularTvPage.route:
       return MaterialPageRoute(builder: (_) => PopularTvPage());
     case TvDetailPage.route:

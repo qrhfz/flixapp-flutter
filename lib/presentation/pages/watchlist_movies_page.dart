@@ -2,7 +2,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:ditonton/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
     Future.microtask(() {
       Provider.of<WatchlistMovieNotifier>(context, listen: false)
           .fetchWatchlistMovies();
-      Provider.of<WatchlistTvNotifier>(context, listen: false)
+      Provider.of<WatchlistTVShowNotifier>(context, listen: false)
           .fetchWatchlistTvShows();
     });
   }
@@ -61,7 +61,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
                     message: data.message,
                   ),
                 ),
-                Consumer<WatchlistTvNotifier>(
+                Consumer<WatchlistTVShowNotifier>(
                   builder: (context, value, child) => TvWatchlist(
                     message: value.message,
                     tvWatchlist: value.watchlistTvShows,
@@ -127,7 +127,7 @@ class TvWatchlist extends StatelessWidget {
   }) : super(key: key);
 
   final RequestState watchlistState;
-  final List<TvShow> tvWatchlist;
+  final List<TVShow> tvWatchlist;
   final String message;
 
   @override

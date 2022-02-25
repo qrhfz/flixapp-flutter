@@ -10,8 +10,8 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   final DatabaseHelper mockDatabaseHelper = MockDatabaseHelper();
-  final TvLocalDataSource dataSource =
-      TvLocalDataSourceImpl(mockDatabaseHelper);
+  final TVShowLocalDataSource dataSource =
+      TVShowLocalDataSourceImpl(mockDatabaseHelper);
 
   group('save tv watchlist', () {
     test('should return success message when insert to database is success',

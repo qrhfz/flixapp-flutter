@@ -34,8 +34,8 @@ class TvShowModel extends Equatable {
 
   Map<String, dynamic> toJson() => _$TvShowModelToJson(this);
 
-  TvShow toEntity() {
-    return TvShow(
+  TVShow toEntity() {
+    return TVShow(
       id: id,
       overview: overview,
       title: title,

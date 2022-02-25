@@ -7,30 +7,30 @@ import 'package:ditonton/domain/usecases/tvshow/get_tv_show_detail.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist_status.dart';
 import 'package:ditonton/domain/usecases/tvshow/remove_tv_show_watchlist.dart';
 import 'package:ditonton/domain/usecases/tvshow/save_tv_show_watchlist.dart';
-import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import 'tv_detail_notifier_test.mocks.dart';
+import 'tv_show_detail_notifier_test.mocks.dart';
 
 @GenerateMocks([
-  GetTvShowDetail,
-  SaveTvShowWatchlist,
-  RemoveTvShowWatchlist,
-  GetTvShowWatchlistStatus,
+  GetTVShowDetail,
+  SaveTVShowWatchlist,
+  RemoveTVShowWatchlist,
+  GetTVShowWatchlistStatus,
   GetTvRecommendations,
 ])
 void main() {
-  final GetTvShowDetail getDetail = MockGetTvShowDetail();
+  final GetTVShowDetail getDetail = MockGetTvShowDetail();
   final GetTvRecommendations getRecommendations = MockGetTvRecommendations();
-  final GetTvShowWatchlistStatus getWatchlistStatus =
+  final GetTVShowWatchlistStatus getWatchlistStatus =
       MockGetTvShowWatchlistStatus();
-  final SaveTvShowWatchlist saveWatchlist = MockSaveTvShowWatchlist();
-  final RemoveTvShowWatchlist removeWatchlist = MockRemoveTvShowWatchlist();
+  final SaveTVShowWatchlist saveWatchlist = MockSaveTvShowWatchlist();
+  final RemoveTVShowWatchlist removeWatchlist = MockRemoveTvShowWatchlist();
 
-  final notifier = TvDetailNotifier(
+  final notifier = TVShowDetailNotifier(
     getDetail: getDetail,
     getRecommendations: getRecommendations,
     getWatchlistStatus: getWatchlistStatus,
@@ -112,7 +112,7 @@ void main() {
       await notifier.addWatchlist();
 
       expect(notifier.watchlistMessage,
-          TvDetailNotifier.watchlistAddSuccessMessage);
+          TVShowDetailNotifier.watchlistAddSuccessMessage);
       expect(notifier.isAddedToWatchlist, true);
     });
 
@@ -125,7 +125,7 @@ void main() {
       await notifier.removeFromWatchlist();
 
       expect(notifier.watchlistMessage,
-          TvDetailNotifier.watchlistRemoveSuccessMessage);
+          TVShowDetailNotifier.watchlistRemoveSuccessMessage);
       expect(notifier.isAddedToWatchlist, false);
     });
   });

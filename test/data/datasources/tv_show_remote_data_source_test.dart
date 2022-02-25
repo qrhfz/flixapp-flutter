@@ -16,7 +16,7 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   final http.Client client = MockHttpClient();
-  final dataSource = TvRemoteDataSourceImpl(client);
+  final dataSource = TVShowRemoteDataSourceImpl(client);
   final authority = 'api.themoviedb.org';
   final tvShowListJsonString = ''' 
           {
@@ -111,8 +111,8 @@ void main() {
   group('tv remote data source', () {
     test('getAiringTvShows should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(
-            authority, TvRemoteDataSourceImpl.airingPath, {'api_key': apiKey})),
+        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.airingPath,
+            {'api_key': apiKey})),
       ).thenAnswer(
         (_) async => Response(
           tvShowListJsonString,
@@ -129,7 +129,7 @@ void main() {
 
     test('getPopularTvShows should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TvRemoteDataSourceImpl.popularPath,
+        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.popularPath,
             {'api_key': apiKey})),
       ).thenAnswer(
         (_) async => Response(
@@ -146,7 +146,7 @@ void main() {
 
     test('getTopRatedTvShows should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TvRemoteDataSourceImpl.topRatedPath,
+        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.topRatedPath,
             {'api_key': apiKey})),
       ).thenAnswer(
         (_) async => Response(
@@ -167,7 +167,7 @@ void main() {
         client.get(
           Uri.https(
             authority,
-            path.join(TvRemoteDataSourceImpl.basePath, id.toString()),
+            path.join(TVShowRemoteDataSourceImpl.basePath, id.toString()),
             {'api_key': apiKey},
           ),
         ),
@@ -190,7 +190,7 @@ void main() {
 
     test('searching tv show should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TvRemoteDataSourceImpl.searchPath,
+        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.searchPath,
             {'api_key': apiKey, 'query': 'show'})),
       ).thenAnswer(
         (_) async => Response(
@@ -212,7 +212,7 @@ void main() {
         client.get(
           Uri.https(
             authority,
-            path.join(TvRemoteDataSourceImpl.basePath, id.toString(),
+            path.join(TVShowRemoteDataSourceImpl.basePath, id.toString(),
                 'recommendations'),
             {'api_key': apiKey},
           ),

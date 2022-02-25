@@ -15,9 +15,9 @@ import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
-  final TvRemoteDataSource remoteDataSource = MockTvRemoteDataSource();
-  final TvLocalDataSource localDataSource = MockTvLocalDataSource();
-  final TvShowRepository repository = TvShowRepositoryImpl(
+  final TVShowRemoteDataSource remoteDataSource = MockTvRemoteDataSource();
+  final TVShowLocalDataSource localDataSource = MockTvLocalDataSource();
+  final TVShowRepository repository = TvShowRepositoryImpl(
     remoteDataSource: remoteDataSource,
     localDataSource: localDataSource,
   );
@@ -30,28 +30,28 @@ void main() {
           .thenAnswer((_) async => Right(testTvShowList));
 
       final res = await repository.getPopularTvShows();
-      assert(res is Right<Failure, List<TvShow>>);
+      assert(res is Right<Failure, List<TVShow>>);
     });
     test('getAiringTvShows should return list of tv show', () async {
       when(remoteDataSource.getAiringTvShows())
           .thenAnswer((_) async => Right(testTvShowList));
 
       final res = await repository.getAiringTvShows();
-      assert(res is Right<Failure, List<TvShow>>);
+      assert(res is Right<Failure, List<TVShow>>);
     });
     test('getTopRatedTvShows should return list of tv show', () async {
       when(remoteDataSource.getTopRatedTvShows())
           .thenAnswer((_) async => Right(testTvShowList));
 
       final res = await repository.getTopRatedTvShows();
-      assert(res is Right<Failure, List<TvShow>>);
+      assert(res is Right<Failure, List<TVShow>>);
     });
     test('searchTvShow should return list of tv show', () async {
       when(remoteDataSource.searchTvShow('test'))
           .thenAnswer((_) async => Right(testTvShowList));
 
       final res = await repository.searchTvShows('test');
-      assert(res is Right<Failure, List<TvShow>>);
+      assert(res is Right<Failure, List<TVShow>>);
     });
 
     test('getTvShowRecommendations should return list of tv show', () async {
@@ -59,7 +59,7 @@ void main() {
           .thenAnswer((_) async => Right(testTvShowList));
 
       final res = await repository.getTvRecommendations(1);
-      assert(res is Right<Failure, List<TvShow>>);
+      assert(res is Right<Failure, List<TVShow>>);
     });
     test('getTvShowDetail should return tv show detail object', () async {
       final testData = TvShowDetailModel(
@@ -74,14 +74,14 @@ void main() {
 
       when(remoteDataSource.getTvShowDetail(1))
           .thenAnswer((_) async => Right(testData));
-      final Either<Failure, TvShowDetail> res =
+      final Either<Failure, TVShowDetail> res =
           await repository.getTvShowDetail(1);
-      assert(res == Right<Failure, TvShowDetail>(testData.toEntity()));
+      assert(res == Right<Failure, TVShowDetail>(testData.toEntity()));
     });
     test('getTvShowWatchlist should return list of tv show', () async {
       when(localDataSource.getTvWatchlist()).thenAnswer((_) async => Right([]));
       final res = await repository.getTvShowWatchlist();
-      assert(res is Right<Failure, List<TvShow>>);
+      assert(res is Right<Failure, List<TVShow>>);
     });
     test('saveWatchlist should return string message', () async {
       when(localDataSource.insertWatchlist(testTvShowTable))

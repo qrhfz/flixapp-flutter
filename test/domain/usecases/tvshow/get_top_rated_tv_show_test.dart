@@ -9,19 +9,19 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late final TvShowRepository tvRepository;
-  late final GetTopRatedTvShows usecase;
-  final List<TvShow> dummyTv = [];
+  late final TVShowRepository tvRepository;
+  late final GetTopRatedTVShows usecase;
+  final List<TVShow> dummyTv = [];
   setUp(() {
     tvRepository = MockTvShowRepository();
-    usecase = GetTopRatedTvShows(tvRepository);
+    usecase = GetTopRatedTVShows(tvRepository);
   });
   group('Get top rated tv shows', () {
     test('execute', () async {
       when(tvRepository.getTopRatedTvShows())
           .thenAnswer((_) async => Right(dummyTv));
       final tvSeries = await usecase.call();
-      assert(tvSeries is Right<Failure, List<TvShow>>);
+      assert(tvSeries is Right<Failure, List<TVShow>>);
     });
   });
 }

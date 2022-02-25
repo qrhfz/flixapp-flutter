@@ -10,7 +10,7 @@ import 'package:ditonton/data/models/tv_show_list_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
-abstract class TvRemoteDataSource {
+abstract class TVShowRemoteDataSource {
   TvShowModelsOrFailureFuture getPopularTvShows();
   TvShowModelsOrFailureFuture getTopRatedTvShows();
   TvShowModelsOrFailureFuture getAiringTvShows();
@@ -19,7 +19,7 @@ abstract class TvRemoteDataSource {
   TvShowModelsOrFailureFuture getTvShowRecommendations(int id);
 }
 
-class TvRemoteDataSourceImpl implements TvRemoteDataSource {
+class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   final authority = 'api.themoviedb.org';
   final http.Client client;
 
@@ -29,7 +29,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
   static final searchPath = '/3/search/tv';
   static final basePath = '/3/tv';
 
-  TvRemoteDataSourceImpl(this.client);
+  TVShowRemoteDataSourceImpl(this.client);
 
   @override
   TvShowModelsOrFailureFuture getAiringTvShows() async {

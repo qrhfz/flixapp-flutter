@@ -90,16 +90,16 @@ void init() {
   locator.registerLazySingleton(() => RemoveWatchlist(locator()));
   locator.registerLazySingleton(() => GetWatchlistMovies(locator()));
 
-  locator.registerLazySingleton(() => GetAiringTvShows(locator()));
-  locator.registerLazySingleton(() => GetPopularTvShows(locator()));
-  locator.registerLazySingleton(() => GetTopRatedTvShows(locator()));
-  locator.registerLazySingleton(() => GetTvShowDetail(locator()));
+  locator.registerLazySingleton(() => GetAiringTVShows(locator()));
+  locator.registerLazySingleton(() => GetPopularTVShows(locator()));
+  locator.registerLazySingleton(() => GetTopRatedTVShows(locator()));
+  locator.registerLazySingleton(() => GetTVShowDetail(locator()));
   locator.registerLazySingleton(() => GetTvRecommendations(locator()));
-  locator.registerLazySingleton(() => SearchTvShows(locator()));
-  locator.registerLazySingleton(() => SaveTvShowWatchlist(locator()));
-  locator.registerLazySingleton(() => RemoveTvShowWatchlist(locator()));
-  locator.registerLazySingleton(() => GetTvShowWatchlistStatus(locator()));
-  locator.registerLazySingleton(() => GetTvShowWatchlist(locator()));
+  locator.registerLazySingleton(() => SearchTVShows(locator()));
+  locator.registerLazySingleton(() => SaveTVShowWatchlist(locator()));
+  locator.registerLazySingleton(() => RemoveTVShowWatchlist(locator()));
+  locator.registerLazySingleton(() => GetTVShowWatchlistStatus(locator()));
+  locator.registerLazySingleton(() => GetTVShowWatchlist(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(
@@ -109,7 +109,7 @@ void init() {
     ),
   );
 
-  locator.registerLazySingleton<TvShowRepository>(
+  locator.registerLazySingleton<TVShowRepository>(
     () => TvShowRepositoryImpl(
       remoteDataSource: locator(),
       localDataSource: locator(),
@@ -122,11 +122,11 @@ void init() {
   locator.registerLazySingleton<MovieLocalDataSource>(
       () => MovieLocalDataSourceImpl(databaseHelper: locator()));
 
-  locator.registerLazySingleton<TvRemoteDataSource>(
-      () => TvRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<TVShowRemoteDataSource>(
+      () => TVShowRemoteDataSourceImpl(locator()));
 
-  locator.registerLazySingleton<TvLocalDataSource>(
-      () => TvLocalDataSourceImpl(locator()));
+  locator.registerLazySingleton<TVShowLocalDataSource>(
+      () => TVShowLocalDataSourceImpl(locator()));
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());

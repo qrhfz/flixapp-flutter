@@ -4,10 +4,10 @@ import 'package:ditonton/common/typealias.dart';
 
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 
-class SearchTvShows {
-  final TvShowRepository repository;
+class SearchTVShows {
+  final TVShowRepository repository;
 
-  SearchTvShows(this.repository);
+  SearchTVShows(this.repository);
 
   TvShowsOrFailureFuture call(String query) {
     if (query.isEmpty) {

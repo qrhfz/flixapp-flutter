@@ -4,7 +4,7 @@ import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/presentation/pages/airing_tv_page.dart';
 import 'package:ditonton/presentation/pages/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv_detail_page.dart';
-import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/app_drawer.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class _TvListPageState extends State<TvListPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<TvListNotifier>(context, listen: false)
+    Provider.of<TVShowListNotifier>(context, listen: false)
       ..fetchAiring()
       ..fetchPopular()
       ..fetchTopRated();
@@ -53,20 +53,20 @@ class _TvListPageState extends State<TvListPage> {
             SubHeading(
                 title: 'Now Airing',
                 onTap: () {
-                  Navigator.of(context).pushNamed(AiringTvPage.route);
+                  Navigator.of(context).pushNamed(AiringTVShowPage.route);
                 }),
             _HorizontalTvListView(
-                Provider.of<TvListNotifier>(context).airingList),
+                Provider.of<TVShowListNotifier>(context).airingList),
             SubHeading(
                 title: 'Popular',
                 onTap: () {
                   Navigator.of(context).pushNamed(PopularTvPage.route);
                 }),
             _HorizontalTvListView(
-                Provider.of<TvListNotifier>(context).popularList),
+                Provider.of<TVShowListNotifier>(context).popularList),
             SubHeading(title: 'Top Rated'),
             _HorizontalTvListView(
-                Provider.of<TvListNotifier>(context).topRatedList),
+                Provider.of<TVShowListNotifier>(context).topRatedList),
           ]),
         ),
       ),
@@ -75,7 +75,7 @@ class _TvListPageState extends State<TvListPage> {
 }
 
 class _HorizontalTvListView extends StatelessWidget {
-  final List<TvShow> tvlist;
+  final List<TVShow> tvlist;
 
   _HorizontalTvListView(this.tvlist);
 

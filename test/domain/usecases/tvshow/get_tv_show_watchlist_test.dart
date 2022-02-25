@@ -9,13 +9,13 @@ import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   final repository = MockTvShowRepository();
-  final GetTvShowWatchlist usecase = GetTvShowWatchlist(repository);
+  final GetTVShowWatchlist usecase = GetTVShowWatchlist(repository);
 
   test('Get watchlist tv show should return list of tv shows', () async {
-    final List<TvShow> dummyData = [];
+    final List<TVShow> dummyData = [];
     when(repository.getTvShowWatchlist())
         .thenAnswer((_) async => Right(dummyData));
     final res = await usecase.call();
-    assert(res == Right<Failure, List<TvShow>>(dummyData));
+    assert(res == Right<Failure, List<TVShow>>(dummyData));
   });
 }

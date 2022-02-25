@@ -40,7 +40,7 @@ void main() {
     voteCount: 5654,
   );
 
-  final dummyTv = TvShow(
+  final dummyTv = TVShow(
     // backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
     // genreIds: [18],
     id: 85552,

@@ -9,7 +9,7 @@ import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   final repository = MockTvShowRepository();
-  final usecase = SaveTvShowWatchlist(repository);
+  final usecase = SaveTVShowWatchlist(repository);
 
   test('Saving tv show to watch list should responds with a String', () async {
     when(repository.saveWatchlist(testTvShowDetail))

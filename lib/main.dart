@@ -6,16 +6,16 @@ import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:ditonton/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
-import 'presentation/provider/tv_search_notifier.dart';
+import 'presentation/provider/tv_show_search_notifier.dart';
 
 void main() {
   di.init();
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<MovieSearchNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => TvSearchNotifier(),
+          create: (_) => TVShowSearchNotifier(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedMoviesNotifier>(),
@@ -49,15 +49,15 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => TvListNotifier(),
+          create: (_) => TVShowListNotifier(),
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (_) => TvDetailNotifier(),
+          create: (_) => TVShowDetailNotifier(),
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (_) => WatchlistTvNotifier(),
+          create: (_) => WatchlistTVShowNotifier(),
           lazy: true,
         ),
       ],

@@ -5,7 +5,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_search_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_search_notifier.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:ditonton/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ class _SearchPageState extends State<SearchPage> {
                 Provider.of<MovieSearchNotifier>(context, listen: false)
                     .fetchMovieSearch(query);
 
-                Provider.of<TvSearchNotifier>(context, listen: false)
+                Provider.of<TVShowSearchNotifier>(context, listen: false)
                     .fetchTvSearch(query);
               },
               decoration: InputDecoration(
@@ -88,7 +88,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               )
             else
-              Consumer<TvSearchNotifier>(
+              Consumer<TVShowSearchNotifier>(
                 builder: (context, data, _) => _TVSearchResult(
                   state: data.state,
                   tvList: data.tvSearchResult,
@@ -139,7 +139,7 @@ class _MovieSearchResult extends StatelessWidget {
 
 class _TVSearchResult extends StatelessWidget {
   final RequestState state;
-  final List<TvShow> tvList;
+  final List<TVShow> tvList;
   final String message;
 
   const _TVSearchResult({

@@ -6,8 +6,8 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  final TvShowRepository repository = MockTvShowRepository();
-  final GetTvShowWatchlistStatus usecase = GetTvShowWatchlistStatus(repository);
+  final TVShowRepository repository = MockTvShowRepository();
+  final GetTVShowWatchlistStatus usecase = GetTVShowWatchlistStatus(repository);
 
   test('Given id GetTvShowWatchlistStatus should return a boolean', () async {
     when(repository.getWatchlistStatus(1)).thenAnswer((_) async => true);

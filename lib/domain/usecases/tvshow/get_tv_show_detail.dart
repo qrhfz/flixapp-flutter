@@ -1,10 +1,10 @@
 import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 
-class GetTvShowDetail {
-  final TvShowRepository repository;
+class GetTVShowDetail {
+  final TVShowRepository repository;
 
-  GetTvShowDetail(this.repository);
+  GetTVShowDetail(this.repository);
 
   TvShowDetailOrFailureFuture call(int id) {
     return repository.getTvShowDetail(id);

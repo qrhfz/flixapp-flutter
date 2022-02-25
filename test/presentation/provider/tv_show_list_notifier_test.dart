@@ -4,22 +4,22 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_airing_tv_shows.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_popular_tv_shows.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_top_rated_tv_shows.dart';
-import 'package:ditonton/presentation/provider/tv_list_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import 'tv_list_notifier_test.mocks.dart';
+import 'tv_show_list_notifier_test.mocks.dart';
 
-@GenerateMocks([GetAiringTvShows, GetPopularTvShows, GetTopRatedTvShows])
+@GenerateMocks([GetAiringTVShows, GetPopularTVShows, GetTopRatedTVShows])
 void main() {
-  final GetAiringTvShows mockGetAiringTvShows = MockGetAiringTvShows();
-  final GetPopularTvShows mockGetPopularTvShows = MockGetPopularTvShows();
-  final GetTopRatedTvShows mockGetTopRatedTvShows = MockGetTopRatedTvShows();
-  late TvListNotifier provider;
+  final GetAiringTVShows mockGetAiringTvShows = MockGetAiringTvShows();
+  final GetPopularTVShows mockGetPopularTvShows = MockGetPopularTvShows();
+  final GetTopRatedTVShows mockGetTopRatedTvShows = MockGetTopRatedTvShows();
+  late TVShowListNotifier provider;
   setUp(() {
-    provider = TvListNotifier(
+    provider = TVShowListNotifier(
         mockGetAiringTvShows, mockGetPopularTvShows, mockGetTopRatedTvShows);
   });
 

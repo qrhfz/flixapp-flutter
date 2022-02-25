@@ -9,7 +9,7 @@ import '../../../helpers/test_helper.mocks.dart';
 void main() {
   final repository = MockTvShowRepository();
   final usecase = GetTvRecommendations(repository);
-  final List<TvShow> tTvList = [];
+  final List<TVShow> tTvList = [];
   test('get tv recommendation usecase return list of tv show', () async {
     when(repository.getTvRecommendations(1))
         .thenAnswer((_) async => Right(tTvList));

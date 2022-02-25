@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -10,10 +10,10 @@ import 'package:mockito/mockito.dart';
 import '../../dummy_data/dummy_objects.dart';
 import 'watchlist_tv_notifer_test.mocks.dart';
 
-@GenerateMocks([GetTvShowWatchlist])
+@GenerateMocks([GetTVShowWatchlist])
 void main() {
   final usecase = MockGetTvShowWatchlist();
-  final provider = WatchlistTvNotifier(getWatchlistTvShows: usecase);
+  final provider = WatchlistTVShowNotifier(getWatchlistTvShows: usecase);
 
   test('request state should be initialized as empty', () {
     expect(provider.watchlistState, RequestState.Empty);

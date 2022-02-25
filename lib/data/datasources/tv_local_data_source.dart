@@ -3,17 +3,17 @@ import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
 
-abstract class TvLocalDataSource {
+abstract class TVShowLocalDataSource {
   Future<Either<DatabaseFailure, List<TvShowTable>>> getTvWatchlist();
   Future<Either<DatabaseFailure, String>> insertWatchlist(TvShowTable tvShow);
   Future<Either<DatabaseFailure, String>> removeWatchlist(int id);
   Future<Either<DatabaseFailure, TvShowTable?>> getTvById(int id);
 }
 
-class TvLocalDataSourceImpl implements TvLocalDataSource {
+class TVShowLocalDataSourceImpl implements TVShowLocalDataSource {
   final DatabaseHelper _dbHelper;
 
-  TvLocalDataSourceImpl(this._dbHelper);
+  TVShowLocalDataSourceImpl(this._dbHelper);
 
   @override
   Future<Either<DatabaseFailure, TvShowTable?>> getTvById(int id) async {

@@ -11,7 +11,7 @@ import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import '../../domain/entities/genre.dart';
 import '../../domain/entities/tv_show.dart';
-import '../provider/tv_detail_notifier.dart';
+import '../provider/tv_show_detail_notifier.dart';
 
 class TvDetailPage extends StatefulWidget {
   static const route = 'tv/detail';
@@ -27,9 +27,9 @@ class _TvDetailPageState extends State<TvDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<TvDetailNotifier>(context, listen: false)
+      Provider.of<TVShowDetailNotifier>(context, listen: false)
           .fetchDetail(widget.id);
-      Provider.of<TvDetailNotifier>(context, listen: false)
+      Provider.of<TVShowDetailNotifier>(context, listen: false)
           .fetchRecommendations(widget.id);
     });
   }
@@ -37,7 +37,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<TvDetailNotifier>(
+      body: Consumer<TVShowDetailNotifier>(
         builder: (context, provider, child) {
           if (provider.detailState == RequestState.Loading) {
             return Center(
@@ -62,8 +62,8 @@ class _TvDetailPageState extends State<TvDetailPage> {
 }
 
 class _DetailContent extends StatelessWidget {
-  final TvShowDetail tv;
-  final List<TvShow> recommendations;
+  final TVShowDetail tv;
+  final List<TVShow> recommendations;
   final bool isAddedWatchlist;
 
   _DetailContent(
@@ -149,7 +149,7 @@ class _DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            Consumer<TvDetailNotifier>(
+                            Consumer<TVShowDetailNotifier>(
                               builder: (context, data, child) {
                                 return TvRecommendationList(
                                   message: data.message,
@@ -206,25 +206,26 @@ class TvWatchlistButton extends StatelessWidget {
   }) : super(key: key);
 
   final bool isAddedWatchlist;
-  final TvShowDetail tv;
+  final TVShowDetail tv;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
         if (!isAddedWatchlist) {
-          await Provider.of<TvDetailNotifier>(context, listen: false)
+          await Provider.of<TVShowDetailNotifier>(context, listen: false)
               .addWatchlist();
         } else {
-          await Provider.of<TvDetailNotifier>(context, listen: false)
+          await Provider.of<TVShowDetailNotifier>(context, listen: false)
               .removeFromWatchlist();
         }
 
-        final message = Provider.of<TvDetailNotifier>(context, listen: false)
-            .watchlistMessage;
+        final message =
+            Provider.of<TVShowDetailNotifier>(context, listen: false)
+                .watchlistMessage;
 
-        if (message == TvDetailNotifier.watchlistAddSuccessMessage ||
-            message == TvDetailNotifier.watchlistRemoveSuccessMessage) {
+        if (message == TVShowDetailNotifier.watchlistAddSuccessMessage ||
+            message == TVShowDetailNotifier.watchlistRemoveSuccessMessage) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(message)));
         } else {
@@ -259,7 +260,7 @@ class TvRecommendationList extends StatelessWidget {
 
   final RequestState recommendationsState;
   final String message;
-  final List<TvShow> recommendations;
+  final List<TVShow> recommendations;
 
   @override
   Widget build(BuildContext context) {

@@ -7,12 +7,12 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late final TvShowRepository tvRepository;
-  late final GetPopularTvShows usecase;
+  late final TVShowRepository tvRepository;
+  late final GetPopularTVShows usecase;
 
   setUp(() {
     tvRepository = MockTvShowRepository();
-    usecase = GetPopularTvShows(tvRepository);
+    usecase = GetPopularTVShows(tvRepository);
   });
 
   group('Get popular tv shows', () {

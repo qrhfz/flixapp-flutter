@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../common/constants.dart';
 
 class TvCard extends StatelessWidget {
-  final TvShow tv;
+  final TVShow tv;
 
   TvCard(this.tv);
 

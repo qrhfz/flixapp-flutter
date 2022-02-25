@@ -8,10 +8,10 @@ import 'package:ditonton/domain/usecases/tvshow/get_airing_tv_shows.dart';
 
 import '../../domain/usecases/tvshow/get_popular_tv_shows.dart';
 
-class TvListNotifier extends ChangeNotifier {
-  late final GetAiringTvShows getAiring;
-  late final GetPopularTvShows getPopular;
-  late final GetTopRatedTvShows getTopRated;
+class TVShowListNotifier extends ChangeNotifier {
+  late final GetAiringTVShows getAiring;
+  late final GetPopularTVShows getPopular;
+  late final GetTopRatedTVShows getTopRated;
 
   RequestState _airingState = RequestState.Empty;
   RequestState get airingState => _airingState;
@@ -20,21 +20,21 @@ class TvListNotifier extends ChangeNotifier {
   RequestState _topRatedState = RequestState.Empty;
   RequestState get topRatedState => _topRatedState;
 
-  List<TvShow> _airingList = [];
-  List<TvShow> get airingList => _airingList;
-  List<TvShow> _popularList = [];
-  List<TvShow> get popularList => _popularList;
-  List<TvShow> _topRatedList = [];
-  List<TvShow> get topRatedList => _topRatedList;
+  List<TVShow> _airingList = [];
+  List<TVShow> get airingList => _airingList;
+  List<TVShow> _popularList = [];
+  List<TVShow> get popularList => _popularList;
+  List<TVShow> _topRatedList = [];
+  List<TVShow> get topRatedList => _topRatedList;
 
-  TvListNotifier([
-    GetAiringTvShows? getAiring,
-    GetPopularTvShows? getPopular,
-    GetTopRatedTvShows? getTopRated,
+  TVShowListNotifier([
+    GetAiringTVShows? getAiring,
+    GetPopularTVShows? getPopular,
+    GetTopRatedTVShows? getTopRated,
   ]) {
-    this.getAiring = getAiring ?? locator.get<GetAiringTvShows>();
-    this.getPopular = getPopular ?? locator.get<GetPopularTvShows>();
-    this.getTopRated = getTopRated ?? locator.get<GetTopRatedTvShows>();
+    this.getAiring = getAiring ?? locator.get<GetAiringTVShows>();
+    this.getPopular = getPopular ?? locator.get<GetPopularTVShows>();
+    this.getTopRated = getTopRated ?? locator.get<GetTopRatedTVShows>();
   }
 
   Future<void> fetchAiring() async {

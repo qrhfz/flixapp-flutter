@@ -32,7 +32,7 @@ class TvShowDetailModel extends Equatable {
     required this.genres,
   });
 
-  TvShowDetail toEntity() => TvShowDetail(
+  TVShowDetail toEntity() => TVShowDetail(
         id: id,
         genres: genres.map((e) => e.toEntity()).toList(),
         numberOfEpisodes: numberOfEpisodes,

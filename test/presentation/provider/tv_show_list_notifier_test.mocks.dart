@@ -26,7 +26,7 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeTvShowRepository_0 extends _i1.Fake implements _i2.TvShowRepository {
+class _FakeTvShowRepository_0 extends _i1.Fake implements _i2.TVShowRepository {
 }
 
 class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
@@ -34,60 +34,60 @@ class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
 /// A class which mocks [GetAiringTvShows].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetAiringTvShows extends _i1.Mock implements _i4.GetAiringTvShows {
+class MockGetAiringTvShows extends _i1.Mock implements _i4.GetAiringTVShows {
   MockGetAiringTvShows() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.TvShowRepository get repository =>
+  _i2.TVShowRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeTvShowRepository_0()) as _i2.TvShowRepository);
+          returnValue: _FakeTvShowRepository_0()) as _i2.TVShowRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>> call() =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
-              _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
-          .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
+          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>.value(
+              _FakeEither_1<_i6.Failure, List<_i7.TVShow>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>);
 }
 
 /// A class which mocks [GetPopularTvShows].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetPopularTvShows extends _i1.Mock implements _i8.GetPopularTvShows {
+class MockGetPopularTvShows extends _i1.Mock implements _i8.GetPopularTVShows {
   MockGetPopularTvShows() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.TvShowRepository get tvRepository =>
+  _i2.TVShowRepository get tvRepository =>
       (super.noSuchMethod(Invocation.getter(#tvRepository),
-          returnValue: _FakeTvShowRepository_0()) as _i2.TvShowRepository);
+          returnValue: _FakeTvShowRepository_0()) as _i2.TVShowRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>> call() =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
-              _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
-          .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
+          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>.value(
+              _FakeEither_1<_i6.Failure, List<_i7.TVShow>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>);
 }
 
 /// A class which mocks [GetTopRatedTvShows].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTopRatedTvShows extends _i1.Mock
-    implements _i9.GetTopRatedTvShows {
+    implements _i9.GetTopRatedTVShows {
   MockGetTopRatedTvShows() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.TvShowRepository get repository =>
+  _i2.TVShowRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeTvShowRepository_0()) as _i2.TvShowRepository);
+          returnValue: _FakeTvShowRepository_0()) as _i2.TVShowRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>> call() =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
-              _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
-          .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
+          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>.value(
+              _FakeEither_1<_i6.Failure, List<_i7.TVShow>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<_i7.TVShow>>>);
 }

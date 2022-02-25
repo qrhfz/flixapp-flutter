@@ -9,16 +9,16 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  final TvShowRepository repository = MockTvShowRepository();
-  final SearchTvShows usecase = SearchTvShows(repository);
+  final TVShowRepository repository = MockTvShowRepository();
+  final SearchTVShows usecase = SearchTVShows(repository);
 
   group('Searching tv shows', () {
     test('Seaching tv shows should result in a list of tv shows', () async {
-      final List<TvShow> dummy = [];
+      final List<TVShow> dummy = [];
       when(repository.searchTvShows("test"))
           .thenAnswer((_) async => Right(dummy));
       final res = await usecase.call("test");
-      assert(res == Right<Failure, List<TvShow>>(dummy));
+      assert(res == Right<Failure, List<TVShow>>(dummy));
     });
 
     test('Searching whith empty string should return a Failure', () async {
