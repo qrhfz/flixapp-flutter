@@ -95,7 +95,7 @@ class DatabaseHelper {
     return results;
   }
 
-  Future<int> insertTvWatchlist(TvShowTable tv) async {
+  Future<int> insertTvWatchlist(TVShowTable tv) async {
     final db = await database;
     return await db!.insert(_tblTvWatchlist, tv.toMap());
   }

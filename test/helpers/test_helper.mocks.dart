@@ -236,7 +236,7 @@ class MockDatabaseHelper extends _i1.Mock implements _i14.DatabaseHelper {
                   <Map<String, dynamic>>[]))
           as _i6.Future<List<Map<String, dynamic>>>);
   @override
-  _i6.Future<int> insertTvWatchlist(_i16.TvShowTable? tv) =>
+  _i6.Future<int> insertTvWatchlist(_i16.TVShowTable? tv) =>
       (super.noSuchMethod(Invocation.method(#insertTvWatchlist, [tv]),
           returnValue: Future<int>.value(0)) as _i6.Future<int>);
   @override
@@ -332,53 +332,53 @@ class MockTVShowRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>
       getPopularTvShows() => (super.noSuchMethod(
               Invocation.method(#getPopularTvShows, []),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>.value(
-                      _FakeEither_0<_i7.Failure, List<_i21.TvShowModel>>()))
-          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>);
+                  Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i21.TVShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>
       getTopRatedTvShows() => (super.noSuchMethod(
               Invocation.method(#getTopRatedTvShows, []),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>.value(
-                      _FakeEither_0<_i7.Failure, List<_i21.TvShowModel>>()))
-          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>);
+                  Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i21.TVShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>
       getAiringTvShows() => (super.noSuchMethod(
               Invocation.method(#getAiringTvShows, []),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>.value(
-                      _FakeEither_0<_i7.Failure, List<_i21.TvShowModel>>()))
-          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>);
+                  Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i21.TVShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, _i22.TvShowDetailModel>> getTvShowDetail(
+  _i6.Future<_i2.Either<_i7.Failure, _i22.TVShowDetailModel>> getTvShowDetail(
           int? id) =>
       (super.noSuchMethod(Invocation.method(#getTvShowDetail, [id]),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, _i22.TvShowDetailModel>>.value(
-                      _FakeEither_0<_i7.Failure, _i22.TvShowDetailModel>()))
-          as _i6.Future<_i2.Either<_i7.Failure, _i22.TvShowDetailModel>>);
+                  Future<_i2.Either<_i7.Failure, _i22.TVShowDetailModel>>.value(
+                      _FakeEither_0<_i7.Failure, _i22.TVShowDetailModel>()))
+          as _i6.Future<_i2.Either<_i7.Failure, _i22.TVShowDetailModel>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>> searchTvShow(
+  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>> searchTvShow(
           String? query) =>
       (super.noSuchMethod(Invocation.method(#searchTvShow, [query]),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>.value(
-                      _FakeEither_0<_i7.Failure, List<_i21.TvShowModel>>()))
-          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>);
+                  Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i21.TVShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>
       getTvShowRecommendations(int? id) => (super.noSuchMethod(
               Invocation.method(#getTvShowRecommendations, [id]),
               returnValue:
-                  Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>.value(
-                      _FakeEither_0<_i7.Failure, List<_i21.TvShowModel>>()))
-          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>);
+                  Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>.value(
+                      _FakeEither_0<_i7.Failure, List<_i21.TVShowModel>>()))
+          as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TVShowModel>>>);
 }
 
 /// A class which mocks [TVShowLocalDataSource].
@@ -393,15 +393,15 @@ class MockTVShowLocalDataSource extends _i1.Mock
   @override
   _i6.Future<
       _i2.Either<_i7.DatabaseFailure,
-          List<_i16.TvShowTable>>> getTvWatchlist() => (super.noSuchMethod(
+          List<_i16.TVShowTable>>> getTvWatchlist() => (super.noSuchMethod(
       Invocation.method(#getTvWatchlist, []),
       returnValue:
-          Future<_i2.Either<_i7.DatabaseFailure, List<_i16.TvShowTable>>>.value(
-              _FakeEither_0<_i7.DatabaseFailure, List<_i16.TvShowTable>>())) as _i6
-      .Future<_i2.Either<_i7.DatabaseFailure, List<_i16.TvShowTable>>>);
+          Future<_i2.Either<_i7.DatabaseFailure, List<_i16.TVShowTable>>>.value(
+              _FakeEither_0<_i7.DatabaseFailure, List<_i16.TVShowTable>>())) as _i6
+      .Future<_i2.Either<_i7.DatabaseFailure, List<_i16.TVShowTable>>>);
   @override
   _i6.Future<_i2.Either<_i7.DatabaseFailure, String>> insertWatchlist(
-          _i16.TvShowTable? tvShow) =>
+          _i16.TVShowTable? tvShow) =>
       (super.noSuchMethod(Invocation.method(#insertWatchlist, [tvShow]),
           returnValue: Future<_i2.Either<_i7.DatabaseFailure, String>>.value(
               _FakeEither_0<_i7.DatabaseFailure, String>())) as _i6
@@ -414,13 +414,13 @@ class MockTVShowLocalDataSource extends _i1.Mock
               _FakeEither_0<_i7.DatabaseFailure, String>())) as _i6
           .Future<_i2.Either<_i7.DatabaseFailure, String>>);
   @override
-  _i6.Future<_i2.Either<_i7.DatabaseFailure, _i16.TvShowTable?>> getTvById(
+  _i6.Future<_i2.Either<_i7.DatabaseFailure, _i16.TVShowTable?>> getTvById(
           int? id) =>
       (super.noSuchMethod(Invocation.method(#getTvById, [id]),
               returnValue: Future<
-                      _i2.Either<_i7.DatabaseFailure, _i16.TvShowTable?>>.value(
-                  _FakeEither_0<_i7.DatabaseFailure, _i16.TvShowTable?>()))
-          as _i6.Future<_i2.Either<_i7.DatabaseFailure, _i16.TvShowTable?>>);
+                      _i2.Either<_i7.DatabaseFailure, _i16.TVShowTable?>>.value(
+                  _FakeEither_0<_i7.DatabaseFailure, _i16.TVShowTable?>()))
+          as _i6.Future<_i2.Either<_i7.DatabaseFailure, _i16.TVShowTable?>>);
 }
 
 /// A class which mocks [Client].

@@ -5,13 +5,13 @@ import 'package:json_annotation/json_annotation.dart';
 part 'tv_show_list_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TvShowListResponse extends Equatable {
+class TVShowListResponse extends Equatable {
   final int page;
-  final List<TvShowModel> results;
+  final List<TVShowModel> results;
 
-  TvShowListResponse({required this.page, required this.results});
+  TVShowListResponse({required this.page, required this.results});
 
-  factory TvShowListResponse.fromJson(Map<String, dynamic> json) =>
+  factory TVShowListResponse.fromJson(Map<String, dynamic> json) =>
       _$TvShowListResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvShowListResponseToJson(this);

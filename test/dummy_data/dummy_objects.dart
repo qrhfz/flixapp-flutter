@@ -83,14 +83,14 @@ final testTvShowDetail = TVShowDetail(
   numberOfSeasons: 1,
 );
 
-final testTvShowTable = TvShowTable(
+final testTvShowTable = TVShowTable(
   id: 1,
   title: 'title',
   overview: 'overview',
   posterPath: 'posterPath',
 );
 
-final testTvShowDetailModel = TvShowDetailModel(
+final testTvShowDetailModel = TVShowDetailModel(
   genres: [],
   id: 1399,
   numberOfEpisodes: 73,

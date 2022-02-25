@@ -6,15 +6,15 @@ part of 'tv_show_list_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TvShowListResponse _$TvShowListResponseFromJson(Map<String, dynamic> json) =>
-    TvShowListResponse(
+TVShowListResponse _$TVShowListResponseFromJson(Map<String, dynamic> json) =>
+    TVShowListResponse(
       page: json['page'] as int,
       results: (json['results'] as List<dynamic>)
-          .map((e) => TvShowModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => TVShowModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$TvShowListResponseToJson(TvShowListResponse instance) =>
+Map<String, dynamic> _$TVShowListResponseToJson(TVShowListResponse instance) =>
     <String, dynamic>{
       'page': instance.page,
       'results': instance.results,

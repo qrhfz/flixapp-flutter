@@ -1,8 +1,9 @@
 import 'package:ditonton/data/models/tv_show_table.dart';
+import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final testData = TvShowTable(
+  final testData = TVShowTable(
     id: 1,
     overview: 'overview',
     posterPath: 'posterPath',
@@ -25,8 +26,19 @@ void main() {
     });
 
     test('tv show table from map', () {
-      final TvShowTable data = TvShowTable.fromMap(testMap);
+      final TVShowTable data = TVShowTable.fromMap(testMap);
       assert(data == testData);
+    });
+
+    test('tv show table to entity', () {
+      final TVShow data = testData.toEntity();
+      assert(data ==
+          TVShow(
+            id: 1,
+            overview: 'overview',
+            posterPath: 'posterPath',
+            title: 'title',
+          ));
     });
   });
 }

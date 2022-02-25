@@ -6,8 +6,8 @@ part of 'tv_show_detail_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TvShowDetailModel _$TvShowDetailModelFromJson(Map<String, dynamic> json) =>
-    TvShowDetailModel(
+TVShowDetailModel _$TVShowDetailModelFromJson(Map<String, dynamic> json) =>
+    TVShowDetailModel(
       id: json['id'] as int,
       numberOfEpisodes: json['number_of_episodes'] as int,
       numberOfSeasons: json['number_of_seasons'] as int,
@@ -22,7 +22,7 @@ TvShowDetailModel _$TvShowDetailModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$TvShowDetailModelToJson(TvShowDetailModel instance) =>
+Map<String, dynamic> _$TVShowDetailModelToJson(TVShowDetailModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'genres': instance.genres,

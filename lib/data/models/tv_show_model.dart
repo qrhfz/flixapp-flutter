@@ -5,8 +5,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'tv_show_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TvShowModel extends Equatable {
-  TvShowModel({
+class TVShowModel extends Equatable {
+  TVShowModel({
     required this.id,
     required this.backdropPath,
     required this.genreIds,
@@ -29,7 +29,7 @@ class TvShowModel extends Equatable {
   final double voteAverage;
   final int voteCount;
 
-  factory TvShowModel.fromJson(Map<String, dynamic> json) =>
+  factory TVShowModel.fromJson(Map<String, dynamic> json) =>
       _$TvShowModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvShowModelToJson(this);

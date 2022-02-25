@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'tv_show_detail_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TvShowDetailModel extends Equatable {
+class TVShowDetailModel extends Equatable {
   final int id;
   final List<GenreModel> genres;
   final int numberOfEpisodes;
@@ -19,7 +19,7 @@ class TvShowDetailModel extends Equatable {
   final double? voteAverage;
   final int? voteCount;
 
-  TvShowDetailModel({
+  TVShowDetailModel({
     required this.id,
     required this.numberOfEpisodes,
     required this.numberOfSeasons,
@@ -45,10 +45,10 @@ class TvShowDetailModel extends Equatable {
         voteCount: voteCount,
       );
 
-  factory TvShowDetailModel.fromJson(Map<String, dynamic> json) =>
-      _$TvShowDetailModelFromJson(json);
+  factory TVShowDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$TVShowDetailModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TvShowDetailModelToJson(this);
+  Map<String, dynamic> toJson() => _$TVShowDetailModelToJson(this);
 
   @override
   List<Object?> get props => [

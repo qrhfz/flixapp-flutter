@@ -38,7 +38,7 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
           .get(Uri.https(authority, airingPath, {'api_key': apiKey}));
       if (res.statusCode != 200) return Left(ServerFailure());
       final json = jsonDecode(res.body);
-      final tvShowListResponse = TvShowListResponse.fromJson(json);
+      final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
@@ -54,7 +54,7 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
           .get(Uri.https(authority, popularPath, {'api_key': apiKey}));
       if (res.statusCode != 200) return Left(ServerFailure());
       final json = jsonDecode(res.body);
-      final tvShowListResponse = TvShowListResponse.fromJson(json);
+      final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
@@ -70,7 +70,7 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
           .get(Uri.https(authority, topRatedPath, {'api_key': apiKey}));
       if (res.statusCode != 200) return Left(ServerFailure());
       final json = jsonDecode(res.body);
-      final tvShowListResponse = TvShowListResponse.fromJson(json);
+      final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
@@ -92,7 +92,7 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
 
       if (res.statusCode != 200) return Left(ServerFailure());
       final json = jsonDecode(res.body);
-      final tvShowDetail = TvShowDetailModel.fromJson(json);
+      final tvShowDetail = TVShowDetailModel.fromJson(json);
       return Right(tvShowDetail);
     } on SocketException {
       return Left(ConnectionFailure());
@@ -118,7 +118,7 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
       if (res.statusCode != 200) return Left(ServerFailure());
 
       final json = jsonDecode(res.body);
-      final tvShowListResponse = TvShowListResponse.fromJson(json);
+      final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());
@@ -141,7 +141,7 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
       );
       if (res.statusCode != 200) return Left(ServerFailure());
       final json = jsonDecode(res.body);
-      final tvShowListResponse = TvShowListResponse.fromJson(json);
+      final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
       return Left(ConnectionFailure());

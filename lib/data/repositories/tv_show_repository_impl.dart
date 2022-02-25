@@ -102,7 +102,7 @@ class TvShowRepositoryImpl implements TVShowRepository {
 
   @override
   Future<Either<Failure, String>> saveWatchlist(TVShowDetail tv) {
-    final record = TvShowTable(
+    final record = TVShowTable(
       id: tv.id,
       title: tv.title,
       overview: tv.overview,

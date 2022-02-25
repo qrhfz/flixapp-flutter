@@ -1,14 +1,14 @@
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:equatable/equatable.dart';
 
-class TvShowTable extends Equatable {
+class TVShowTable extends Equatable {
   final int id;
   final String title;
   final String overview;
   final String? posterPath;
 
-  factory TvShowTable.fromMap(Map<String, dynamic> map) {
-    return TvShowTable(
+  factory TVShowTable.fromMap(Map<String, dynamic> map) {
+    return TVShowTable(
       id: map['id'],
       overview: map['overview'],
       posterPath: map['posterPath'],
@@ -28,7 +28,7 @@ class TvShowTable extends Equatable {
   TVShow toEntity() =>
       TVShow(id: id, title: title, overview: overview, posterPath: posterPath);
 
-  TvShowTable({
+  TVShowTable({
     required this.id,
     required this.title,
     required this.overview,

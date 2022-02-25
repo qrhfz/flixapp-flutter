@@ -9,7 +9,7 @@ typedef TvShowsOrFailureFuture = Future<Either<Failure, List<TVShow>>>;
 typedef TvShowDetailOrFailureFuture = Future<Either<Failure, TVShowDetail>>;
 
 typedef TvShowModelsOrFailureFuture
-    = Future<Either<Failure, List<TvShowModel>>>;
+    = Future<Either<Failure, List<TVShowModel>>>;
 
 typedef TvShowDetailModelOrFailureFuture
-    = Future<Either<Failure, TvShowDetailModel>>;
+    = Future<Either<Failure, TVShowDetailModel>>;

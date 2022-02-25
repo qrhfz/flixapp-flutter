@@ -27,7 +27,7 @@ void main() {
     }
       ''';
 
-  final dummyTvModel = TvShowModel(
+  final dummyTvModel = TVShowModel(
     backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
     genreIds: [18],
     id: 85552,
@@ -55,7 +55,7 @@ void main() {
 
   group('tv model test', () {
     test('given json string return Tv object', () {
-      final tvModel = TvShowModel.fromJson(jsonDecode(dummyTvJson));
+      final tvModel = TVShowModel.fromJson(jsonDecode(dummyTvJson));
       assert(dummyTvModel == tvModel);
     });
 

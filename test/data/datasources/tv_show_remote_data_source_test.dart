@@ -124,7 +124,7 @@ void main() {
       );
 
       final res = await dataSource.getAiringTvShows();
-      assert(res is Right<Failure, List<TvShowModel>>);
+      assert(res is Right<Failure, List<TVShowModel>>);
     });
 
     test('getPopularTvShows should return list of TvShowModels', () async {
@@ -141,7 +141,7 @@ void main() {
         ),
       );
       final res = await dataSource.getPopularTvShows();
-      assert(res is Right<Failure, List<TvShowModel>>);
+      assert(res is Right<Failure, List<TVShowModel>>);
     });
 
     test('getTopRatedTvShows should return list of TvShowModels', () async {
@@ -158,7 +158,7 @@ void main() {
         ),
       );
       final res = await dataSource.getTopRatedTvShows();
-      assert(res is Right<Failure, List<TvShowModel>>);
+      assert(res is Right<Failure, List<TVShowModel>>);
     });
 
     test('getTvShowDetail should return TvShowDetailModel', () async {
@@ -185,7 +185,7 @@ void main() {
         throw AssertionError();
       });
       assert(tvShowDetail ==
-          TvShowDetailModel.fromJson(jsonDecode(tvShowDetailJsonString)));
+          TVShowDetailModel.fromJson(jsonDecode(tvShowDetailJsonString)));
     });
 
     test('searching tv show should return list of TvShowModels', () async {
@@ -202,7 +202,7 @@ void main() {
         ),
       );
       final res = await dataSource.searchTvShow('show');
-      assert(res is Right<Failure, List<TvShowModel>>);
+      assert(res is Right<Failure, List<TVShowModel>>);
     });
 
     test('tv recommendations show should return list of TvShowModels',
@@ -227,7 +227,7 @@ void main() {
         ),
       );
       final res = await dataSource.getTvShowRecommendations(id);
-      assert(res is Right<Failure, List<TvShowModel>>);
+      assert(res is Right<Failure, List<TVShowModel>>);
     });
   });
 }

@@ -4,10 +4,10 @@ import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
 
 abstract class TVShowLocalDataSource {
-  Future<Either<DatabaseFailure, List<TvShowTable>>> getTvWatchlist();
-  Future<Either<DatabaseFailure, String>> insertWatchlist(TvShowTable tvShow);
+  Future<Either<DatabaseFailure, List<TVShowTable>>> getTvWatchlist();
+  Future<Either<DatabaseFailure, String>> insertWatchlist(TVShowTable tvShow);
   Future<Either<DatabaseFailure, String>> removeWatchlist(int id);
-  Future<Either<DatabaseFailure, TvShowTable?>> getTvById(int id);
+  Future<Either<DatabaseFailure, TVShowTable?>> getTvById(int id);
 }
 
 class TVShowLocalDataSourceImpl implements TVShowLocalDataSource {
@@ -16,21 +16,21 @@ class TVShowLocalDataSourceImpl implements TVShowLocalDataSource {
   TVShowLocalDataSourceImpl(this._dbHelper);
 
   @override
-  Future<Either<DatabaseFailure, TvShowTable?>> getTvById(int id) async {
+  Future<Either<DatabaseFailure, TVShowTable?>> getTvById(int id) async {
     try {
       final tvMap = await _dbHelper.getTvById(id);
       if (tvMap == null) return Right(null);
-      return Right(TvShowTable.fromMap(tvMap));
+      return Right(TVShowTable.fromMap(tvMap));
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<DatabaseFailure, List<TvShowTable>>> getTvWatchlist() async {
+  Future<Either<DatabaseFailure, List<TVShowTable>>> getTvWatchlist() async {
     try {
       final tvMaps = await _dbHelper.getTvWatchlist();
-      final tvList = tvMaps.map((map) => TvShowTable.fromMap(map)).toList();
+      final tvList = tvMaps.map((map) => TVShowTable.fromMap(map)).toList();
       return Right(tvList);
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));
@@ -39,7 +39,7 @@ class TVShowLocalDataSourceImpl implements TVShowLocalDataSource {
 
   @override
   Future<Either<DatabaseFailure, String>> insertWatchlist(
-      TvShowTable tvShow) async {
+      TVShowTable tvShow) async {
     try {
       await _dbHelper.insertTvWatchlist(tvShow);
 

@@ -22,7 +22,7 @@ void main() {
     localDataSource: localDataSource,
   );
 
-  final List<TvShowModel> testTvShowList = [];
+  final List<TVShowModel> testTvShowList = [];
 
   group('Tv show repository', () {
     test('getPopularTvShows should return list of tv show', () async {
@@ -62,7 +62,7 @@ void main() {
       assert(res is Right<Failure, List<TVShow>>);
     });
     test('getTvShowDetail should return tv show detail object', () async {
-      final testData = TvShowDetailModel(
+      final testData = TVShowDetailModel(
         genres: [],
         id: 1,
         numberOfEpisodes: 1,

@@ -6,7 +6,7 @@ part of 'tv_show_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TvShowModel _$TvShowModelFromJson(Map<String, dynamic> json) => TvShowModel(
+TVShowModel _$TVShowModelFromJson(Map<String, dynamic> json) => TVShowModel(
       id: json['id'] as int,
       backdropPath: json['backdrop_path'] as String?,
       genreIds:
@@ -19,7 +19,7 @@ TvShowModel _$TvShowModelFromJson(Map<String, dynamic> json) => TvShowModel(
       voteCount: json['vote_count'] as int,
     );
 
-Map<String, dynamic> _$TvShowModelToJson(TvShowModel instance) =>
+Map<String, dynamic> _$TVShowModelToJson(TVShowModel instance) =>
     <String, dynamic>{
       'backdrop_path': instance.backdropPath,
       'genre_ids': instance.genreIds,
