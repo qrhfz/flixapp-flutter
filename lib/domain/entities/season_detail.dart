@@ -1,4 +1,3 @@
-import 'package:ditonton/domain/entities/episode.dart';
 import 'package:equatable/equatable.dart';
 
 class SeasonDetail extends Equatable {
@@ -8,7 +7,6 @@ class SeasonDetail extends Equatable {
   final String posterPath;
   final int seasonNumber;
   final DateTime airDate;
-  final List<Episode> episodes;
 
   SeasonDetail({
     required this.id,
@@ -17,10 +15,9 @@ class SeasonDetail extends Equatable {
     required this.posterPath,
     required this.seasonNumber,
     required this.airDate,
-    required this.episodes,
   });
 
   @override
   List<Object?> get props =>
-      [id, title, overview, posterPath, seasonNumber, airDate, episodes];
+      [id, title, overview, posterPath, seasonNumber, airDate];
 }

@@ -1,9 +1,6 @@
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:equatable/equatable.dart';
 
-import 'episode.dart';
-import 'season.dart';
-
 class TvShowDetail extends Equatable {
   final int id;
   final List<Genre> genres;

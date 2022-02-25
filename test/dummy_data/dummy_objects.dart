@@ -1,7 +1,6 @@
 import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
-import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
@@ -69,18 +68,6 @@ final testTvShow = TvShow(
   popularity: 0,
   posterPath: 'posterPath',
   title: 'title',
-);
-
-final testEpisode = Episode(
-  id: 1,
-  title: 'title',
-  overview: 'overview',
-  stillPath: 'stillPath',
-  seasonNumber: 1,
-  airDate: DateTime(2022, 1, 1),
-  voteAverage: 0,
-  voteCount: 0,
-  episodeNumber: 1,
 );
 
 final testTvShowDetail = TvShowDetail(
