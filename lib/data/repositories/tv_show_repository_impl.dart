@@ -80,12 +80,7 @@ class TvShowRepositoryImpl implements TVShowRepository {
       (fail) => Left(fail),
       (tvShowTableRecords) {
         final tvShows = tvShowTableRecords.map((tvShow) {
-          return TVShow(
-            id: tvShow.id,
-            title: tvShow.title,
-            overview: tvShow.overview,
-            posterPath: tvShow.posterPath!,
-          );
+          return tvShow.toEntity();
         }).toList();
         return Right(tvShows);
       },

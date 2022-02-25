@@ -1,3 +1,4 @@
+import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:equatable/equatable.dart';
 
 class TvShowTable extends Equatable {
@@ -23,6 +24,9 @@ class TvShowTable extends Equatable {
       'title': title,
     };
   }
+
+  TVShow toEntity() =>
+      TVShow(id: id, title: title, overview: overview, posterPath: posterPath);
 
   TvShowTable({
     required this.id,

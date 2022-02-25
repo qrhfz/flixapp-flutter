@@ -14,9 +14,9 @@ import 'tv_show_list_notifier_test.mocks.dart';
 
 @GenerateMocks([GetAiringTVShows, GetPopularTVShows, GetTopRatedTVShows])
 void main() {
-  final GetAiringTVShows mockGetAiringTvShows = MockGetAiringTvShows();
-  final GetPopularTVShows mockGetPopularTvShows = MockGetPopularTvShows();
-  final GetTopRatedTVShows mockGetTopRatedTvShows = MockGetTopRatedTvShows();
+  final GetAiringTVShows mockGetAiringTvShows = MockGetAiringTVShows();
+  final GetPopularTVShows mockGetPopularTvShows = MockGetPopularTVShows();
+  final GetTopRatedTVShows mockGetTopRatedTvShows = MockGetTopRatedTVShows();
   late TVShowListNotifier provider;
   setUp(() {
     provider = TVShowListNotifier(

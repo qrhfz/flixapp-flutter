@@ -250,11 +250,11 @@ class MockDatabaseHelper extends _i1.Mock implements _i14.DatabaseHelper {
           as _i6.Future<Map<String, dynamic>?>);
 }
 
-/// A class which mocks [TvShowRepository].
+/// A class which mocks [TVShowRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTvShowRepository extends _i1.Mock implements _i17.TVShowRepository {
-  MockTvShowRepository() {
+class MockTVShowRepository extends _i1.Mock implements _i17.TVShowRepository {
+  MockTVShowRepository() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -322,12 +322,12 @@ class MockTvShowRepository extends _i1.Mock implements _i17.TVShowRepository {
           .Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>>);
 }
 
-/// A class which mocks [TvRemoteDataSource].
+/// A class which mocks [TVShowRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTvRemoteDataSource extends _i1.Mock
+class MockTVShowRemoteDataSource extends _i1.Mock
     implements _i20.TVShowRemoteDataSource {
-  MockTvRemoteDataSource() {
+  MockTVShowRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -381,12 +381,12 @@ class MockTvRemoteDataSource extends _i1.Mock
           as _i6.Future<_i2.Either<_i7.Failure, List<_i21.TvShowModel>>>);
 }
 
-/// A class which mocks [TvLocalDataSource].
+/// A class which mocks [TVShowLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTvLocalDataSource extends _i1.Mock
+class MockTVShowLocalDataSource extends _i1.Mock
     implements _i23.TVShowLocalDataSource {
-  MockTvLocalDataSource() {
+  MockTVShowLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 

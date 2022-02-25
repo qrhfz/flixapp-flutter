@@ -13,7 +13,7 @@ void main() {
   late final TVShowRepository repository;
 
   setUp(() {
-    repository = MockTvShowRepository();
+    repository = MockTVShowRepository();
     usecase = GetAiringTVShows(repository);
   });
   group('Get airing tv shows', () {

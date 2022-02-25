@@ -13,7 +13,7 @@ void main() {
   late final GetTopRatedTVShows usecase;
   final List<TVShow> dummyTv = [];
   setUp(() {
-    tvRepository = MockTvShowRepository();
+    tvRepository = MockTVShowRepository();
     usecase = GetTopRatedTVShows(tvRepository);
   });
   group('Get top rated tv shows', () {

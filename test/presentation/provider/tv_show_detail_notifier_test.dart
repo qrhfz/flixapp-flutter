@@ -23,12 +23,12 @@ import 'tv_show_detail_notifier_test.mocks.dart';
   GetTvRecommendations,
 ])
 void main() {
-  final GetTVShowDetail getDetail = MockGetTvShowDetail();
+  final GetTVShowDetail getDetail = MockGetTVShowDetail();
   final GetTvRecommendations getRecommendations = MockGetTvRecommendations();
   final GetTVShowWatchlistStatus getWatchlistStatus =
-      MockGetTvShowWatchlistStatus();
-  final SaveTVShowWatchlist saveWatchlist = MockSaveTvShowWatchlist();
-  final RemoveTVShowWatchlist removeWatchlist = MockRemoveTvShowWatchlist();
+      MockGetTVShowWatchlistStatus();
+  final SaveTVShowWatchlist saveWatchlist = MockSaveTVShowWatchlist();
+  final RemoveTVShowWatchlist removeWatchlist = MockRemoveTVShowWatchlist();
 
   final notifier = TVShowDetailNotifier(
     getDetail: getDetail,

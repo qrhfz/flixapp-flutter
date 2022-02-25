@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  final repository = MockTvShowRepository();
+  final repository = MockTVShowRepository();
   final usecase = GetTvRecommendations(repository);
   final List<TVShow> tTvList = [];
   test('get tv recommendation usecase return list of tv show', () async {

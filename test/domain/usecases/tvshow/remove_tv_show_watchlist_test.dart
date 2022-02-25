@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  final repository = MockTvShowRepository();
+  final repository = MockTVShowRepository();
   final usecase = RemoveTVShowWatchlist(repository);
 
   test('Removing watchlist should responds with string message', () async {

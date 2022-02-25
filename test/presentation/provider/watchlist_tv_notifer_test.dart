@@ -12,7 +12,7 @@ import 'watchlist_tv_notifer_test.mocks.dart';
 
 @GenerateMocks([GetTVShowWatchlist])
 void main() {
-  final usecase = MockGetTvShowWatchlist();
+  final usecase = MockGetTVShowWatchlist();
   final provider = WatchlistTVShowNotifier(getWatchlistTvShows: usecase);
 
   test('request state should be initialized as empty', () {

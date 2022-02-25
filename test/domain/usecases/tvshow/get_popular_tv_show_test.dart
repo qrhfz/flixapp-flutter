@@ -11,7 +11,7 @@ void main() {
   late final GetPopularTVShows usecase;
 
   setUp(() {
-    tvRepository = MockTvShowRepository();
+    tvRepository = MockTVShowRepository();
     usecase = GetPopularTVShows(tvRepository);
   });
 

@@ -15,7 +15,7 @@ void main() {
     late final GetTVShowDetail usecase;
 
     setUp(() {
-      repository = MockTvShowRepository();
+      repository = MockTVShowRepository();
       usecase = GetTVShowDetail(repository);
     });
     test('execute', () async {

@@ -40,11 +40,7 @@ class TvShowModel extends Equatable {
       overview: overview,
       title: title,
       posterPath: posterPath,
-      // backdropPath: backdropPath,
       popularity: popularity,
-      // voteAverage: voteAverage,
-      // genreIds: genreIds,
-      // voteCount: voteCount,
     );
   }
 

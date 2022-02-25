@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  final TVShowRepository repository = MockTvShowRepository();
+  final TVShowRepository repository = MockTVShowRepository();
   final SearchTVShows usecase = SearchTVShows(repository);
 
   group('Searching tv shows', () {

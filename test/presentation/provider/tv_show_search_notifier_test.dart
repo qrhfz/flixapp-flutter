@@ -12,7 +12,7 @@ import 'tv_show_search_notifier_test.mocks.dart';
 
 @GenerateMocks([SearchTVShows])
 void main() {
-  final usecase = MockSearchTvShows();
+  final usecase = MockSearchTVShows();
   final provider = TVShowSearchNotifier(usecase);
 
   test('request state should be initialized as empty', () {
