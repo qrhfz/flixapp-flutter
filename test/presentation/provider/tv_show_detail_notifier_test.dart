@@ -116,6 +116,18 @@ void main() {
       expect(notifier.isAddedToWatchlist, true);
     });
 
+    test('add to watchlist failure should change message', () async {
+      when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      await notifier.fetchDetail(1);
+
+      when(getWatchlistStatus(1)).thenAnswer((_) async => false);
+      when(saveWatchlist(testTvShowDetail))
+          .thenAnswer((_) async => Left(DatabaseFailure('error')));
+      await notifier.addWatchlist();
+
+      expect(notifier.watchlistMessage, 'error');
+    });
+
     test('remove from watchlist should change message', () async {
       when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
       await notifier.fetchDetail(1);
@@ -127,6 +139,18 @@ void main() {
       expect(notifier.watchlistMessage,
           TVShowDetailNotifier.watchlistRemoveSuccessMessage);
       expect(notifier.isAddedToWatchlist, false);
+    });
+
+    test('remove from watchlist failure should change message', () async {
+      when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      await notifier.fetchDetail(1);
+
+      when(getWatchlistStatus(1)).thenAnswer((_) async => false);
+      when(removeWatchlist(1))
+          .thenAnswer((_) async => Left(DatabaseFailure('error')));
+      await notifier.removeFromWatchlist();
+
+      expect(notifier.watchlistMessage, 'error');
     });
   });
 }

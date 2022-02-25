@@ -7,18 +7,11 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final dummyTvJson = '''
       {
-      "backdrop_path": "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
-      "first_air_date": "2019-06-16",
       "genre_ids": [
         18
       ],
       "id": 85552,
       "name": "Euphoria",
-      "origin_country": [
-        "US"
-      ],
-      "original_language": "en",
-      "original_name": "Euphoria",
       "overview": "A group of high school students navigate love and friendships in a world of drugs, sex, trauma, and social media.",
       "popularity": 4322.903,
       "poster_path": "/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg",
@@ -28,7 +21,6 @@ void main() {
       ''';
 
   final dummyTvModel = TVShowModel(
-    backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
     genreIds: [18],
     id: 85552,
     title: 'Euphoria',
@@ -41,25 +33,26 @@ void main() {
   );
 
   final dummyTv = TVShow(
-    // backdropPath: "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
-    // genreIds: [18],
     id: 85552,
     title: 'Euphoria',
     overview:
         'A group of high school students navigate love and friendships in a world of drugs, sex, trauma, and social media.',
     popularity: 4322.903,
     posterPath: '/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg',
-    // voteAverage: 8.4,
-    // voteCount: 5654,
   );
 
   group('tv model test', () {
-    test('given json string return Tv object', () {
+    test('given json object return TVShow object', () {
       final tvModel = TVShowModel.fromJson(jsonDecode(dummyTvJson));
       assert(dummyTvModel == tvModel);
     });
 
-    test('given TvModel, toEntity returns Tv object', () {
+    test('given TVShow object return json object', () {
+      final json = dummyTvModel.toJson();
+      expect(json, jsonDecode(dummyTvJson));
+    });
+
+    test('given TVModel, toEntity returns TVShow object', () {
       final tvModelResult = dummyTvModel.toEntity();
       assert(tvModelResult == dummyTv);
     });

@@ -12,9 +12,9 @@ class TVShowListResponse extends Equatable {
   TVShowListResponse({required this.page, required this.results});
 
   factory TVShowListResponse.fromJson(Map<String, dynamic> json) =>
-      _$TvShowListResponseFromJson(json);
+      _$TVShowListResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TvShowListResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TVShowListResponseToJson(this);
 
   @override
   List<Object?> get props => [page, results];

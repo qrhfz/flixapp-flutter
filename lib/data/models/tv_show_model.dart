@@ -8,7 +8,6 @@ part 'tv_show_model.g.dart';
 class TVShowModel extends Equatable {
   TVShowModel({
     required this.id,
-    required this.backdropPath,
     required this.genreIds,
     required this.overview,
     required this.popularity,
@@ -18,7 +17,6 @@ class TVShowModel extends Equatable {
     required this.voteCount,
   });
 
-  final String? backdropPath;
   final List<int>? genreIds;
   final int id;
   final String? overview;
@@ -30,9 +28,9 @@ class TVShowModel extends Equatable {
   final int voteCount;
 
   factory TVShowModel.fromJson(Map<String, dynamic> json) =>
-      _$TvShowModelFromJson(json);
+      _$TVShowModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TvShowModelToJson(this);
+  Map<String, dynamic> toJson() => _$TVShowModelToJson(this);
 
   TVShow toEntity() {
     return TVShow(
@@ -47,7 +45,6 @@ class TVShowModel extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        backdropPath,
         genreIds,
         overview,
         popularity,

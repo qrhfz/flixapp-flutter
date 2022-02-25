@@ -8,7 +8,6 @@ part of 'tv_show_model.dart';
 
 TVShowModel _$TVShowModelFromJson(Map<String, dynamic> json) => TVShowModel(
       id: json['id'] as int,
-      backdropPath: json['backdrop_path'] as String?,
       genreIds:
           (json['genre_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),
       overview: json['overview'] as String?,
@@ -21,7 +20,6 @@ TVShowModel _$TVShowModelFromJson(Map<String, dynamic> json) => TVShowModel(
 
 Map<String, dynamic> _$TVShowModelToJson(TVShowModel instance) =>
     <String, dynamic>{
-      'backdrop_path': instance.backdropPath,
       'genre_ids': instance.genreIds,
       'id': instance.id,
       'overview': instance.overview,
