@@ -1,11 +1,7 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/usecases/movie/search_movies.dart';
-import 'package:ditonton/domain/usecases/tvshow/search_tv_shows.dart';
 import 'package:flutter/foundation.dart';
-
-import '../../injection.dart';
 
 class MovieSearchNotifier extends ChangeNotifier {
   final SearchMovies searchMovies;

@@ -114,7 +114,6 @@ void main() {
           .thenAnswer((_) async => Left(ConnectionFailure()));
 
       final res = await repository.searchTvShows('test');
-      final data = res.getOrElse(() => []);
       expect(res, Left(ConnectionFailure()));
     });
 
@@ -131,7 +130,6 @@ void main() {
           .thenAnswer((_) async => Left(ConnectionFailure()));
 
       final res = await repository.getTvRecommendations(1);
-      final data = res.getOrElse(() => []);
       expect(res, Left(ConnectionFailure()));
     });
     test('getTvShowDetail should return tv show detail object', () async {
@@ -168,19 +166,6 @@ void main() {
       expect(res, Right(tEntity));
     });
     test('getTvShowDetail error should return a failure', () async {
-      final tModel = TVShowDetailModel(
-        genres: [],
-        id: 1,
-        numberOfEpisodes: 1,
-        numberOfSeasons: 1,
-        overview: '',
-        popularity: 1,
-        title: '',
-        posterPath: '',
-        voteAverage: 1,
-        voteCount: 1,
-      );
-
       when(remoteDataSource.getTvShowDetail(1))
           .thenAnswer((_) async => Left(ConnectionFailure()));
       final Either<Failure, TVShowDetail> res =
