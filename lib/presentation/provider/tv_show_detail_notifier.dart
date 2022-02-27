@@ -57,10 +57,10 @@ class TVShowDetailNotifier extends ChangeNotifier {
         detailState = RequestState.Error;
         message = fail.message;
       },
-      (tvShow) {
+      (tvShow) async {
         detailState = RequestState.Loaded;
-
         tv = tvShow;
+        await checkWatchlistStatus();
       },
     );
 

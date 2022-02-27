@@ -45,6 +45,7 @@ void main() {
     test('should change tvdetail data after fetching data through usecase',
         () async {
       when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      when(getWatchlistStatus(1)).thenAnswer((_) async => true);
       await notifier.fetchDetail(1);
       expect(notifier.tv, testTvShowDetail);
     });
@@ -52,6 +53,7 @@ void main() {
     test('should change state to Loaded after data is successfully fetched',
         () async {
       when(getDetail(1)).thenAnswer((_) async => Right(testTvShowDetail));
+      when(getWatchlistStatus(1)).thenAnswer((_) async => true);
       await notifier.fetchDetail(1);
       expect(notifier.detailState, RequestState.Loaded);
     });

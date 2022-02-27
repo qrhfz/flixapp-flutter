@@ -39,6 +39,8 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   void didPopNext() {
     Provider.of<WatchlistMovieNotifier>(context, listen: false)
         .fetchWatchlistMovies();
+    Provider.of<WatchlistTVShowNotifier>(context, listen: false)
+        .fetchWatchlistTvShows();
   }
 
   @override

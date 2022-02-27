@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
@@ -9,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
-import '../../domain/entities/genre.dart';
+
 import '../../domain/entities/tv_show.dart';
 import '../provider/tv_show_detail_notifier.dart';
 
@@ -175,9 +173,7 @@ class _DetailContent extends StatelessWidget {
                 ),
               );
             },
-            // initialChildSize: 0.5,
             minChildSize: 0.25,
-            // maxChildSize: 1.0,
           ),
         ),
         Padding(
