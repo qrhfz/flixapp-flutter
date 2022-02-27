@@ -54,15 +54,15 @@ class TVShowDetailNotifier extends ChangeNotifier {
       (fail) {
         detailState = RequestState.Error;
         message = fail.message;
+        notifyListeners();
       },
       (tvShow) async {
         detailState = RequestState.Loaded;
         tv = tvShow;
+        notifyListeners();
         await checkWatchlistStatus();
       },
     );
-
-    notifyListeners();
   }
 
   Future<void> fetchRecommendations(int id) async {
