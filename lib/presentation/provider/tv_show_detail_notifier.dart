@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_tv_show_detail.dart';
