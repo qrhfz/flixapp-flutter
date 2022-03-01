@@ -10,17 +10,17 @@ part 'movie_detail_recommendations_cubit.freezed.dart';
 
 class MovieDetailRecommendationsCubit
     extends Cubit<MovieDetailRecommendationsState> {
-  late final GetMovieRecommendations getMovieRecommendations;
+  late final GetMovieRecommendations _getMovieRecommendations;
 
   MovieDetailRecommendationsCubit(
       {GetMovieRecommendations? getMovieRecommendations})
       : super(MovieDetailRecommendationsState.initial()) {
-    this.getMovieRecommendations = getMovieRecommendations ?? locator();
+    this._getMovieRecommendations = getMovieRecommendations ?? locator();
   }
 
   Future<void> fetchRecommendations(int id) async {
     emit(MovieDetailRecommendationsState.loading());
-    final result = await getMovieRecommendations.execute(id);
+    final result = await _getMovieRecommendations.execute(id);
     result.fold(
       (failure) => emit(MovieDetailRecommendationsState.error(failure.message)),
       (movies) => emit(MovieDetailRecommendationsState.data(movies)),

@@ -44,7 +44,28 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         loading: () => Center(
           child: CircularProgressIndicator(),
         ),
-        data: (movie) => DetailContent(movie),
+        data: (movie) =>
+            BlocListener<MovieDetailWatchlistCubit, MovieDetailWatchlistState>(
+          listener: (BuildContext context, state) {
+            state.maybeWhen(
+              error: (message) {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        content: Text(message),
+                      );
+                    });
+              },
+              success: (message) {
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(message)));
+              },
+              orElse: () => null,
+            );
+          },
+          child: DetailContent(movie),
+        ),
         error: (errorMessage) => Text(errorMessage),
       );
     }));
@@ -281,23 +302,6 @@ class WatchlistButton extends StatelessWidget {
                   listen: false)
               .removeFromWatchlist(movie);
         }
-
-        // final message = Provider.of<MovieDetailNotifier>(context, listen: false)
-        //     .watchlistMessage;
-
-        // if (message == MovieDetailNotifier.watchlistAddSuccessMessage ||
-        //     message == MovieDetailNotifier.watchlistRemoveSuccessMessage) {
-        //   ScaffoldMessenger.of(context)
-        //       .showSnackBar(SnackBar(content: Text(message)));
-        // } else {
-        //   showDialog(
-        //       context: context,
-        //       builder: (context) {
-        //         return AlertDialog(
-        //           content: Text(message),
-        //         );
-        //       });
-        // }
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,

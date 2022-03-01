@@ -11,22 +11,22 @@ part 'movie_detail_watchlist_state.dart';
 part 'movie_detail_watchlist_cubit.freezed.dart';
 
 class MovieDetailWatchlistCubit extends Cubit<MovieDetailWatchlistState> {
-  late final GetWatchListStatus getWatchListStatus;
-  late final SaveWatchlist saveWatchlist;
-  late final RemoveWatchlist removeWatchlist;
+  late final GetWatchListStatus _getWatchListStatus;
+  late final SaveWatchlist _saveWatchlist;
+  late final RemoveWatchlist _removeWatchlist;
 
   MovieDetailWatchlistCubit({
     GetWatchListStatus? getWatchListStatus,
     SaveWatchlist? saveWatchlist,
     RemoveWatchlist? removeWatchlist,
   }) : super(MovieDetailWatchlistState.data(false)) {
-    this.getWatchListStatus = getWatchListStatus ?? locator();
-    this.saveWatchlist = saveWatchlist ?? locator();
-    this.removeWatchlist = removeWatchlist ?? locator();
+    this._getWatchListStatus = getWatchListStatus ?? locator();
+    this._saveWatchlist = saveWatchlist ?? locator();
+    this._removeWatchlist = removeWatchlist ?? locator();
   }
 
   Future<void> addWatchlist(MovieDetail movie) async {
-    final result = await saveWatchlist.execute(movie);
+    final result = await _saveWatchlist.execute(movie);
 
     await result.fold(
       (failure) async {
@@ -41,7 +41,7 @@ class MovieDetailWatchlistCubit extends Cubit<MovieDetailWatchlistState> {
   }
 
   Future<void> removeFromWatchlist(MovieDetail movie) async {
-    final result = await removeWatchlist.execute(movie);
+    final result = await _removeWatchlist.execute(movie);
 
     await result.fold(
       (failure) async {
@@ -56,7 +56,7 @@ class MovieDetailWatchlistCubit extends Cubit<MovieDetailWatchlistState> {
   }
 
   Future<void> loadWatchlistStatus(int id) async {
-    final result = await getWatchListStatus.execute(id);
+    final result = await _getWatchListStatus.execute(id);
     emit(MovieDetailWatchlistState.data(result));
   }
 }
