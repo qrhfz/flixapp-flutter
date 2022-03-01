@@ -1,5 +1,7 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
+import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
+import 'package:ditonton/presentation/cubit/movie_detail_recommendations_cubit.dart';
 
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
@@ -12,9 +14,11 @@ import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:ditonton/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
+import 'presentation/cubit/movie_detail_watchlist_cubit.dart';
 import 'presentation/provider/tv_show_search_notifier.dart';
 
 void main() {
@@ -61,16 +65,32 @@ class MyApp extends StatelessWidget {
           lazy: true,
         ),
       ],
-      child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData.dark().copyWith(
-            primaryColor: kRichBlack,
-            scaffoldBackgroundColor: kRichBlack,
-            textTheme: kTextTheme,
-            colorScheme: kColorScheme.copyWith(secondary: kMikadoYellow),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => MovieDetailCubit(),
+            lazy: true,
           ),
-          navigatorObservers: [routeObserver],
-          onGenerateRoute: routes),
+          BlocProvider(
+            create: (_) => MovieDetailRecommendationsCubit(),
+            lazy: true,
+          ),
+          BlocProvider(
+            create: (_) => MovieDetailWatchlistCubit(),
+            lazy: true,
+          ),
+        ],
+        child: MaterialApp(
+            title: 'Flutter Demo',
+            theme: ThemeData.dark().copyWith(
+              primaryColor: kRichBlack,
+              scaffoldBackgroundColor: kRichBlack,
+              textTheme: kTextTheme,
+              colorScheme: kColorScheme.copyWith(secondary: kMikadoYellow),
+            ),
+            navigatorObservers: [routeObserver],
+            onGenerateRoute: routes),
+      ),
     );
   }
 }
