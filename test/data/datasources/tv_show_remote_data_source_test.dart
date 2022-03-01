@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/api_key.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
@@ -112,7 +111,7 @@ void main() {
     test('getAiringTvShows should return list of TvShowModels', () async {
       when(
         client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.airingPath,
-            {'api_key': apiKey})),
+            {'api_key': TVShowRemoteDataSourceImpl.apiKey})),
       ).thenAnswer(
         (_) async => Response(
           tvShowListJsonString,
@@ -130,7 +129,7 @@ void main() {
     test('getPopularTvShows should return list of TvShowModels', () async {
       when(
         client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.popularPath,
-            {'api_key': apiKey})),
+            {'api_key': TVShowRemoteDataSourceImpl.apiKey})),
       ).thenAnswer(
         (_) async => Response(
           tvShowListJsonString,
@@ -147,7 +146,7 @@ void main() {
     test('getTopRatedTvShows should return list of TvShowModels', () async {
       when(
         client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.topRatedPath,
-            {'api_key': apiKey})),
+            {'api_key': TVShowRemoteDataSourceImpl.apiKey})),
       ).thenAnswer(
         (_) async => Response(
           tvShowListJsonString,
@@ -168,7 +167,7 @@ void main() {
           Uri.https(
             authority,
             path.join(TVShowRemoteDataSourceImpl.basePath, id.toString()),
-            {'api_key': apiKey},
+            {'api_key': TVShowRemoteDataSourceImpl.apiKey},
           ),
         ),
       ).thenAnswer(
@@ -191,7 +190,7 @@ void main() {
     test('searching tv show should return list of TvShowModels', () async {
       when(
         client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.searchPath,
-            {'api_key': apiKey, 'query': 'show'})),
+            {'api_key': TVShowRemoteDataSourceImpl.apiKey, 'query': 'show'})),
       ).thenAnswer(
         (_) async => Response(
           tvShowListJsonString,
@@ -214,7 +213,7 @@ void main() {
             authority,
             path.join(TVShowRemoteDataSourceImpl.basePath, id.toString(),
                 'recommendations'),
-            {'api_key': apiKey},
+            {'api_key': TVShowRemoteDataSourceImpl.apiKey},
           ),
         ),
       ).thenAnswer(

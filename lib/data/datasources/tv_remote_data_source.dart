@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/api_key.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/typealias.dart';
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
@@ -20,6 +19,7 @@ abstract class TVShowRemoteDataSource {
 }
 
 class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
+  static const apiKey = "2174d146bb9c0eab47529b2e77d6b526";
   final authority = 'api.themoviedb.org';
   final http.Client client;
 
