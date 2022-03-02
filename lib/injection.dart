@@ -22,7 +22,6 @@ import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist_status.dart';
 import 'package:ditonton/domain/usecases/tvshow/remove_tv_show_watchlist.dart';
 import 'package:ditonton/domain/usecases/tvshow/save_tv_show_watchlist.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
@@ -46,15 +45,6 @@ void init() {
       getNowPlayingMovies: locator(),
       getPopularMovies: locator(),
       getTopRatedMovies: locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => MovieDetailNotifier(
-      getMovieDetail: locator(),
-      getMovieRecommendations: locator(),
-      getWatchListStatus: locator(),
-      saveWatchlist: locator(),
-      removeWatchlist: locator(),
     ),
   );
   locator.registerFactory(

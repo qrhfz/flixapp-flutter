@@ -3,7 +3,6 @@ import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_recommendations_cubit.dart';
 
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
@@ -33,9 +32,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieListNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieSearchNotifier>(),
