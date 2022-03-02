@@ -1,35 +1,39 @@
-import 'package:ditonton/common/state_enum.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:ditonton/domain/entities/movie.dart';
+import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
-import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'popular_movies_page_test.mocks.dart';
+class MockMoviePopularCubit extends MockCubit<MoviePopularState>
+    implements MoviePopularCubit {}
 
-@GenerateMocks([PopularMoviesNotifier])
 void main() {
-  late MockPopularMoviesNotifier mockNotifier;
+  late MockMoviePopularCubit mockCubit;
 
   setUp(() {
-    mockNotifier = MockPopularMoviesNotifier();
+    mockCubit = MockMoviePopularCubit();
   });
 
   Widget _makeTestableWidget(Widget body) {
-    return ChangeNotifierProvider<PopularMoviesNotifier>.value(
-      value: mockNotifier,
+    return BlocProvider<MoviePopularCubit>.value(
+      value: mockCubit,
       child: MaterialApp(
         home: body,
       ),
     );
   }
 
+  setUp(() {
+    when(mockCubit.fetchPopularMovies).thenAnswer((_) async {});
+  });
+
   testWidgets('Page should display center progress bar when loading',
       (WidgetTester tester) async {
-    when(mockNotifier.state).thenReturn(RequestState.Loading);
+    when(() => mockCubit.state).thenReturn(MoviePopularState.loading());
 
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
@@ -42,9 +46,7 @@ void main() {
 
   testWidgets('Page should display ListView when data is loaded',
       (WidgetTester tester) async {
-    when(mockNotifier.state).thenReturn(RequestState.Loaded);
-    when(mockNotifier.movies).thenReturn(<Movie>[]);
-
+    when(() => mockCubit.state).thenReturn(MoviePopularState.data(<Movie>[]));
     final listViewFinder = find.byType(ListView);
 
     await tester.pumpWidget(_makeTestableWidget(PopularMoviesPage()));
@@ -54,8 +56,8 @@ void main() {
 
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(mockNotifier.state).thenReturn(RequestState.Error);
-    when(mockNotifier.message).thenReturn('Error message');
+    when(() => mockCubit.state)
+        .thenReturn(MoviePopularState.error('error message'));
 
     final textFinder = find.byKey(Key('error_message'));
 

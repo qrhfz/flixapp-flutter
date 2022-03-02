@@ -3,7 +3,7 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
-import 'package:ditonton/presentation/cubit/movie_detail_recommendations_cubit.dart';
+import 'package:ditonton/presentation/cubit/movie_recommendation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -30,7 +30,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           .fetchMovieDetail(widget.id);
       BlocProvider.of<MovieDetailWatchlistCubit>(context, listen: false)
           .loadWatchlistStatus(widget.id);
-      BlocProvider.of<MovieDetailRecommendationsCubit>(context, listen: false)
+      BlocProvider.of<MovieRecommendationCubit>(context, listen: false)
           .fetchRecommendations(widget.id);
     });
   }
@@ -40,7 +40,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     return Scaffold(body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
         builder: (context, state) {
       return state.when(
-        init: () => Container(),
+        initial: () => Container(),
         loading: () => Center(
           child: CircularProgressIndicator(),
         ),
@@ -168,8 +168,8 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            BlocBuilder<MovieDetailRecommendationsCubit,
-                                MovieDetailRecommendationsState>(
+                            BlocBuilder<MovieRecommendationCubit,
+                                MovieRecommendationState>(
                               builder: (context, state) {
                                 return state.when(
                                   initial: () => SizedBox.shrink(),

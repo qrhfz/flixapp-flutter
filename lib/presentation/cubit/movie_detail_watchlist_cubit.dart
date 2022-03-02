@@ -16,13 +16,13 @@ class MovieDetailWatchlistCubit extends Cubit<MovieDetailWatchlistState> {
   late final RemoveWatchlist _removeWatchlist;
 
   MovieDetailWatchlistCubit({
-    GetWatchListStatus? getWatchListStatus,
-    SaveWatchlist? saveWatchlist,
-    RemoveWatchlist? removeWatchlist,
+    required GetWatchListStatus getWatchListStatus,
+    required SaveWatchlist saveWatchlist,
+    required RemoveWatchlist removeWatchlist,
   }) : super(MovieDetailWatchlistState.data(false)) {
-    this._getWatchListStatus = getWatchListStatus ?? locator();
-    this._saveWatchlist = saveWatchlist ?? locator();
-    this._removeWatchlist = removeWatchlist ?? locator();
+    this._getWatchListStatus = getWatchListStatus;
+    this._saveWatchlist = saveWatchlist;
+    this._removeWatchlist = removeWatchlist;
   }
 
   Future<void> addWatchlist(MovieDetail movie) async {

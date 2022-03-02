@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_detail_recommendations_cubit.dart';
+import 'package:ditonton/presentation/cubit/movie_recommendation_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_watchlist_cubit.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:mocktail/mocktail.dart';
@@ -14,8 +14,8 @@ class MockMovieDetailCubit extends MockCubit<MovieDetailState>
     implements MovieDetailCubit {}
 
 class MockMovieDetailRecommendationsCubit
-    extends MockCubit<MovieDetailRecommendationsState>
-    implements MovieDetailRecommendationsCubit {}
+    extends MockCubit<MovieRecommendationState>
+    implements MovieRecommendationCubit {}
 
 class MockMovieDetailWatchlistCubit extends MockCubit<MovieDetailWatchlistState>
     implements MovieDetailWatchlistCubit {}
@@ -36,7 +36,7 @@ void main() {
         .thenReturn(const MovieDetailWatchlistState.data(false));
     when(() => watchlistCubit.loadWatchlistStatus(1)).thenAnswer((_) async {});
     when(() => recommendationsCubit.state)
-        .thenReturn(const MovieDetailRecommendationsState.data([]));
+        .thenReturn(const MovieRecommendationState.data([]));
     when(() => recommendationsCubit.fetchRecommendations(1))
         .thenAnswer((_) async {});
     when(() => watchlistCubit.addWatchlist(testMovieDetail))
@@ -47,7 +47,7 @@ void main() {
     return MultiBlocProvider(
       providers: [
         BlocProvider<MovieDetailCubit>.value(value: detailCubit),
-        BlocProvider<MovieDetailRecommendationsCubit>.value(
+        BlocProvider<MovieRecommendationCubit>.value(
             value: recommendationsCubit),
         BlocProvider<MovieDetailWatchlistCubit>.value(value: watchlistCubit),
       ],

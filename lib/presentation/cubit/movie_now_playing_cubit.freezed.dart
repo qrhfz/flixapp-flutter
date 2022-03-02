@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'movie_detail_recommendations_cubit.dart';
+part of 'movie_now_playing_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$MovieDetailRecommendationsStateTearOff {
-  const _$MovieDetailRecommendationsStateTearOff();
+class _$MovieNowPlayingStateTearOff {
+  const _$MovieNowPlayingStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -25,9 +25,9 @@ class _$MovieDetailRecommendationsStateTearOff {
     return const _Loading();
   }
 
-  _Data data(List<Movie> reommendations) {
+  _Data data(List<Movie> nowPlaying) {
     return _Data(
-      reommendations,
+      nowPlaying,
     );
   }
 
@@ -39,16 +39,15 @@ class _$MovieDetailRecommendationsStateTearOff {
 }
 
 /// @nodoc
-const $MovieDetailRecommendationsState =
-    _$MovieDetailRecommendationsStateTearOff();
+const $MovieNowPlayingState = _$MovieNowPlayingStateTearOff();
 
 /// @nodoc
-mixin _$MovieDetailRecommendationsState {
+mixin _$MovieNowPlayingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> reommendations) data,
+    required TResult Function(List<Movie> nowPlaying) data,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +55,7 @@ mixin _$MovieDetailRecommendationsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +63,7 @@ mixin _$MovieDetailRecommendationsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -97,21 +96,20 @@ mixin _$MovieDetailRecommendationsState {
 }
 
 /// @nodoc
-abstract class $MovieDetailRecommendationsStateCopyWith<$Res> {
-  factory $MovieDetailRecommendationsStateCopyWith(
-          MovieDetailRecommendationsState value,
-          $Res Function(MovieDetailRecommendationsState) then) =
-      _$MovieDetailRecommendationsStateCopyWithImpl<$Res>;
+abstract class $MovieNowPlayingStateCopyWith<$Res> {
+  factory $MovieNowPlayingStateCopyWith(MovieNowPlayingState value,
+          $Res Function(MovieNowPlayingState) then) =
+      _$MovieNowPlayingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MovieDetailRecommendationsStateCopyWithImpl<$Res>
-    implements $MovieDetailRecommendationsStateCopyWith<$Res> {
-  _$MovieDetailRecommendationsStateCopyWithImpl(this._value, this._then);
+class _$MovieNowPlayingStateCopyWithImpl<$Res>
+    implements $MovieNowPlayingStateCopyWith<$Res> {
+  _$MovieNowPlayingStateCopyWithImpl(this._value, this._then);
 
-  final MovieDetailRecommendationsState _value;
+  final MovieNowPlayingState _value;
   // ignore: unused_field
-  final $Res Function(MovieDetailRecommendationsState) _then;
+  final $Res Function(MovieNowPlayingState) _then;
 }
 
 /// @nodoc
@@ -122,7 +120,7 @@ abstract class _$InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$InitialCopyWithImpl<$Res>
-    extends _$MovieDetailRecommendationsStateCopyWithImpl<$Res>
+    extends _$MovieNowPlayingStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -138,7 +136,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'MovieDetailRecommendationsState.initial()';
+    return 'MovieNowPlayingState.initial()';
   }
 
   @override
@@ -155,7 +153,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> reommendations) data,
+    required TResult Function(List<Movie> nowPlaying) data,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -166,7 +164,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
   }) {
     return initial?.call();
@@ -177,7 +175,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -225,7 +223,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements MovieDetailRecommendationsState {
+abstract class _Initial implements MovieNowPlayingState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -237,7 +235,7 @@ abstract class _$LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadingCopyWithImpl<$Res>
-    extends _$MovieDetailRecommendationsStateCopyWithImpl<$Res>
+    extends _$MovieNowPlayingStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -253,7 +251,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'MovieDetailRecommendationsState.loading()';
+    return 'MovieNowPlayingState.loading()';
   }
 
   @override
@@ -270,7 +268,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> reommendations) data,
+    required TResult Function(List<Movie> nowPlaying) data,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -281,7 +279,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
   }) {
     return loading?.call();
@@ -292,7 +290,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -340,7 +338,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements MovieDetailRecommendationsState {
+abstract class _Loading implements MovieNowPlayingState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -348,12 +346,11 @@ abstract class _Loading implements MovieDetailRecommendationsState {
 abstract class _$DataCopyWith<$Res> {
   factory _$DataCopyWith(_Data value, $Res Function(_Data) then) =
       __$DataCopyWithImpl<$Res>;
-  $Res call({List<Movie> reommendations});
+  $Res call({List<Movie> nowPlaying});
 }
 
 /// @nodoc
-class __$DataCopyWithImpl<$Res>
-    extends _$MovieDetailRecommendationsStateCopyWithImpl<$Res>
+class __$DataCopyWithImpl<$Res> extends _$MovieNowPlayingStateCopyWithImpl<$Res>
     implements _$DataCopyWith<$Res> {
   __$DataCopyWithImpl(_Data _value, $Res Function(_Data) _then)
       : super(_value, (v) => _then(v as _Data));
@@ -363,12 +360,12 @@ class __$DataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? reommendations = freezed,
+    Object? nowPlaying = freezed,
   }) {
     return _then(_Data(
-      reommendations == freezed
-          ? _value.reommendations
-          : reommendations // ignore: cast_nullable_to_non_nullable
+      nowPlaying == freezed
+          ? _value.nowPlaying
+          : nowPlaying // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
     ));
   }
@@ -377,14 +374,14 @@ class __$DataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Data implements _Data {
-  const _$_Data(this.reommendations);
+  const _$_Data(this.nowPlaying);
 
   @override
-  final List<Movie> reommendations;
+  final List<Movie> nowPlaying;
 
   @override
   String toString() {
-    return 'MovieDetailRecommendationsState.data(reommendations: $reommendations)';
+    return 'MovieNowPlayingState.data(nowPlaying: $nowPlaying)';
   }
 
   @override
@@ -393,12 +390,12 @@ class _$_Data implements _Data {
         (other.runtimeType == runtimeType &&
             other is _Data &&
             const DeepCollectionEquality()
-                .equals(other.reommendations, reommendations));
+                .equals(other.nowPlaying, nowPlaying));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(reommendations));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(nowPlaying));
 
   @JsonKey(ignore: true)
   @override
@@ -410,10 +407,10 @@ class _$_Data implements _Data {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> reommendations) data,
+    required TResult Function(List<Movie> nowPlaying) data,
     required TResult Function(String message) error,
   }) {
-    return data(reommendations);
+    return data(nowPlaying);
   }
 
   @override
@@ -421,10 +418,10 @@ class _$_Data implements _Data {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
   }) {
-    return data?.call(reommendations);
+    return data?.call(nowPlaying);
   }
 
   @override
@@ -432,12 +429,12 @@ class _$_Data implements _Data {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(reommendations);
+      return data(nowPlaying);
     }
     return orElse();
   }
@@ -480,10 +477,10 @@ class _$_Data implements _Data {
   }
 }
 
-abstract class _Data implements MovieDetailRecommendationsState {
-  const factory _Data(List<Movie> reommendations) = _$_Data;
+abstract class _Data implements MovieNowPlayingState {
+  const factory _Data(List<Movie> nowPlaying) = _$_Data;
 
-  List<Movie> get reommendations;
+  List<Movie> get nowPlaying;
   @JsonKey(ignore: true)
   _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -497,7 +494,7 @@ abstract class _$ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$ErrorCopyWithImpl<$Res>
-    extends _$MovieDetailRecommendationsStateCopyWithImpl<$Res>
+    extends _$MovieNowPlayingStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -528,7 +525,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'MovieDetailRecommendationsState.error(message: $message)';
+    return 'MovieNowPlayingState.error(message: $message)';
   }
 
   @override
@@ -553,7 +550,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> reommendations) data,
+    required TResult Function(List<Movie> nowPlaying) data,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -564,7 +561,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
   }) {
     return error?.call(message);
@@ -575,7 +572,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> reommendations)? data,
+    TResult Function(List<Movie> nowPlaying)? data,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -623,7 +620,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements MovieDetailRecommendationsState {
+abstract class _Error implements MovieNowPlayingState {
   const factory _Error(String message) = _$_Error;
 
   String get message;

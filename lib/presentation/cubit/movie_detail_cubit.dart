@@ -12,13 +12,9 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
   static const watchlistAddSuccessMessage = 'Added to Watchlist';
   static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
 
-  late final GetMovieDetail _getMovieDetail;
+  final GetMovieDetail _getMovieDetail;
 
-  MovieDetailCubit({GetMovieDetail? getMovieDetail})
-      : super(MovieDetailState.init()) {
-    this._getMovieDetail = getMovieDetail ?? locator();
-  }
-
+  MovieDetailCubit(this._getMovieDetail) : super(MovieDetailState.initial());
   Future<void> fetchMovieDetail(int id) async {
     emit(MovieDetailState.loading());
     final detailResult = await _getMovieDetail.execute(id);

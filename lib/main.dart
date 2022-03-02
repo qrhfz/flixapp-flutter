@@ -1,12 +1,8 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_detail_recommendations_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_list_cubit.dart';
-
+import 'package:ditonton/presentation/cubit/movie_recommendation_cubit.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
@@ -18,6 +14,9 @@ import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
 import 'presentation/cubit/movie_detail_watchlist_cubit.dart';
+import 'presentation/cubit/movie_now_playing_cubit.dart';
+import 'presentation/cubit/movie_popular_cubit.dart';
+import 'presentation/cubit/movie_top_rated_cubit.dart';
 import 'presentation/provider/tv_show_search_notifier.dart';
 
 void main() {
@@ -35,12 +34,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => TVShowSearchNotifier(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
@@ -61,19 +54,27 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => MovieListCubit(),
+            create: (_) => di.locator<MovieNowPlayingCubit>(),
             lazy: true,
           ),
           BlocProvider(
-            create: (_) => MovieDetailCubit(),
+            create: (_) => di.locator<MoviePopularCubit>(),
             lazy: true,
           ),
           BlocProvider(
-            create: (_) => MovieDetailRecommendationsCubit(),
+            create: (_) => di.locator<MovieTopRatedCubit>(),
             lazy: true,
           ),
           BlocProvider(
-            create: (_) => MovieDetailWatchlistCubit(),
+            create: (_) => di.locator<MovieDetailCubit>(),
+            lazy: true,
+          ),
+          BlocProvider(
+            create: (_) => di.locator<MovieRecommendationCubit>(),
+            lazy: true,
+          ),
+          BlocProvider(
+            create: (_) => di.locator<MovieDetailWatchlistCubit>(),
             lazy: true,
           ),
         ],
