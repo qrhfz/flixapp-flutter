@@ -2,8 +2,8 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_recommendations_cubit.dart';
+import 'package:ditonton/presentation/cubit/movie_list_cubit.dart';
 
-import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
@@ -30,9 +30,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
-        ),
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieSearchNotifier>(),
         ),
@@ -63,6 +60,10 @@ class MyApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(
+            create: (_) => MovieListCubit(),
+            lazy: true,
+          ),
           BlocProvider(
             create: (_) => MovieDetailCubit(),
             lazy: true,

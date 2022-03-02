@@ -22,7 +22,7 @@ import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist.dart';
 import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist_status.dart';
 import 'package:ditonton/domain/usecases/tvshow/remove_tv_show_watchlist.dart';
 import 'package:ditonton/domain/usecases/tvshow/save_tv_show_watchlist.dart';
-import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
+
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
@@ -40,13 +40,7 @@ final locator = GetIt.instance;
 
 void init() {
   // provider
-  locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
-    ),
-  );
+
   locator.registerFactory(
     () => MovieSearchNotifier(
       searchMovies: locator(),
