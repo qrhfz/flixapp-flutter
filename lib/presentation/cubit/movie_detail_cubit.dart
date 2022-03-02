@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
-import 'package:ditonton/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/usecases/movie/get_movie_detail.dart';

@@ -1,5 +1,4 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/presentation/cubit/movie_top_rated_cubit.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
