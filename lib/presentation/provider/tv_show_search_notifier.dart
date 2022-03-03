@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
-import '../../common/state_enum.dart';
-import '../../domain/entities/tv_show.dart';
-import '../../domain/usecases/tvshow/search_tv_shows.dart';
+import '../utils/state_enum.dart';
+import '../../domain/tv/entities/tv_show.dart';
+import '../../domain/tv/usecases/search_tv_shows.dart';
 import '../../injection.dart';
 
 class TVShowSearchNotifier extends ChangeNotifier {

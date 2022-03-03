@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/usecases/tvshow/remove_tv_show_watchlist.dart';
+import 'package:ditonton/domain/utils/failure.dart';
+import 'package:ditonton/domain/tv/usecases/remove_tv_show_watchlist.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

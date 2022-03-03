@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/presentation/utils/styles.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
 import 'package:ditonton/presentation/pages/airing_tv_page.dart';
 import 'package:ditonton/presentation/pages/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv_detail_page.dart';
@@ -10,6 +10,7 @@ import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/constants.dart';
 import 'search_page.dart';
 
 class TvListPage extends StatefulWidget {

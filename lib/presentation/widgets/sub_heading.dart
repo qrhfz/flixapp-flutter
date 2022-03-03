@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/constants.dart';
+import '../utils/styles.dart';
 
 class SubHeading extends StatelessWidget {
   final String title;

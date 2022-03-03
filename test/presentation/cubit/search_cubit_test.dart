@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/usecases/movie/search_movies.dart';
-import 'package:ditonton/domain/usecases/tvshow/search_tv_shows.dart';
+import 'package:ditonton/domain/utils/failure.dart';
+import 'package:ditonton/domain/movie/entities/movie.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:ditonton/domain/movie/usecase/search_movies.dart';
+import 'package:ditonton/domain/tv/usecases/search_tv_shows.dart';
 import 'package:ditonton/presentation/cubit/search_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/movie.dart';
+import 'package:ditonton/presentation/utils/styles.dart';
+import 'package:ditonton/domain/movie/entities/movie.dart';
 import 'package:ditonton/presentation/cubit/movie_now_playing_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubit/movie_top_rated_cubit.dart';
+import '../utils/constants.dart';
 import '../widgets/sub_heading.dart';
 
 class HomeMoviePage extends StatefulWidget {

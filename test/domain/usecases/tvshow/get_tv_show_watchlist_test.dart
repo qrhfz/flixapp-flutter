@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist.dart';
+import 'package:ditonton/domain/utils/failure.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

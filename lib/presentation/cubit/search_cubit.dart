@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/usecases/movie/search_movies.dart';
-import 'package:ditonton/domain/usecases/tvshow/search_tv_shows.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:ditonton/domain/movie/usecase/search_movies.dart';
+import 'package:ditonton/domain/tv/usecases/search_tv_shows.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/movie.dart';
+import '../../domain/movie/entities/movie.dart';
 
 part 'search_state.dart';
 part 'search_cubit.freezed.dart';

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/repositories/tv_show_repository.dart';
-import 'package:ditonton/domain/usecases/tvshow/search_tv_shows.dart';
+import 'package:ditonton/domain/utils/failure.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:ditonton/domain/tv/repository/tv_show_repository.dart';
+import 'package:ditonton/domain/tv/usecases/search_tv_shows.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

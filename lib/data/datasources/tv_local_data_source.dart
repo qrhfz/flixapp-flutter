@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/domain/utils/failure.dart';
 import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
 

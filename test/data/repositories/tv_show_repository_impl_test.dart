@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/domain/utils/failure.dart';
 import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
 import 'package:ditonton/data/models/tv_show_model.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:ditonton/data/repositories/tv_show_repository_impl.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/entities/tv_show_detail.dart';
-import 'package:ditonton/domain/repositories/tv_show_repository.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:ditonton/domain/tv/entities/tv_show_detail.dart';
+import 'package:ditonton/domain/tv/repository/tv_show_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -55,7 +55,7 @@ void main() {
       when(remoteDataSource.getPopularTvShows())
           .thenAnswer((_) async => Right(tTvShowModelList));
 
-      final res = await repository.getPopularTvShows();
+      final res = await repository.getPopularTVShows();
       final data = res.getOrElse(() => []);
       expect(data, tTvShowList);
     });
@@ -65,14 +65,14 @@ void main() {
       when(remoteDataSource.getPopularTvShows())
           .thenAnswer((_) async => Left(ConnectionFailure()));
 
-      final res = await repository.getPopularTvShows();
+      final res = await repository.getPopularTVShows();
       expect(res, Left(ConnectionFailure()));
     });
     test('getAiringTvShows should return list of tv show', () async {
       when(remoteDataSource.getAiringTvShows())
           .thenAnswer((_) async => Right(tTvShowModelList));
 
-      final res = await repository.getAiringTvShows();
+      final res = await repository.getAiringTVShows();
       final data = res.getOrElse(() => []);
       expect(data, tTvShowList);
     });
@@ -81,7 +81,7 @@ void main() {
       when(remoteDataSource.getAiringTvShows())
           .thenAnswer((_) async => Left(ConnectionFailure()));
 
-      final res = await repository.getAiringTvShows();
+      final res = await repository.getAiringTVShows();
       expect(res, Left(ConnectionFailure()));
     });
     test('getTopRatedTvShows should return list of tv show', () async {

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/movie.dart';
-import '../../domain/usecases/movie/get_popular_movies.dart';
+import '../../domain/movie/entities/movie.dart';
+import '../../domain/movie/usecase/get_popular_movies.dart';
 
 part 'movie_popular_state.dart';
 part 'movie_popular_cubit.freezed.dart';

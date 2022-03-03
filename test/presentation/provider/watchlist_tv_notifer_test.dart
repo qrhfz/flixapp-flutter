@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist.dart';
+import 'package:ditonton/domain/utils/failure.dart';
+import 'package:ditonton/presentation/utils/state_enum.dart';
+import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist.dart';
 import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

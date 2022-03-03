@@ -1,12 +1,12 @@
 import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/entities/tv_show_detail.dart';
-import 'package:ditonton/common/typealias.dart';
-import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:ditonton/domain/tv/entities/tv_show_detail.dart';
+import 'package:ditonton/domain/utils/typealias.dart';
+import 'package:ditonton/domain/utils/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/repositories/tv_show_repository.dart';
+import 'package:ditonton/domain/tv/repository/tv_show_repository.dart';
 
 class TvShowRepositoryImpl implements TVShowRepository {
   late final TVShowRemoteDataSource _remoteDataSource;
@@ -20,7 +20,7 @@ class TvShowRepositoryImpl implements TVShowRepository {
   }
 
   @override
-  TvShowsOrFailureFuture getAiringTvShows() async {
+  TvShowsOrFailureFuture getAiringTVShows() async {
     final result = await _remoteDataSource.getAiringTvShows();
     final Either<Failure, List<TVShow>> tvShowEntities = result.fold(
       (fail) => Left(fail),
@@ -31,7 +31,7 @@ class TvShowRepositoryImpl implements TVShowRepository {
   }
 
   @override
-  TvShowsOrFailureFuture getPopularTvShows() async {
+  TvShowsOrFailureFuture getPopularTVShows() async {
     final result = await _remoteDataSource.getPopularTvShows();
     final Either<Failure, List<TVShow>> tvShowEntities = result.fold(
       (fail) => Left(fail),

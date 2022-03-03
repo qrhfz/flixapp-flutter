@@ -1,14 +1,14 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_show_detail.dart';
-import 'package:ditonton/domain/usecases/tvshow/get_tv_show_detail.dart';
-import 'package:ditonton/domain/usecases/tvshow/get_tv_show_watchlist_status.dart';
-import 'package:ditonton/domain/usecases/tvshow/remove_tv_show_watchlist.dart';
-import 'package:ditonton/domain/usecases/tvshow/save_tv_show_watchlist.dart';
+import 'package:ditonton/presentation/utils/state_enum.dart';
+import 'package:ditonton/domain/tv/entities/tv_show_detail.dart';
+import 'package:ditonton/domain/tv/usecases/get_tv_show_detail.dart';
+import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist_status.dart';
+import 'package:ditonton/domain/tv/usecases/remove_tv_show_watchlist.dart';
+import 'package:ditonton/domain/tv/usecases/save_tv_show_watchlist.dart';
 import 'package:ditonton/injection.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../domain/entities/tv_show.dart';
-import '../../domain/usecases/tvshow/get_tv_recommendation.dart';
+import '../../domain/tv/entities/tv_show.dart';
+import '../../domain/tv/usecases/get_tv_recommendation.dart';
 
 class TVShowDetailNotifier extends ChangeNotifier {
   //WATCHLIST

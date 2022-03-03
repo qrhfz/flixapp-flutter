@@ -1,5 +1,5 @@
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/utils.dart';
+import 'package:ditonton/presentation/utils/styles.dart';
+import 'package:ditonton/presentation/utils/utils.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_recommendation_cubit.dart';
 import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';

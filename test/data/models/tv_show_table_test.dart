@@ -1,5 +1,5 @@
 import 'package:ditonton/data/models/tv_show_table.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/domain/tv/entities/tv_show.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

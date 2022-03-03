@@ -7,7 +7,6 @@ import 'dart:convert' as _i24;
 import 'dart:typed_data' as _i25;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:ditonton/common/failure.dart' as _i7;
 import 'package:ditonton/data/datasources/db/database_helper.dart' as _i14;
 import 'package:ditonton/data/datasources/movie_local_data_source.dart' as _i12;
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart'
@@ -20,12 +19,13 @@ import 'package:ditonton/data/models/movie_table.dart' as _i13;
 import 'package:ditonton/data/models/tv_show_detail_model.dart' as _i22;
 import 'package:ditonton/data/models/tv_show_model.dart' as _i21;
 import 'package:ditonton/data/models/tv_show_table.dart' as _i16;
-import 'package:ditonton/domain/entities/movie.dart' as _i8;
-import 'package:ditonton/domain/entities/movie_detail.dart' as _i9;
-import 'package:ditonton/domain/entities/tv_show.dart' as _i18;
-import 'package:ditonton/domain/entities/tv_show_detail.dart' as _i19;
-import 'package:ditonton/domain/repositories/movie_repository.dart' as _i5;
-import 'package:ditonton/domain/repositories/tv_show_repository.dart' as _i17;
+import 'package:ditonton/domain/movie/entities/movie.dart' as _i8;
+import 'package:ditonton/domain/movie/entities/movie_detail.dart' as _i9;
+import 'package:ditonton/domain/movie/repository/movie_repository.dart' as _i5;
+import 'package:ditonton/domain/tv/entities/tv_show.dart' as _i18;
+import 'package:ditonton/domain/tv/entities/tv_show_detail.dart' as _i19;
+import 'package:ditonton/domain/tv/repository/tv_show_repository.dart' as _i17;
+import 'package:ditonton/domain/utils/failure.dart' as _i7;
 import 'package:http/http.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:sqflite/sqflite.dart' as _i15;
@@ -259,8 +259,8 @@ class MockTVShowRepository extends _i1.Mock implements _i17.TVShowRepository {
   }
 
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>> getPopularTvShows() =>
-      (super.noSuchMethod(Invocation.method(#getPopularTvShows, []),
+  _i6.Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>> getPopularTVShows() =>
+      (super.noSuchMethod(Invocation.method(#getPopularTVShows, []),
           returnValue: Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>>.value(
               _FakeEither_0<_i7.Failure, List<_i18.TVShow>>())) as _i6
           .Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>>);
@@ -271,8 +271,8 @@ class MockTVShowRepository extends _i1.Mock implements _i17.TVShowRepository {
               _FakeEither_0<_i7.Failure, List<_i18.TVShow>>())) as _i6
           .Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>> getAiringTvShows() =>
-      (super.noSuchMethod(Invocation.method(#getAiringTvShows, []),
+  _i6.Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>> getAiringTVShows() =>
+      (super.noSuchMethod(Invocation.method(#getAiringTVShows, []),
           returnValue: Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>>.value(
               _FakeEither_0<_i7.Failure, List<_i18.TVShow>>())) as _i6
           .Future<_i2.Either<_i7.Failure, List<_i18.TVShow>>>);

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:ditonton/domain/entities/movie.dart';
+import 'package:ditonton/domain/movie/entities/movie.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/usecases/movie/get_movie_recommendations.dart';
+import '../../domain/movie/usecase/get_movie_recommendations.dart';
 
 part 'movie_recommendation_state.dart';
 part 'movie_recommendation_cubit.freezed.dart';

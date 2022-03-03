@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/movie_detail.dart';
-import '../../domain/usecases/movie/get_watchlist_status.dart';
-import '../../domain/usecases/movie/remove_watchlist.dart';
-import '../../domain/usecases/movie/save_watchlist.dart';
+import '../../domain/movie/entities/movie_detail.dart';
+import '../../domain/movie/usecase/get_watchlist_status.dart';
+import '../../domain/movie/usecase/remove_watchlist.dart';
+import '../../domain/movie/usecase/save_watchlist.dart';
 
 part 'movie_detail_watchlist_state.dart';
 part 'movie_detail_watchlist_cubit.freezed.dart';

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/movie.dart';
-import '../../domain/usecases/movie/get_top_rated_movies.dart';
+import '../../domain/movie/entities/movie.dart';
+import '../../domain/movie/usecase/get_top_rated_movies.dart';
 
 part 'movie_top_rated_state.dart';
 part 'movie_top_rated_cubit.freezed.dart';

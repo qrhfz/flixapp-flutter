@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
+import 'package:ditonton/domain/utils/failure.dart';
+import 'package:ditonton/domain/movie/entities/movie.dart';
+import 'package:ditonton/domain/movie/usecase/get_popular_movies.dart';
 import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
