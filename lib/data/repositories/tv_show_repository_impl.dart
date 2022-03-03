@@ -1,12 +1,8 @@
 import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
-import 'package:ditonton/domain/tv/entities/tv_show.dart';
-import 'package:ditonton/domain/tv/entities/tv_show_detail.dart';
-import 'package:ditonton/domain/utils/typealias.dart';
-import 'package:ditonton/domain/utils/failure.dart';
+import 'package:domain/domain.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/tv/repository/tv_show_repository.dart';
 
 class TvShowRepositoryImpl implements TVShowRepository {
   late final TVShowRemoteDataSource _remoteDataSource;

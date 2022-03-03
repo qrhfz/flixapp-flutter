@@ -1,14 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/presentation/utils/utils.dart';
-import 'package:ditonton/domain/tv/entities/tv_show_detail.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/styles.dart';
 import '../utils/state_enum.dart';
-
-import '../../domain/tv/entities/tv_show.dart';
 import '../provider/tv_show_detail_notifier.dart';
 
 class TvDetailPage extends StatefulWidget {

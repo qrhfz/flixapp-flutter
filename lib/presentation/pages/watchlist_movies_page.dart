@@ -1,6 +1,5 @@
 import 'package:ditonton/presentation/utils/state_enum.dart';
 import 'package:ditonton/presentation/utils/utils.dart';
-import 'package:ditonton/domain/tv/entities/tv_show.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
@@ -8,7 +7,7 @@ import 'package:ditonton/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../domain/movie/entities/movie.dart';
+import 'package:domain/domain.dart';
 
 class WatchlistMoviesPage extends StatefulWidget {
   static const ROUTE_NAME = '/watchlist-movie';

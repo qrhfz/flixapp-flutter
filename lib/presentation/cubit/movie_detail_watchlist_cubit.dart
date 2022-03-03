@@ -1,10 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../domain/movie/entities/movie_detail.dart';
-import '../../domain/movie/usecase/get_watchlist_status.dart';
-import '../../domain/movie/usecase/remove_watchlist.dart';
-import '../../domain/movie/usecase/save_watchlist.dart';
+import 'package:domain/domain.dart';
 
 part 'movie_detail_watchlist_state.dart';
 part 'movie_detail_watchlist_cubit.freezed.dart';

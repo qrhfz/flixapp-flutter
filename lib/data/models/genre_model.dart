@@ -1,4 +1,4 @@
-import 'package:ditonton/domain/common/entities/genre.dart';
+import 'package:domain/domain.dart';
 import 'package:equatable/equatable.dart';
 
 class GenreModel extends Equatable {

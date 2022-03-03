@@ -1,9 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/utils/failure.dart';
 import 'package:ditonton/presentation/utils/state_enum.dart';
-import 'package:ditonton/domain/tv/usecases/get_airing_tv_shows.dart';
-import 'package:ditonton/domain/tv/usecases/get_popular_tv_shows.dart';
-import 'package:ditonton/domain/tv/usecases/get_top_rated_tv_shows.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

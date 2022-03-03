@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/utils/failure.dart';
 import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
+import 'package:domain/domain.dart';
 
 abstract class TVShowLocalDataSource {
   Future<Either<DatabaseFailure, List<TVShowTable>>> getTvWatchlist();

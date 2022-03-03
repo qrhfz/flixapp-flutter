@@ -1,9 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/utils/failure.dart';
-import 'package:ditonton/domain/movie/usecase/get_watchlist_status.dart';
-import 'package:ditonton/domain/movie/usecase/remove_watchlist.dart';
-import 'package:ditonton/domain/movie/usecase/save_watchlist.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_watchlist_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

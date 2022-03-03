@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/utils/failure.dart';
-import 'package:ditonton/domain/utils/typealias.dart';
+
 import 'package:ditonton/data/models/tv_show_detail_model.dart';
 import 'package:ditonton/data/models/tv_show_list_response.dart';
+import 'package:ditonton/data/utils/typealias.dart';
+import 'package:domain/domain.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 

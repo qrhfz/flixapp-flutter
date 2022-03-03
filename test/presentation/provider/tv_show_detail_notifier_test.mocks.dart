@@ -5,17 +5,15 @@
 import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
-import 'package:ditonton/domain/tv/entities/tv_show.dart' as _i12;
-import 'package:ditonton/domain/tv/entities/tv_show_detail.dart' as _i7;
-import 'package:ditonton/domain/tv/repository/tv_show_repository.dart' as _i2;
-import 'package:ditonton/domain/tv/usecases/get_tv_recommendation.dart' as _i11;
-import 'package:ditonton/domain/tv/usecases/get_tv_show_detail.dart' as _i4;
-import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist_status.dart'
-    as _i10;
-import 'package:ditonton/domain/tv/usecases/remove_tv_show_watchlist.dart'
-    as _i9;
-import 'package:ditonton/domain/tv/usecases/save_tv_show_watchlist.dart' as _i8;
-import 'package:ditonton/domain/utils/failure.dart' as _i6;
+import 'package:domain/tv/entities/tv_show.dart' as _i12;
+import 'package:domain/tv/entities/tv_show_detail.dart' as _i7;
+import 'package:domain/tv/repository/tv_show_repository.dart' as _i2;
+import 'package:domain/tv/usecases/get_tv_recommendation.dart' as _i11;
+import 'package:domain/tv/usecases/get_tv_show_detail.dart' as _i4;
+import 'package:domain/tv/usecases/get_tv_show_watchlist_status.dart' as _i10;
+import 'package:domain/tv/usecases/remove_tv_show_watchlist.dart' as _i9;
+import 'package:domain/tv/usecases/save_tv_show_watchlist.dart' as _i8;
+import 'package:domain/utils/failure.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint

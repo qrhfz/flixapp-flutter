@@ -1,6 +1,5 @@
+import 'package:domain/domain.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../domain/common/entities/genre.dart';
 
 final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 

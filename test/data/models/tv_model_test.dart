@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:ditonton/data/models/tv_show_model.dart';
-import 'package:ditonton/domain/tv/entities/tv_show.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/utils/failure.dart';
+
 import 'package:ditonton/presentation/utils/state_enum.dart';
-import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist.dart';
+
 import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:domain/domain.dart';
 import '../../dummy_data/dummy_objects.dart';
 import 'watchlist_tv_notifer_test.mocks.dart';
 

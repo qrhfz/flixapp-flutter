@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/presentation/utils/styles.dart';
-import 'package:ditonton/domain/movie/entities/movie.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:flutter/material.dart';
 

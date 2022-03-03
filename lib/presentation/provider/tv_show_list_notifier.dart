@@ -1,12 +1,7 @@
 import 'package:ditonton/presentation/utils/state_enum.dart';
-import 'package:ditonton/domain/tv/entities/tv_show.dart';
-import 'package:ditonton/domain/tv/usecases/get_top_rated_tv_shows.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/injection.dart';
 import 'package:flutter/foundation.dart';
-
-import 'package:ditonton/domain/tv/usecases/get_airing_tv_shows.dart';
-
-import '../../domain/tv/usecases/get_popular_tv_shows.dart';
 
 class TVShowListNotifier extends ChangeNotifier {
   late final GetAiringTVShows getAiring;

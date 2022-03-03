@@ -1,11 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/utils/failure.dart';
 import 'package:ditonton/presentation/utils/state_enum.dart';
-import 'package:ditonton/domain/tv/usecases/get_tv_recommendation.dart';
-import 'package:ditonton/domain/tv/usecases/get_tv_show_detail.dart';
-import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist_status.dart';
-import 'package:ditonton/domain/tv/usecases/remove_tv_show_watchlist.dart';
-import 'package:ditonton/domain/tv/usecases/save_tv_show_watchlist.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

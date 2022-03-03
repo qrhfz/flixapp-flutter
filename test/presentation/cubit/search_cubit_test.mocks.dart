@@ -5,13 +5,13 @@
 import 'dart:async' as _i6;
 
 import 'package:dartz/dartz.dart' as _i3;
-import 'package:ditonton/domain/movie/entities/movie.dart' as _i8;
-import 'package:ditonton/domain/movie/repository/movie_repository.dart' as _i2;
-import 'package:ditonton/domain/movie/usecase/search_movies.dart' as _i5;
-import 'package:ditonton/domain/tv/entities/tv_show.dart' as _i10;
-import 'package:ditonton/domain/tv/repository/tv_show_repository.dart' as _i4;
-import 'package:ditonton/domain/tv/usecases/search_tv_shows.dart' as _i9;
-import 'package:ditonton/domain/utils/failure.dart' as _i7;
+import 'package:domain/movie/entities/movie.dart' as _i8;
+import 'package:domain/movie/repository/movie_repository.dart' as _i2;
+import 'package:domain/movie/usecase/search_movies.dart' as _i5;
+import 'package:domain/tv/entities/tv_show.dart' as _i10;
+import 'package:domain/tv/repository/tv_show_repository.dart' as _i4;
+import 'package:domain/tv/usecases/search_tv_shows.dart' as _i9;
+import 'package:domain/utils/failure.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint

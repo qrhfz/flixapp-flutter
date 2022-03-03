@@ -1,6 +1,5 @@
 import 'package:ditonton/presentation/utils/state_enum.dart';
-import 'package:ditonton/domain/movie/entities/movie.dart';
-import 'package:ditonton/domain/movie/usecase/get_watchlist_movies.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/foundation.dart';
 
 class WatchlistMovieNotifier extends ChangeNotifier {

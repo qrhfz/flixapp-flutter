@@ -1,5 +1,4 @@
-import 'package:ditonton/domain/tv/entities/tv_show.dart';
-import 'package:ditonton/domain/tv/usecases/get_tv_show_watchlist.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/injection.dart';
 import 'package:flutter/foundation.dart';
 

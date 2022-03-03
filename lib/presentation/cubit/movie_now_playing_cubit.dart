@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/movie/entities/movie.dart';
-import '../../domain/movie/usecase/get_now_playing_movies.dart';
+import 'package:domain/domain.dart';
 
 part 'movie_now_playing_state.dart';
 part 'movie_now_playing_cubit.freezed.dart';

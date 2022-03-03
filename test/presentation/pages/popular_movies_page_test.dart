@@ -1,5 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:ditonton/domain/movie/entities/movie.dart';
+import 'package:domain/domain.dart';
 import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
 
