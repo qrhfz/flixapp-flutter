@@ -39,6 +39,8 @@ dependencies:
   sqflite: ^2.0.0+3
   domain:
     path: domain
+  data:
+    path: data
 
 dev_dependencies:
   build_runner: ^2.1.7

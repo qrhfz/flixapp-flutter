@@ -38,13 +38,6 @@ const testMovieDetail = MovieDetail(
   voteCount: 1,
 );
 
-final testWatchlistMovie = Movie.watchlist(
-  id: 1,
-  title: 'title',
-  posterPath: 'posterPath',
-  overview: 'overview',
-);
-
 const testTvShow = TVShow(
   id: 1,
   overview: 'overview',

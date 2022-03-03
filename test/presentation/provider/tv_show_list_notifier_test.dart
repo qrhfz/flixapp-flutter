@@ -5,8 +5,7 @@ import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
-import '../../dummy_data/dummy_objects.dart';
+import '../../dummy_object.dart';
 import 'tv_show_list_notifier_test.mocks.dart';
 
 @GenerateMocks([GetAiringTVShows, GetPopularTVShows, GetTopRatedTVShows])

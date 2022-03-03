@@ -5,8 +5,7 @@ import 'package:ditonton/presentation/cubit/movie_detail_watchlist_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
-import '../../dummy_data/dummy_objects.dart';
+import '../../dummy_object.dart';
 import 'movie_detail_watchlist_cubit_test.mocks.dart';
 
 @GenerateMocks([GetWatchListStatus, SaveWatchlist, RemoveWatchlist])

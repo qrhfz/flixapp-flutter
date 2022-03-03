@@ -1,0 +1,9 @@
+export 'genre_model.dart';
+export 'movie_detail_model.dart';
+export 'movie_model.dart';
+export 'movie_response.dart';
+export 'movie_table.dart';
+export 'tv_show_detail_model.dart';
+export 'tv_show_list_response.dart';
+export 'tv_show_model.dart';
+export 'tv_show_table.dart';

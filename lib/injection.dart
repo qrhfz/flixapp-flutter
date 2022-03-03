@@ -1,9 +1,4 @@
-import 'package:ditonton/data/datasources/db/database_helper.dart';
-import 'package:ditonton/data/datasources/movie_local_data_source.dart';
-import 'package:ditonton/data/datasources/movie_remote_data_source.dart';
-import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
-import 'package:ditonton/data/repositories/movie_repository_impl.dart';
-import 'package:ditonton/data/repositories/tv_show_repository_impl.dart';
+import 'package:data/data.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_watchlist_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_now_playing_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
@@ -12,8 +7,6 @@ import 'package:ditonton/presentation/cubit/movie_top_rated_cubit.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
-
-import 'data/datasources/tv_local_data_source.dart';
 import 'package:domain/domain.dart';
 import 'presentation/cubit/movie_detail_cubit.dart';
 import 'presentation/cubit/movie_recommendation_cubit.dart';

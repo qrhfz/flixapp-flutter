@@ -8,7 +8,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:domain/domain.dart';
-import '../../dummy_data/dummy_objects.dart';
+import '../../dummy_object.dart';
 import 'watchlist_tv_notifer_test.mocks.dart';
 
 @GenerateMocks([GetTVShowWatchlist])

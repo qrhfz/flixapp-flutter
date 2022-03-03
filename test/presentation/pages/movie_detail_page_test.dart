@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../dummy_data/dummy_objects.dart';
+import '../../dummy_object.dart';
 
 class MockMovieDetailCubit extends MockCubit<MovieDetailState>
     implements MovieDetailCubit {}
