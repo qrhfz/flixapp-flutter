@@ -8,9 +8,9 @@ final routes = (RouteSettings settings) {
       return MaterialPageRoute(
           builder: (_) => HomeMoviePage(), settings: settings);
 
-    case PopularMoviesPage.ROUTE_NAME:
+    case PopularMoviesPage.routeName:
       return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-    case TopRatedMoviesPage.ROUTE_NAME:
+    case TopRatedMoviesPage.routeName:
       return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
     case MovieDetailPage.routeName:
       final id = settings.arguments as int;
@@ -18,15 +18,15 @@ final routes = (RouteSettings settings) {
         builder: (_) => MovieDetailPage(id: id),
         settings: settings,
       );
-    case SearchPage.ROUTE_NAME:
+    case SearchPage.routeName:
       return CupertinoPageRoute(builder: (_) => SearchPage());
-    case WatchlistMoviesPage.ROUTE_NAME:
+    case WatchlistMoviesPage.routeName:
       return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
     case AboutPage.routeName:
       return MaterialPageRoute(builder: (_) => AboutPage());
 
     //TV
-    case TvListPage.ROUTE_NAME:
+    case TvListPage.routeName:
       return MaterialPageRoute(
           builder: (_) => TvListPage(), settings: settings);
     case AiringTVShowPage.route:

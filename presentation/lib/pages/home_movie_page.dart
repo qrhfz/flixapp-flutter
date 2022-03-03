@@ -45,7 +45,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+              Navigator.pushNamed(context, SearchPage.routeName);
             },
             icon: const Icon(Icons.search),
           )
@@ -74,7 +74,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               SubHeading(
                 title: 'Popular',
                 onTap: () =>
-                    Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, PopularMoviesPage.routeName),
               ),
               BlocBuilder<MoviePopularCubit, MoviePopularState>(
                   builder: (context, state) {
@@ -89,7 +89,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               SubHeading(
                 title: 'Top Rated',
                 onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, TopRatedMoviesPage.routeName),
               ),
               BlocBuilder<MovieTopRatedCubit, MovieTopRatedState>(
                   builder: (context, state) {

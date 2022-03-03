@@ -32,14 +32,14 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.tv),
             title: const Text('Tv Series'),
             onTap: () {
-              _go(context, TvListPage.ROUTE_NAME);
+              _go(context, TvListPage.routeName);
             },
           ),
           ListTile(
             leading: const Icon(Icons.save_alt),
             title: const Text('Watchlist'),
             onTap: () {
-              _go(context, WatchlistMoviesPage.ROUTE_NAME);
+              _go(context, WatchlistMoviesPage.routeName);
             },
           ),
           ListTile(
