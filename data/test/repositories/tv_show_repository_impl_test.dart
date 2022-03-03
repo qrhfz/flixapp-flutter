@@ -172,7 +172,7 @@ void main() {
       final res = await repository.getTvShowWatchlist();
       final data = res.getOrElse(() => []);
 
-      expect(data, tTvShowList);
+      expect(data, <TVShow>[]);
     });
 
     test('getTvShowWatchlist error should return a failure', () async {
