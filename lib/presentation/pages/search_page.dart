@@ -2,12 +2,14 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_show_search_notifier.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:ditonton/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+
+import '../cubit/search_cubit.dart';
 
 enum SearchMode {
   movie,
@@ -23,6 +25,13 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   SearchMode mode = SearchMode.movie;
+  final TextEditingController controller = TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +44,15 @@ class _SearchPageState extends State<SearchPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+              controller: controller,
               onSubmitted: (query) {
-                Provider.of<MovieSearchNotifier>(context, listen: false)
-                    .fetchMovieSearch(query);
-
-                Provider.of<TVShowSearchNotifier>(context, listen: false)
-                    .fetchTvSearch(query);
+                if (mode == SearchMode.movie) {
+                  BlocProvider.of<SearchCubit>(context, listen: false)
+                      .fetchMovieSearch(query);
+                } else {
+                  BlocProvider.of<SearchCubit>(context, listen: false)
+                      .fetchTVShowSearch(query);
+                }
               },
               decoration: InputDecoration(
                 hintText: 'Search title',
@@ -57,6 +69,8 @@ class _SearchPageState extends State<SearchPage> {
                   onSelected: (_) {
                     setState(() {
                       mode = SearchMode.movie;
+                      BlocProvider.of<SearchCubit>(context, listen: false)
+                          .fetchMovieSearch(controller.text);
                     });
                   },
                   selected: mode == SearchMode.movie,
@@ -68,6 +82,8 @@ class _SearchPageState extends State<SearchPage> {
                   onSelected: (_) {
                     setState(() {
                       mode = SearchMode.tv;
+                      BlocProvider.of<SearchCubit>(context, listen: false)
+                          .fetchTVShowSearch(controller.text);
                     });
                   },
                   selected: mode == SearchMode.tv,
@@ -78,96 +94,30 @@ class _SearchPageState extends State<SearchPage> {
               'Search Result',
               style: kHeading6,
             ),
-            if (mode == SearchMode.movie)
-              Consumer<MovieSearchNotifier>(
-                builder: (context, data, _) => _MovieSearchResult(
-                  state: data.state,
-                  movies: data.moviesSearchResult,
+            BlocBuilder<SearchCubit, SearchState>(builder: (context, state) {
+              return state.when(
+                initial: () => Expanded(child: Container()),
+                loading: () => Center(child: CircularProgressIndicator()),
+                movieResult: (movies) => Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemBuilder: (_, index) => MovieCard(movies[index]),
+                    itemCount: movies.length,
+                  ),
                 ),
-              )
-            else
-              Consumer<TVShowSearchNotifier>(
-                builder: (context, data, _) => _TVSearchResult(
-                  state: data.state,
-                  tvList: data.tvSearchResult,
-                  message: data.message,
+                tvResult: (shows) => Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemBuilder: (_, index) => TvCard(shows[index]),
+                    itemCount: shows.length,
+                  ),
                 ),
-              )
+                error: (message) => Expanded(child: Text(message)),
+              );
+            })
           ],
         ),
       ),
     );
-  }
-}
-
-class _MovieSearchResult extends StatelessWidget {
-  final RequestState state;
-  final List<Movie> movies;
-
-  const _MovieSearchResult({
-    required this.state,
-    required this.movies,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (state == RequestState.Loading) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (state == RequestState.Loaded) {
-      return Expanded(
-        child: ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemBuilder: (context, index) {
-            final movie = movies[index];
-            return MovieCard(movie);
-          },
-          itemCount: movies.length,
-        ),
-      );
-    } else {
-      return Expanded(
-        child: Container(),
-      );
-    }
-  }
-}
-
-class _TVSearchResult extends StatelessWidget {
-  final RequestState state;
-  final List<TVShow> tvList;
-  final String message;
-
-  const _TVSearchResult({
-    required this.state,
-    required this.tvList,
-    required this.message,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (state == RequestState.Loading) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (state == RequestState.Loaded) {
-      return Expanded(
-        child: ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemBuilder: (context, index) {
-            final tv = tvList[index];
-            return TvCard(tv);
-          },
-          itemCount: tvList.length,
-        ),
-      );
-    } else {
-      return Expanded(
-        child: Text(message),
-      );
-    }
   }
 }

@@ -25,9 +25,8 @@ import 'package:ditonton/domain/usecases/tvshow/save_tv_show_watchlist.dart';
 import 'package:ditonton/presentation/cubit/movie_detail_watchlist_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_now_playing_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
+import 'package:ditonton/presentation/cubit/search_cubit.dart';
 import 'package:ditonton/presentation/cubit/movie_top_rated_cubit.dart';
-
-import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
@@ -46,8 +45,9 @@ void init() {
   // provider
 
   locator.registerFactory(
-    () => MovieSearchNotifier(
+    () => SearchCubit(
       searchMovies: locator(),
+      searchTVShows: locator(),
     ),
   );
 
