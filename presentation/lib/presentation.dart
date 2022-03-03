@@ -1,7 +1,7 @@
 library presentation;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'cubit/cubit.dart';
+export 'pages/pages.dart';
+export 'provider/provider.dart';
+export 'helper/helper.dart';
+export 'widgets/widgets.dart';

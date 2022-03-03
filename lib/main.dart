@@ -1,23 +1,10 @@
-import 'package:ditonton/presentation/utils/styles.dart';
-import 'package:ditonton/presentation/utils/utils.dart';
-import 'package:ditonton/presentation/cubit/movie_detail_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_recommendation_cubit.dart';
-import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
+import 'package:presentation/presentation.dart';
+
 import 'package:ditonton/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
-
-import 'presentation/cubit/movie_detail_watchlist_cubit.dart';
-import 'presentation/cubit/movie_now_playing_cubit.dart';
-import 'presentation/cubit/movie_popular_cubit.dart';
-import 'presentation/cubit/search_cubit.dart';
-import 'presentation/cubit/movie_top_rated_cubit.dart';
-import 'presentation/provider/tv_show_search_notifier.dart';
 
 void main() {
   di.init();
@@ -30,21 +17,21 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => TVShowSearchNotifier(),
+          create: (_) => di.locator<TVShowSearchNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => TVShowListNotifier(),
+          create: (_) => di.locator<TVShowListNotifier>(),
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (_) => TVShowDetailNotifier(),
+          create: (_) => di.locator<TVShowDetailNotifier>(),
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (_) => WatchlistTVShowNotifier(),
+          create: (_) => di.locator<WatchlistTVShowNotifier>(),
           lazy: true,
         ),
       ],

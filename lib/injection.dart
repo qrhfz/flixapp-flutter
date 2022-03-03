@@ -1,21 +1,31 @@
 import 'package:data/data.dart';
-import 'package:ditonton/presentation/cubit/movie_detail_watchlist_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_now_playing_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_popular_cubit.dart';
-import 'package:ditonton/presentation/cubit/search_cubit.dart';
-import 'package:ditonton/presentation/cubit/movie_top_rated_cubit.dart';
-import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:domain/domain.dart';
-import 'presentation/cubit/movie_detail_cubit.dart';
-import 'presentation/cubit/movie_recommendation_cubit.dart';
+import 'package:presentation/presentation.dart';
 
 final locator = GetIt.instance;
 
 void init() {
   // provider
-
+  locator.registerFactory(() => TVShowSearchNotifier(locator()));
+  locator.registerFactory(() => WatchlistTVShowNotifier(locator()));
+  locator.registerFactory(
+    () => TVShowListNotifier(
+      getAiring: locator(),
+      getPopular: locator(),
+      getTopRated: locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => TVShowDetailNotifier(
+        getDetail: locator(),
+        getRecommendations: locator(),
+        getWatchlistStatus: locator(),
+        removeWatchlist: locator(),
+        saveWatchlist: locator()),
+  );
   locator.registerFactory(
     () => SearchCubit(
       searchMovies: locator(),
