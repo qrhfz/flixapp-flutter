@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../provider/tv_show_list_notifier.dart';
+import '../cubit/tv_show_airing_cubit.dart';
+
 import '../widgets/tv_card.dart';
 
 class AiringTVShowPage extends StatefulWidget {
@@ -17,11 +18,18 @@ class _AiringTVShowPageState extends State<AiringTVShowPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Now Airing')),
-      body: Consumer<TVShowListNotifier>(
-        builder: (context, provider, _) => ListView.builder(
-          itemCount: provider.airingList.length,
-          itemBuilder: (context, index) => TvCard(provider.airingList[index]),
-        ),
+      body: BlocBuilder<TvShowAiringCubit, TvShowAiringState>(
+        builder: (context, state) {
+          return state.when(
+            initial: () => const SizedBox.shrink(),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            data: (shows) => ListView.builder(
+              itemCount: shows.length,
+              itemBuilder: (context, index) => TvCard(shows[index]),
+            ),
+            error: (message) => Center(child: Text(message)),
+          );
+        },
       ),
     );
   }

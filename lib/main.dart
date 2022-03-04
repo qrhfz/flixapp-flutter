@@ -17,14 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => di.locator<TVShowSearchNotifier>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TVShowListNotifier>(),
-          lazy: true,
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TVShowDetailNotifier>(),
@@ -63,6 +56,18 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => di.locator<SearchCubit>(),
+            lazy: true,
+          ),
+          BlocProvider(
+            create: (_) => di.locator<TvShowAiringCubit>(),
+            lazy: true,
+          ),
+          BlocProvider(
+            create: (_) => di.locator<TvShowTopRatedCubit>(),
+            lazy: true,
+          ),
+          BlocProvider(
+            create: (_) => di.locator<TvShowPopularCubit>(),
             lazy: true,
           ),
         ],

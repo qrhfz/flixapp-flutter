@@ -9,15 +9,9 @@ final locator = GetIt.instance;
 
 void init() {
   // provider
-  locator.registerFactory(() => TVShowSearchNotifier(locator()));
+
   locator.registerFactory(() => WatchlistTVShowNotifier(locator()));
-  locator.registerFactory(
-    () => TVShowListNotifier(
-      getAiring: locator(),
-      getPopular: locator(),
-      getTopRated: locator(),
-    ),
-  );
+
   locator.registerFactory(
     () => TVShowDetailNotifier(
         getDetail: locator(),
@@ -50,6 +44,9 @@ void init() {
       saveWatchlist: locator(),
     ),
   );
+  locator.registerFactory(() => TvShowAiringCubit(locator()));
+  locator.registerFactory(() => TvShowPopularCubit(locator()));
+  locator.registerFactory(() => TvShowTopRatedCubit(locator()));
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));

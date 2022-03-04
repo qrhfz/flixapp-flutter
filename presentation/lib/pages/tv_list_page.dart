@@ -1,16 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:presentation/pages/popular_tv_page.dart';
 import 'package:presentation/pages/tv_detail_page.dart';
+import 'package:presentation/presentation.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/tv_show_list_notifier.dart';
-import '../helper/constants.dart';
-import '../widgets/app_drawer.dart';
 import '../widgets/sub_heading.dart';
-import 'airing_tv_page.dart';
-import 'search_page.dart';
 
 class TvListPage extends StatefulWidget {
   const TvListPage({Key? key}) : super(key: key);
@@ -25,10 +22,10 @@ class _TvListPageState extends State<TvListPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<TVShowListNotifier>(context, listen: false)
-      ..fetchAiring()
-      ..fetchPopular()
-      ..fetchTopRated();
+    BlocProvider.of<TvShowAiringCubit>(context, listen: false).fetchAiring();
+    BlocProvider.of<TvShowPopularCubit>(context, listen: false).fetchPopular();
+    BlocProvider.of<TvShowTopRatedCubit>(context, listen: false)
+        .fetchTopRated();
   }
 
   @override
@@ -55,18 +52,39 @@ class _TvListPageState extends State<TvListPage> {
                 onTap: () {
                   Navigator.of(context).pushNamed(AiringTVShowPage.route);
                 }),
-            _HorizontalTvListView(
-                Provider.of<TVShowListNotifier>(context).airingList),
+            BlocBuilder<TvShowAiringCubit, TvShowAiringState>(
+                builder: (context, state) {
+              return state.when(
+                initial: () => const SizedBox.shrink(),
+                loading: () => const Center(child: CircularProgressIndicator()),
+                data: (shows) => _HorizontalTvListView(shows),
+                error: (message) => Text(message),
+              );
+            }),
             SubHeading(
                 title: 'Popular',
                 onTap: () {
                   Navigator.of(context).pushNamed(PopularTvPage.route);
                 }),
-            _HorizontalTvListView(
-                Provider.of<TVShowListNotifier>(context).popularList),
+            BlocBuilder<TvShowPopularCubit, TvShowPopularState>(
+                builder: (context, state) {
+              return state.when(
+                initial: () => const SizedBox.shrink(),
+                loading: () => const Center(child: CircularProgressIndicator()),
+                data: (shows) => _HorizontalTvListView(shows),
+                error: (message) => Text(message),
+              );
+            }),
             const SubHeading(title: 'Top Rated'),
-            _HorizontalTvListView(
-                Provider.of<TVShowListNotifier>(context).topRatedList),
+            BlocBuilder<TvShowTopRatedCubit, TvShowTopRatedState>(
+                builder: (context, state) {
+              return state.when(
+                initial: () => const SizedBox.shrink(),
+                loading: () => const Center(child: CircularProgressIndicator()),
+                data: (shows) => _HorizontalTvListView(shows),
+                error: (message) => Text(message),
+              );
+            }),
           ]),
         ),
       ),
