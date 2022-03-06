@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:presentation/cubit/tv_show_popular_cubit.dart';
-import 'package:provider/provider.dart';
 import '../widgets/tv_card.dart';
 
 class PopularTvPage extends StatefulWidget {

@@ -2,10 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:presentation/pages/popular_tv_page.dart';
-import 'package:presentation/pages/tv_detail_page.dart';
 import 'package:presentation/presentation.dart';
-import 'package:provider/provider.dart';
 
 import '../widgets/sub_heading.dart';
 

@@ -20,56 +20,25 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<TVShowDetailNotifier>(),
-          lazy: true,
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistTVShowNotifier>(),
           lazy: true,
         ),
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (_) => di.locator<MovieNowPlayingCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<MoviePopularCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<MovieTopRatedCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<MovieDetailCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<MovieRecommendationCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<MovieDetailWatchlistCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<SearchCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<TvShowAiringCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<TvShowTopRatedCubit>(),
-            lazy: true,
-          ),
-          BlocProvider(
-            create: (_) => di.locator<TvShowPopularCubit>(),
-            lazy: true,
-          ),
+          BlocProvider(create: (_) => di.locator<MovieNowPlayingCubit>()),
+          BlocProvider(create: (_) => di.locator<MoviePopularCubit>()),
+          BlocProvider(create: (_) => di.locator<MovieTopRatedCubit>()),
+          BlocProvider(create: (_) => di.locator<MovieDetailCubit>()),
+          BlocProvider(create: (_) => di.locator<MovieRecommendationCubit>()),
+          BlocProvider(create: (_) => di.locator<MovieDetailWatchlistCubit>()),
+          BlocProvider(create: (_) => di.locator<SearchCubit>()),
+          BlocProvider(create: (_) => di.locator<TvShowAiringCubit>()),
+          BlocProvider(create: (_) => di.locator<TvShowTopRatedCubit>()),
+          BlocProvider(create: (_) => di.locator<TvShowPopularCubit>()),
+          BlocProvider(create: (_) => di.locator<TvShowDetailCubit>()),
+          BlocProvider(create: (_) => di.locator<TvShowRecommendationCubit>()),
+          BlocProvider(create: (_) => di.locator<TvShowDetailWatchlistCubit>()),
         ],
         child: MaterialApp(
             title: 'Flutter Demo',

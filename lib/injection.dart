@@ -12,13 +12,14 @@ void init() {
 
   locator.registerFactory(() => WatchlistTVShowNotifier(locator()));
 
+  locator.registerFactory(() => TvShowDetailCubit(locator()));
+  locator.registerFactory(() => TvShowRecommendationCubit(locator()));
   locator.registerFactory(
-    () => TVShowDetailNotifier(
-        getDetail: locator(),
-        getRecommendations: locator(),
-        getWatchlistStatus: locator(),
-        removeWatchlist: locator(),
-        saveWatchlist: locator()),
+    () => TvShowDetailWatchlistCubit(
+      getStatus: locator(),
+      save: locator(),
+      remove: locator(),
+    ),
   );
   locator.registerFactory(
     () => SearchCubit(

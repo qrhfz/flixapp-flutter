@@ -8,3 +8,6 @@ export 'search_cubit.dart';
 export 'tv_show_airing_cubit.dart';
 export 'tv_show_popular_cubit.dart';
 export 'tv_show_top_rated_cubit.dart';
+export 'tv_show_detail_cubit.dart';
+export 'tv_show_detail_watchlist_cubit.dart';
+export 'tv_show_recommendation_cubit.dart';
