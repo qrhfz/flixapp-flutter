@@ -25,7 +25,12 @@ class _PopularTvPageState extends State<PopularTvPage> {
               itemCount: shows.length,
               itemBuilder: (context, index) => TvCard(shows[index]),
             ),
-            error: (message) => Center(child: Text(message)),
+            error: (message) => Center(
+              child: Text(
+                message,
+                key: const Key('error_message'),
+              ),
+            ),
           );
         },
       ),
