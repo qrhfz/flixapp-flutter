@@ -9,42 +9,42 @@ import 'package:domain/domain.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
+import 'package:http/io_client.dart';
 import 'package:mockito/mockito.dart';
-import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
 import 'movie_remote_data_source_test.mocks.dart';
 
 void main() {
-  final http.Client client = MockHttpClient();
-  final dataSource = TVShowRemoteDataSourceImpl(client);
+  final IOClient ioClient = MockIOClient();
+  final dataSource = TVShowRemoteDataSourceImpl(ioClient: ioClient);
   const authority = 'api.themoviedb.org';
   const tvShowListJsonString = ''' 
-          {
-              "page": 1,
-              "results": [
-                  {
-                      "backdrop_path": "/7q448EVOnuE3gVAx24krzO7SNXM.jpg",
-                      "first_air_date": "2021-09-03",
-                      "genre_ids": [
-                          10764
-                      ],
-                      "id": 130392,
-                      "name": "The D'Amelio Show",
-                      "origin_country": [
-                          "US"
-                      ],
-                      "original_language": "en",
-                      "original_name": "The D'Amelio Show",
-                      "overview": "From relative obscurity and a seemingly normal life, to overnight success and thrust into the Hollywood limelight overnight, the D’Amelios are faced with new challenges and opportunities they could not have imagined.",
-                      "popularity": 25.211,
-                      "poster_path": "/z0iCS5Znx7TeRwlYSd4c01Z0lFx.jpg",
-                      "vote_average": 9.4,
-                      "vote_count": 2620
-                  }
-              ]
-          }
-          ''';
+    {
+        "page": 1,
+        "results": [
+            {
+                "backdrop_path": "/7q448EVOnuE3gVAx24krzO7SNXM.jpg",
+                "first_air_date": "2021-09-03",
+                "genre_ids": [
+                    10764
+                ],
+                "id": 130392,
+                "name": "The D'Amelio Show",
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "The D'Amelio Show",
+                "overview": "From relative obscurity and a seemingly normal life, to overnight success and thrust into the Hollywood limelight overnight, the D’Amelios are faced with new challenges and opportunities they could not have imagined.",
+                "popularity": 25.211,
+                "poster_path": "/z0iCS5Znx7TeRwlYSd4c01Z0lFx.jpg",
+                "vote_average": 9.4,
+                "vote_count": 2620
+            }
+        ]
+    }
+  ''';
   const tvShowDetailJsonString = '''
   {
     "backdrop_path": "/suopoADq0k8YZr4dQXcU6pToj6s.jpg",
@@ -112,7 +112,7 @@ void main() {
   group('tv remote data source', () {
     test('getAiringTvShows should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.airingPath,
+        ioClient.get(Uri.https(authority, TVShowRemoteDataSourceImpl.airingPath,
             {'api_key': TVShowRemoteDataSourceImpl.apiKey})),
       ).thenAnswer(
         (_) async => Response(
@@ -130,7 +130,9 @@ void main() {
 
     test('getPopularTvShows should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.popularPath,
+        ioClient.get(Uri.https(
+            authority,
+            TVShowRemoteDataSourceImpl.popularPath,
             {'api_key': TVShowRemoteDataSourceImpl.apiKey})),
       ).thenAnswer(
         (_) async => Response(
@@ -147,7 +149,9 @@ void main() {
 
     test('getTopRatedTvShows should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.topRatedPath,
+        ioClient.get(Uri.https(
+            authority,
+            TVShowRemoteDataSourceImpl.topRatedPath,
             {'api_key': TVShowRemoteDataSourceImpl.apiKey})),
       ).thenAnswer(
         (_) async => Response(
@@ -165,7 +169,7 @@ void main() {
     test('getTvShowDetail should return TvShowDetailModel', () async {
       const id = 1399;
       when(
-        client.get(
+        ioClient.get(
           Uri.https(
             authority,
             path.join(TVShowRemoteDataSourceImpl.basePath, id.toString()),
@@ -191,7 +195,7 @@ void main() {
 
     test('searching tv show should return list of TvShowModels', () async {
       when(
-        client.get(Uri.https(authority, TVShowRemoteDataSourceImpl.searchPath,
+        ioClient.get(Uri.https(authority, TVShowRemoteDataSourceImpl.searchPath,
             {'api_key': TVShowRemoteDataSourceImpl.apiKey, 'query': 'show'})),
       ).thenAnswer(
         (_) async => Response(
@@ -210,7 +214,7 @@ void main() {
         () async {
       const id = 1;
       when(
-        client.get(
+        ioClient.get(
           Uri.https(
             authority,
             path.join(TVShowRemoteDataSourceImpl.basePath, id.toString(),

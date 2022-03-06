@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:data/data.dart';
+import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
@@ -85,12 +88,15 @@ void init() {
 
   // data sources
   locator.registerLazySingleton<MovieRemoteDataSource>(
-      () => MovieRemoteDataSourceImpl(client: locator()));
+    () => MovieRemoteDataSourceImpl(
+      getContext: _getContext,
+    ),
+  );
   locator.registerLazySingleton<MovieLocalDataSource>(
       () => MovieLocalDataSourceImpl(databaseHelper: locator()));
 
   locator.registerLazySingleton<TVShowRemoteDataSource>(
-      () => TVShowRemoteDataSourceImpl(locator()));
+      () => TVShowRemoteDataSourceImpl(getContext: _getContext));
 
   locator.registerLazySingleton<TVShowLocalDataSource>(
       () => TVShowLocalDataSourceImpl(locator()));
@@ -100,4 +106,11 @@ void init() {
 
   // external
   locator.registerLazySingleton(() => http.Client());
+}
+
+Future<SecurityContext> _getContext() async {
+  final sslCert = await rootBundle.load('certificates/themoviedb-org.pem');
+  SecurityContext securityContext = SecurityContext(withTrustedRoots: false);
+  securityContext.setTrustedCertificatesBytes(sslCert.buffer.asInt8List());
+  return securityContext;
 }

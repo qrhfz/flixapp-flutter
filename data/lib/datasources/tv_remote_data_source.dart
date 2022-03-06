@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:domain/domain.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 import 'package:path/path.dart' as path;
 
 import '../models/tv_show_detail_model.dart';
@@ -22,7 +22,6 @@ abstract class TVShowRemoteDataSource {
 class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   static const apiKey = "2174d146bb9c0eab47529b2e77d6b526";
   final authority = 'api.themoviedb.org';
-  final http.Client client;
 
   static const airingPath = '/3/tv/on_the_air';
   static const popularPath = '/3/tv/popular';
@@ -30,15 +29,40 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   static const searchPath = '/3/search/tv';
   static const basePath = '/3/tv';
 
-  TVShowRemoteDataSourceImpl(this.client);
+  IOClient? _ioClient;
+  late Future<SecurityContext> Function() _getContext;
+
+  Future<IOClient> get ioClient async {
+    if (_ioClient != null) return _ioClient!;
+
+    final client = HttpClient(context: await _getContext())
+      ..badCertificateCallback = (cert, host, port) => false;
+
+    return IOClient(client);
+  }
+
+  TVShowRemoteDataSourceImpl({
+    IOClient? ioClient,
+    Future<SecurityContext> Function()? getContext,
+  }) {
+    if (ioClient != null) {
+      _ioClient = ioClient;
+      return;
+    } else if (getContext != null) {
+      _getContext = getContext;
+    } else {
+      throw Exception('both ioClient and getContext is null');
+    }
+  }
 
   @override
   TvShowModelsOrFailureFuture getAiringTvShows() async {
     try {
-      final res = await client
+      final client = await ioClient;
+      final response = await client
           .get(Uri.https(authority, airingPath, {'api_key': apiKey}));
-      if (res.statusCode != 200) return const Left(ServerFailure());
-      final json = jsonDecode(res.body);
+      if (response.statusCode != 200) return const Left(ServerFailure());
+      final json = jsonDecode(response.body);
       final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
@@ -51,10 +75,11 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   @override
   TvShowModelsOrFailureFuture getPopularTvShows() async {
     try {
-      final res = await client
+      final client = await ioClient;
+      final response = await client
           .get(Uri.https(authority, popularPath, {'api_key': apiKey}));
-      if (res.statusCode != 200) return const Left(ServerFailure());
-      final json = jsonDecode(res.body);
+      if (response.statusCode != 200) return const Left(ServerFailure());
+      final json = jsonDecode(response.body);
       final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
@@ -67,10 +92,11 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   @override
   TvShowModelsOrFailureFuture getTopRatedTvShows() async {
     try {
-      final res = await client
+      final client = await ioClient;
+      final response = await client
           .get(Uri.https(authority, topRatedPath, {'api_key': apiKey}));
-      if (res.statusCode != 200) return const Left(ServerFailure());
-      final json = jsonDecode(res.body);
+      if (response.statusCode != 200) return const Left(ServerFailure());
+      final json = jsonDecode(response.body);
       final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
@@ -83,7 +109,8 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   @override
   TvShowDetailModelOrFailureFuture getTvShowDetail(int id) async {
     try {
-      final res = await client.get(
+      final client = await ioClient;
+      final response = await client.get(
         Uri.https(
           authority,
           path.join(basePath, id.toString()),
@@ -91,8 +118,8 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
         ),
       );
 
-      if (res.statusCode != 200) return const Left(ServerFailure());
-      final json = jsonDecode(res.body);
+      if (response.statusCode != 200) return const Left(ServerFailure());
+      final json = jsonDecode(response.body);
       final tvShowDetail = TVShowDetailModel.fromJson(json);
       return Right(tvShowDetail);
     } on SocketException {
@@ -105,7 +132,8 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   @override
   TvShowModelsOrFailureFuture searchTvShow(String query) async {
     try {
-      final res = await client.get(
+      final client = await ioClient;
+      final response = await client.get(
         Uri.https(
           authority,
           searchPath,
@@ -116,9 +144,9 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
         ),
       );
 
-      if (res.statusCode != 200) return const Left(ServerFailure());
+      if (response.statusCode != 200) return const Left(ServerFailure());
 
-      final json = jsonDecode(res.body);
+      final json = jsonDecode(response.body);
       final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
@@ -131,7 +159,8 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
   @override
   TvShowModelsOrFailureFuture getTvShowRecommendations(int id) async {
     try {
-      final res = await client.get(
+      final client = await ioClient;
+      final response = await client.get(
         Uri.https(
           authority,
           path.join(basePath, id.toString(), 'recommendations'),
@@ -140,8 +169,8 @@ class TVShowRemoteDataSourceImpl implements TVShowRemoteDataSource {
           },
         ),
       );
-      if (res.statusCode != 200) return const Left(ServerFailure());
-      final json = jsonDecode(res.body);
+      if (response.statusCode != 200) return const Left(ServerFailure());
+      final json = jsonDecode(response.body);
       final tvShowListResponse = TVShowListResponse.fromJson(json);
       return Right(tvShowListResponse.results);
     } on SocketException {
