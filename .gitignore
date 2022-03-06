@@ -47,3 +47,4 @@ app.*.map.json
 
 api_key.dart
 coverage/
+log.txt
