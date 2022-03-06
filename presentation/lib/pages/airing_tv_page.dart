@@ -27,7 +27,14 @@ class _AiringTVShowPageState extends State<AiringTVShowPage> {
               itemCount: shows.length,
               itemBuilder: (context, index) => TvCard(shows[index]),
             ),
-            error: (message) => Center(child: Text(message)),
+            error: (message) {
+              return Center(
+                child: Text(
+                  message,
+                  key: const Key('error_message'),
+                ),
+              );
+            },
           );
         },
       ),
