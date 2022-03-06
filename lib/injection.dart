@@ -10,7 +10,7 @@ final locator = GetIt.instance;
 void init() {
   // provider
 
-  locator.registerFactory(() => WatchlistTVShowNotifier(locator()));
+  locator.registerFactory(() => TvWatchlistCubit(locator()));
 
   locator.registerFactory(() => TvShowDetailCubit(locator()));
   locator.registerFactory(() => TvShowRecommendationCubit(locator()));
@@ -28,11 +28,7 @@ void init() {
     ),
   );
 
-  locator.registerFactory(
-    () => WatchlistMovieNotifier(
-      getWatchlistMovies: locator(),
-    ),
-  );
+  locator.registerFactory(() => WatchlistCubit(locator()));
   locator.registerFactory(() => MovieNowPlayingCubit(locator()));
   locator.registerFactory(() => MovieTopRatedCubit(locator()));
   locator.registerFactory(() => MoviePopularCubit(locator()));

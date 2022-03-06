@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:presentation/cubit/watchlist_cubit.dart';
 
-import 'package:domain/domain.dart';
-
-import '../provider/watchlist_movie_notifier.dart';
-import '../provider/watchlist_tv_show_notifier.dart';
-import '../helper/state_enum.dart';
+import '../cubit/tv_watchlist_cubit.dart';
 import 'package:presentation/helper/utilities.dart';
 import '../widgets/movie_card_list.dart';
 import '../widgets/tv_card.dart';
@@ -25,10 +22,9 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<WatchlistMovieNotifier>(context, listen: false)
-          .fetchWatchlistMovies();
-      Provider.of<WatchlistTVShowNotifier>(context, listen: false)
-          .fetchWatchlistTvShows();
+      BlocProvider.of<WatchlistCubit>(context, listen: false).fetchWatchlist();
+      BlocProvider.of<TvWatchlistCubit>(context, listen: false)
+          .fetchWatchlist();
     });
   }
 
@@ -40,10 +36,8 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
 
   @override
   void didPopNext() {
-    Provider.of<WatchlistMovieNotifier>(context, listen: false)
-        .fetchWatchlistMovies();
-    Provider.of<WatchlistTVShowNotifier>(context, listen: false)
-        .fetchWatchlistTvShows();
+    BlocProvider.of<WatchlistCubit>(context, listen: false).fetchWatchlist();
+    BlocProvider.of<TvWatchlistCubit>(context, listen: false).fetchWatchlist();
   }
 
   @override
@@ -55,25 +49,15 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
           title: const Text('Watchlist'),
         ),
         body: Column(
-          children: [
-            const TabBar(tabs: [Tab(text: 'MOVIES'), Tab(text: 'TV SERIES')]),
+          children: const [
+            TabBar(tabs: [Tab(text: 'MOVIES'), Tab(text: 'TV SERIES')]),
             Expanded(
-              child: TabBarView(children: [
-                Consumer<WatchlistMovieNotifier>(
-                  builder: (context, data, child) => MovieWatchlist(
-                    watchlistState: data.watchlistState,
-                    watchlistMovies: data.watchlistMovies,
-                    message: data.message,
-                  ),
-                ),
-                Consumer<WatchlistTVShowNotifier>(
-                  builder: (context, value, child) => TvWatchlist(
-                    message: value.message,
-                    tvWatchlist: value.watchlistTvShows,
-                    watchlistState: value.watchlistState,
-                  ),
-                ),
-              ]),
+              child: TabBarView(
+                children: [
+                  MovieWatchlist(),
+                  TvWatchlist(),
+                ],
+              ),
             ),
           ],
         ),
@@ -89,71 +73,55 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
 }
 
 class MovieWatchlist extends StatelessWidget {
-  const MovieWatchlist({
-    Key? key,
-    required this.watchlistState,
-    required this.watchlistMovies,
-    required this.message,
-  }) : super(key: key);
-
-  final RequestState watchlistState;
-  final List<Movie> watchlistMovies;
-  final String message;
+  const MovieWatchlist({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (watchlistState == RequestState.loading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (watchlistState == RequestState.loaded) {
-      return ListView.builder(
-        itemBuilder: (context, index) {
-          final movie = watchlistMovies[index];
-          return MovieCard(movie);
-        },
-        itemCount: watchlistMovies.length,
-      );
-    } else {
-      return Center(
-        key: const Key('error_message'),
-        child: Text(message),
-      );
-    }
+    return BlocBuilder<WatchlistCubit, WatchlistState>(
+      builder: (contextm, state) {
+        return state.when(
+          initial: () => Container(),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          data: (movies) => ListView.builder(
+            itemBuilder: (context, index) {
+              final movie = movies[index];
+              return MovieCard(movie);
+            },
+            itemCount: movies.length,
+          ),
+          error: (message) => Center(
+            key: const Key('error_message'),
+            child: Text(message),
+          ),
+        );
+      },
+    );
   }
 }
 
 class TvWatchlist extends StatelessWidget {
-  const TvWatchlist({
-    Key? key,
-    required this.watchlistState,
-    required this.tvWatchlist,
-    required this.message,
-  }) : super(key: key);
-
-  final RequestState watchlistState;
-  final List<TVShow> tvWatchlist;
-  final String message;
+  const TvWatchlist({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (watchlistState == RequestState.loading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (watchlistState == RequestState.loaded) {
-      return ListView.builder(
-        itemBuilder: (context, index) {
-          final tv = tvWatchlist[index];
-          return TvCard(tv);
-        },
-        itemCount: tvWatchlist.length,
-      );
-    } else {
-      return Center(
-        key: const Key('error_message'),
-        child: Text(message),
-      );
-    }
+    return BlocBuilder<TvWatchlistCubit, TvWatchlistState>(
+      builder: (contextm, state) {
+        return state.when(
+          initial: () => Container(),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          data: (shows) => ListView.builder(
+            itemBuilder: (context, index) {
+              final show = shows[index];
+              return TvCard(show);
+            },
+            itemCount: shows.length,
+          ),
+          error: (message) => Center(
+            key: const Key('error_message'),
+            child: Text(message),
+          ),
+        );
+      },
+    );
   }
 }

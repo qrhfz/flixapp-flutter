@@ -11,3 +11,5 @@ export 'tv_show_top_rated_cubit.dart';
 export 'tv_show_detail_cubit.dart';
 export 'tv_show_detail_watchlist_cubit.dart';
 export 'tv_show_recommendation_cubit.dart';
+export 'tv_watchlist_cubit.dart';
+export 'watchlist_cubit.dart';
