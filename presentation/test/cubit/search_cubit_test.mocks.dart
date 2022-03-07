@@ -60,7 +60,7 @@ class MockSearchTVShows extends _i1.Mock implements _i9.SearchTVShows {
   }
 
   @override
-  _i4.TVShowRepository get repository =>
+  _i4.TVShowRepository get _repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTVShowRepository_2()) as _i4.TVShowRepository);
   @override

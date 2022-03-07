@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:data/data.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
@@ -65,7 +66,8 @@ void init() {
   locator.registerLazySingleton(() => GetTopRatedTVShows(locator()));
   locator.registerLazySingleton(() => GetTVShowDetail(locator()));
   locator.registerLazySingleton(() => GetTvRecommendations(locator()));
-  locator.registerLazySingleton(() => SearchTVShows(locator()));
+  locator.registerLazySingleton(
+      () => SearchTVShows(locator(), analytics: FirebaseAnalytics.instance));
   locator.registerLazySingleton(() => SaveTVShowWatchlist(locator()));
   locator.registerLazySingleton(() => RemoveTVShowWatchlist(locator()));
   locator.registerLazySingleton(() => GetTVShowWatchlistStatus(locator()));

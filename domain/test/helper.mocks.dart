@@ -566,10 +566,6 @@ class MockSearchTVShows extends _i1.Mock implements _i29.SearchTVShows {
   }
 
   @override
-  _i4.TVShowRepository get repository =>
-      (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeTVShowRepository_2()) as _i4.TVShowRepository);
-  @override
   _i5.Future<_i2.Either<_i6.Failure, List<_i9.TVShow>>> call(String? query) =>
       (super.noSuchMethod(Invocation.method(#call, [query]),
           returnValue: Future<_i2.Either<_i6.Failure, List<_i9.TVShow>>>.value(
